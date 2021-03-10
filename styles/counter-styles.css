@@ -10,7 +10,7 @@ body {
 }
 
 #bg-modifier {
-    background-color: #FFFFFF;
+    background-color: #edeef7;
     z-index: -49;
 }
 
@@ -53,12 +53,13 @@ h3 {
     text-align: center;
     border-radius: 50%;
     box-shadow: -3px 3px 10px #dadada;
+    background-color: #E4FBFF;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
 .count-button:active {
-    background-color: #F29559;
+    background-color: #FFDF64;
     box-shadow: none;
 
 }

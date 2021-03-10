@@ -1,3 +1,10 @@
+.top-nav {
+
+    background-color: #7868E6;
+
+}
+
+
 svg {
     margin-bottom: 5px;
 }
@@ -19,11 +26,14 @@ svg {
     height: 100%;
     border-radius: 10px;
     padding-top: 5px;
-    background-color: ;
 }
 
 .nav-button p {
     font-size: 11.5px;
     color: #2B193D;
+}
+
+.nav-button:hover {
+    background-color: #9895e2;
 }
 
