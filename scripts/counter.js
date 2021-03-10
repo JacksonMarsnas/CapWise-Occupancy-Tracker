@@ -1,3 +1,33 @@
+/* get current day */
+
+function current_date() {
+    today = new Date();
+    var mmm = today.getMonth();
+    var dd = today.getDate();
+    var yyyy = today.getFullYear();
+    
+    if(dd < 10) dd = '0' + dd;
+    if(mmm == 0) mmm = 'JAN';
+    if(mmm == 1) mmm = 'FEB';
+    if(mmm == 2) mmm = 'MAR';
+    if(mmm == 3) mmm = 'APR';
+    if(mmm == 4) mmm = 'MAY';
+    if(mmm == 5) mmm = 'JUN';
+    if(mmm == 6) mmm = 'JUL';
+    if(mmm == 7) mmm = 'AUG';
+    if(mmm == 8) mmm = 'SEP';
+    if(mmm == 9) mmm = 'OCT';
+    if(mmm == 10) mmm = 'NOV';
+    if(mmm == 11) mmm = 'DEC';
+
+    return (mmm + '-' + dd + '-' + yyyy)
+
+}
+
+let date_field = document.getElementById('date-field')
+date_field.textContent = current_date()
+
+
 /* modify-bg */
 
 function modify_bg() {
@@ -20,6 +50,7 @@ function add() {
     count_node.textContent = current_count + 1
     modify_bg()
 }
+
 
 /* subtract button */
 

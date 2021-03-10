@@ -1,0 +1,29 @@
+svg {
+    margin-bottom: 5px;
+}
+
+.fixed-bottom {
+    background-color: #B8B5FF;
+}
+
+.fixed-bottom {
+    height: 5em;
+}
+
+.container-fluid {
+    height: 100%
+}
+
+.nav-button {
+    width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    padding-top: 5px;
+    background-color: ;
+}
+
+.nav-button p {
+    font-size: 11.5px;
+    color: #2B193D;
+}
+
