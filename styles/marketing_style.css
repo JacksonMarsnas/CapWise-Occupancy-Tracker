@@ -1,0 +1,29 @@
+
+.filter-button {
+    color: lightseagreen;
+    background-color: white;
+    border: 1px solid lightblue;
+    border-radius: 10px;    
+}
+
+.filter-button:hover {
+    background-color: lavender;
+}
+
+.filter-button-container {
+    display: flex;
+    flex: row;
+    padding: 5px;
+}
+
+.filter-button-container > div {
+    margin: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .filter-button-container {
+        flex-direction: row;
+    }
+}
