@@ -65,11 +65,12 @@
             <p id="max-number">20</p>
         </div>
 
-        <button id="add-button" class="count-button"> + </button>
+        <button id="add-button" class="count-button" onclick="add()"> + </button>
     </div>
 
-    <button id="message-button"><span class="iconify message-icon" data-icon="bi:chat-left-dots-fill"
-            data-inline="false"></span></button>
+    <button id="message-button" onclick="open_message_popup()"><svg id="message-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg></button>
 
     <footer>
         <nav class="navbar fixed-bottom navbar-light bg-light">
@@ -80,13 +81,13 @@
     </footer>
 
     <!-- Modal Section -->
-    <div class="bg-modal">
+    <div id="bg-modal">
 
 
 
         <div class="modal-content">
 
-            <div class="close"><img class="close" src="./images/icons/x.svg"></div>
+            <div class="close"><img class="close" src="./images/icons/x.svg" onclick="close_popup()"></div>
 
             <form>
 
@@ -120,11 +121,12 @@
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
     </script>
 
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+
+    <script src="./scripts/counter.js"></script>
 
 </body>
 
