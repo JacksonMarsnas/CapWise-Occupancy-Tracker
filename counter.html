@@ -50,22 +50,25 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div id="bg-modifier" class="bg"></div>
+    <div id="bar-block" class="bg"></div>
+
+    <div class="container"></div>
         <h1 class="display-4">Hello, this is Counter!</h1>
         <p>This is the counter page to count the number of people in a store. :)</p>
     </div>
 
 
     <div class="counter-container">
-        <button id="subtract-button" class="count-button"> - </button>
+        <button id="subtract-button" class="count-button" onclick="subtract()"></button>
 
         <div class="counter-num">
-            <p id="current-count">0</p>
+            <p id="current-count" onchange="modify_bg()">0</p>
             <hr>
             <p id="max-number">20</p>
         </div>
 
-        <button id="add-button" class="count-button" onclick="add()"> + </button>
+        <button id="add-button" class="count-button" onclick="add()"></button>
     </div>
 
     <button id="message-button" onclick="open_message_popup()"><svg id="message-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -79,6 +82,7 @@
             </div>
         </nav>
     </footer>
+    
 
     <!-- Modal Section -->
     <div id="bg-modal">
@@ -113,6 +117,7 @@
         </div>
 
     </div>
+    
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
