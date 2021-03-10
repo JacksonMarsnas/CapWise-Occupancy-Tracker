@@ -86,11 +86,13 @@
 
         <div class="modal-content">
 
-            <h3>Who should be notified?</h3>
+            <div class="close"><img class="close" src="./images/icons/x.svg"></div>
 
-            <hr>
-            
-                <select size="4">
+            <form>
+
+                <h3>Who should be notified?</h3>
+
+                <select size="5">
                     <option value="All">All Staff</option>
                     <option value="Sally">Sally</option>
                     <option value="April">April</option>
@@ -99,13 +101,13 @@
                 </select>
 
 
-            <h3>What's the message?</h3>
+                <h3>What's the message?</h3>
 
-            <hr>
+                <textarea id="notify-message" name="message" placeholder="Your message here."></textarea>
 
-            <textarea id="notify-message" name="message" placeholder="Your message here."></textarea>
+                <button class="send-button"><img id="send-icon" src="./images/icons/send.svg"></a>
 
-            <a href="" class=""></a>
+            </form>
 
         </div>
 
