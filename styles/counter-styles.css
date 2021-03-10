@@ -1,0 +1,157 @@
+.bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+#bg-modifier {
+    background-color: #FFFFFF;
+    z-index: -49;
+}
+
+#bar-block {
+    background-color: rgb(172, 172, 172);
+    z-index: -50;
+}
+
+h3 {
+    margin: 1em;
+}
+
+.counter-container {
+    padding: 0.5em;
+    display: flex;
+    margin: 5em auto 3em auto;
+    text-align: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.count-button {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: none;
+    margin: 0.5em;
+    font-size: 4em;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: -3px 3px 10px #dadada;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.count-button:active {
+    background-color: #F29559;
+    box-shadow: none;
+
+}
+
+#add-button {
+    right: 3%;
+    background-image: url(../images/icons/plus.svg);
+}
+
+#subtract-button {
+    left: 3%;
+    background-image: url(../images/icons/minus.svg);
+}
+
+#current-count {
+    font-size: 5em;
+}
+
+#max-number {
+    font-size: 3em;
+}
+
+#message-button {
+    width: 4em;
+    height: 4em;
+    border: none;
+    padding: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+#message-icon {
+    fill: none;
+}
+
+/* Modal */
+
+form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#bg-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal-content {
+    border-radius: 10px;
+    width: 80%;
+    height: 70%;
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 1em 2em 1em 2em;
+}
+
+select {
+    width: 90%;
+    border: 2px solid #F29559;
+    border-radius: 10px;
+}
+
+textarea {
+    width: 90%;
+    height: 25%;
+    border: 2px solid #F29559;
+    border-radius: 10px;
+}
+
+#notify-message:focus {
+    border: 2px solid #F29559;
+    border-radius: 10px;
+}
+
+.send-button {
+    border: none;
+    border-radius: 50%;
+    padding-top: 10px;
+    padding-right: 25px;
+    width: 100px;
+    height: 100px;
+    height: 4em;
+    width: 4em;
+    margin: 2em;
+    background-color: #A9C445
+}
+
+#send-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.close {
+    display: block;
+    float: right;
+    cursor: pointer;
+}
