@@ -6,7 +6,6 @@ function current_date() {
         new_array.push(apply_dates(loop_counter));
         loop_counter++;
     }
-    console.log(new_array);
     return new_array;
 }
 
