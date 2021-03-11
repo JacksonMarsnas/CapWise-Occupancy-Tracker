@@ -15,7 +15,6 @@
 
     <!-- Optional styles and scripts of your own -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <link rel="stylesheet" href="styles/marketing_style.css">
 
 
@@ -113,29 +112,31 @@
         <button id="add-button">+</button>
     </div>
     <br>
-    <hr>
 
-    <!-- Add a new promo form -->
-    <div id="form">
-        <form action="add-promo-form">
-            <h2>Add a new promotion</h2>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="add-new-header">Add New Promotion</h2>
             <br>
-            <input placeholder="Enter Promotion Name" type="text">
+            <input class="form-content" placeholder="Enter Promotion Name" type="text">
             <br><br>
-            <textarea placeholder="Description" name="" id="" cols="30" rows="3"></textarea>
+            <textarea class="form-content" placeholder="Description" name="" id="" cols="30" rows="3"></textarea>
             <br><br>
-            <p>From</p>
-            <input placeholder="From" type="date">
+            <b class="form-content">From</b>
+            <input class="form-content" placeholder="From" type="date">
             <br><br>
-            <p>To</p>
-            <input type="date">
+            <b class="form-content">To</b>
+            <input class="form-content" type="date">
             <br><br>
-            <button id="form-submit-button" type="submit"><span class="iconify" data-icon="bi:check-circle" data-inline="false"></span></button>
-        </form>
+            <button id="form-submit-button" type="submit"><img id="submit-button-img" src="./images/icons/check-circle.svg" alt=""></button>
+        </div>
+
     </div>
-
-    <hr>
-
+    <!-- 
     <div style="margin: 30px;">
         <h3>Test Video Input</h3>
         <div class="video-input">
@@ -144,9 +145,9 @@
         </div>
         <br>
     </div>
-    
+     -->
 
-    <div style="margin: 30px;">
+    <!-- <div style="margin: 30px;">
         <h3>Test New Promo Form</h3>
         <div class="mb-3">
             <label for="formGroupExampleInput1" class="form-label">New Promotion</label>
@@ -173,7 +174,7 @@
         <div style="height: 150px; width: 300px; background-color: aquamarine; margin: 30px;">Promo Info</div>
         <div style="height: 150px; width: 300px; background-color: aquamarine; margin: 30px;">Promo Info</div>
         <div style="height: 150px; width: 300px; background-color: aquamarine; margin: 30px;">Promo Info</div>
-    </section>
+    </section> -->
     <footer>
         <nav class="navbar fixed-bottom navbar-light bg-light">
             <div class="container-fluid">
@@ -192,7 +193,7 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-
+    <script src="./scripts/marketing.js"></script>
 </body>
 
 </html>
