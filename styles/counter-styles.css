@@ -1,3 +1,5 @@
+/*  Background  */
+
 body {
     overflow-y: hidden;
     position: relative;
@@ -19,6 +21,10 @@ body {
     z-index: -50;
 }
 
+
+
+/*  Heading  */
+
 .head-container {
     display: flex;
     margin-top: 1em;
@@ -32,6 +38,8 @@ h3 {
 }
 
 
+
+/*  Counter  */
 
 .counter-container {
     padding: 0.5em;
@@ -88,6 +96,7 @@ h3 {
 #message-icon {
     fill: none;
 }
+
 
 /* Modal */
 
@@ -147,6 +156,7 @@ textarea {
 }
 
 .send-button {
+    background-color: #B8B5FF;
     border: none;
     border-radius: 50%;
     padding-top: 10px;
