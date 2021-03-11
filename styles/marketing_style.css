@@ -1,8 +1,20 @@
+.navbar {
+    background-color: #7868e6;
+}
+
+body {
+    background-color: #edeef7;
+}
+
+#header {
+    text-align: center;
+    margin: auto;
+}
 
 .filter-button {
-    color: lightseagreen;
-    background-color: white;
-    border: 1px solid lightblue;
+    color: black;
+    background-color: #e4fbff;
+    border: 1px solid #b8b5ff;
     border-radius: 10px;    
 }
 
@@ -12,6 +24,7 @@
 
 .filter-button-container {
     display: flex;
+    justify-content: center;
     flex: row;
     padding: 5px;
 }
@@ -19,14 +32,15 @@
 .filter-button-container > div {
     margin: 10px;
     text-align: center;
-    align-items: center;
 }
 
 .promo-card {
     width: 350px;
     height: 150px;
-    background-color: rgb(209, 209, 209);
-    margin: 30px;
+    background-color: #b8b5ff;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 30px;
 }
 
 .promo-info {
@@ -47,7 +61,7 @@
     width: 70px;
     height: 70px;
     font-size: xx-large;
-    margin-left: 30px;
+    margin-left: 70%;
 }
 
 #add-button:hover {
