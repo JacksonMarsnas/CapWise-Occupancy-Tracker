@@ -82,6 +82,7 @@ h3 {
     margin-right: auto;
     border-radius: 50%;
     background-color: transparent;
+    box-shadow: none;
 }
 
 #message-icon {
@@ -115,26 +116,33 @@ form {
     border-radius: 10px;
     width: 80%;
     height: 70%;
-    background-color: #FFFFFF;
+    background-color: #EDEEF7;
     text-align: center;
     padding: 1em 2em 1em 2em;
 }
 
 select {
     width: 90%;
-    border: 2px solid #F29559;
+    border: 2px solid #B8B5FF;
+    border-radius: 10px;
+}
+
+select:focus {
+    outline: none;
+    border: 2px solid #7868E6;
     border-radius: 10px;
 }
 
 textarea {
     width: 90%;
     height: 25%;
-    border: 2px solid #F29559;
+    border: 2px solid #B8B5FF;
     border-radius: 10px;
 }
 
 #notify-message:focus {
-    border: 2px solid #F29559;
+    outline: none;
+    border: 2px solid #7868E6;
     border-radius: 10px;
 }
 
@@ -148,7 +156,6 @@ textarea {
     height: 4em;
     width: 4em;
     margin: 2em;
-    background-color: #A9C445
 }
 
 #send-icon {
