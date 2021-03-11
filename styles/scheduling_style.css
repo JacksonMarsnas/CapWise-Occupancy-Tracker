@@ -50,5 +50,9 @@ h2 {
 }
 
 #last_card {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
+}
+
+#card_section{
+    width: 100%;
 }
