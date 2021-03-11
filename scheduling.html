@@ -16,6 +16,7 @@
     <!-- Optional styles and scripts of your own -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <link rel="stylesheet" href="styles/scheduling_style.css">
+    <link href="./styles/capwise_components.css" rel="stylesheet">
 
 </head>
 
@@ -25,7 +26,7 @@
     <!-- The following is HTML for layout -->
     <!-------------------------------------->
     <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-dark top-nav">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">CapWise</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -38,13 +39,10 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#">Support</a>
                     </li>
                 </ul>
             </div>
@@ -135,9 +133,35 @@
     </div>
 
     <footer>
-        <nav class="navbar fixed-bottom navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Fixed bottom</a>
+        <nav class="navbar fixed-bottom navbar-light">
+            <div class="container-fluid text-center">
+
+                <div id="count-nav-btn" class="nav-button" onclick="location.href='./counter.html'">
+                    <img id="count-icon" src="./images/icons/counter.svg">
+                    </svg>
+                    <p> COUNT </p>
+                </div>
+
+                <div id="marketing-nav-btn" class="nav-button" onclick="location.href='./marketing.html'">
+                    <img id="marketing-icon" src="./images/icons/tag.svg">
+                    <p> MARKETING </p>
+                </div>
+
+                <div id="alert-nav-btn" class="nav-button" onclick="location.href='#'">
+                    <img id="alert-icon" src="./images/icons/bell.svg">
+                    <p> ALERTS </p>
+                </div>
+
+                <div id="scheduling-nav-btn" class="nav-button" onclick="location.href='./scheduling.html'">
+                    <img id="scheduling-icon" src="./images/icons/calendar.svg">
+                    <p id="scheduling-label"> SCHEDULE </p>
+                </div>
+
+                <div id="settings-nav-btn" class="nav-button" onclick="location.href='#'">
+                    <img id="settings-icon" src="./images/icons/settings.svg">
+                    <p> SETTINGS </p>
+                </div>
+
             </div>
         </nav>
     </footer>
