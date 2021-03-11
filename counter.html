@@ -38,13 +38,10 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#">Support</a>
                     </li>
                 </ul>
             </div>
@@ -87,7 +84,7 @@
         <nav class="navbar fixed-bottom navbar-light">
             <div class="container-fluid text-center">
 
-                <div class="nav-button">
+                <div id="count-nav-btn" class="nav-button" onclick="location.href='./counter.html'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none"
                         stroke="#2B193D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-users">
@@ -99,7 +96,7 @@
                     <p> COUNT </p>
                 </div>
 
-                <div class="nav-button">
+                <div id="marketing-nav-btn" class="nav-button" onclick="location.href='./marketing.html'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none"
                         stroke="#2B193D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-tag">
@@ -109,7 +106,7 @@
                     <p> MARKETING </p>
                 </div>
 
-                <div class="nav-button">
+                <div id="alert-nav-btn" class="nav-button" onclick="location.href='#'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none"
                         stroke="#2B193D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-bell">
@@ -119,7 +116,7 @@
                     <p> ALERTS </p>
                 </div>
 
-                <div class="nav-button">
+                <div id="scheduling-nav-btn" class="nav-button" onclick="location.href='./scheduling.html'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none"
                         stroke="#2B193D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-calendar">
@@ -131,7 +128,7 @@
                     <p> SCHEDULE </p>
                 </div>
 
-                <div class="nav-button">
+                <div id="settings-nav-btn" class="nav-button" onclick="location.href='#'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none"
                         stroke="#2B193D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-settings">
@@ -196,6 +193,7 @@
     <!--------------------------------------------------------------------->
 
     <script src="./scripts/counter.js"></script>
+    <script src="./scripts/bottom_nav.js"></script>
 
 </body>
 

@@ -15,7 +15,7 @@ body {
 }
 
 #bar-block {
-    background-color: rgb(172, 172, 172);
+    background-color: rgb(229, 201, 252);
     z-index: -50;
 }
 
@@ -49,28 +49,18 @@ h3 {
     height: 60px;
     border: none;
     margin: 0.5em;
-    font-size: 4em;
-    text-align: center;
     border-radius: 50%;
-    box-shadow: -3px 3px 10px #dadada;
-    background-color: #E4FBFF;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
-.count-button:active {
-    background-color: #FFDF64;
-    box-shadow: none;
-
-}
-
 #add-button {
-    right: 3%;
+    right: 8%;
     background-image: url(../images/icons/plus.svg);
 }
 
 #subtract-button {
-    left: 3%;
+    left: 8%;
     background-image: url(../images/icons/minus.svg);
 }
 

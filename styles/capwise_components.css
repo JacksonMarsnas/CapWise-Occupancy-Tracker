@@ -1,7 +1,20 @@
 .top-nav {
-
     background-color: #7868E6;
+}
 
+.navbar-toggler {
+    box-shadow: none !important;
+}
+
+button {
+    border: none;
+    box-shadow: -3px 3px 10px #dadada;
+    background-color: #E4FBFF;
+}
+
+button:active {
+    background-color: #FFDF64;
+    box-shadow: none;
 }
 
 
@@ -10,11 +23,9 @@ svg {
 }
 
 .fixed-bottom {
-    background-color: #B8B5FF;
-}
-
-.fixed-bottom {
     height: 5em;
+    background-color: #B8B5FF;
+    box-shadow: -1px -2px 4px #8181816c;
 }
 
 .container-fluid {
@@ -35,5 +46,6 @@ svg {
 
 .nav-button:hover {
     background-color: #9895e2;
+    cursor: pointer;
 }
 
