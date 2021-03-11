@@ -15,18 +15,17 @@
 
     <!-- Optional styles and scripts of your own -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <link rel="stylesheet" href="./styles/capwise_components.css">
     <link rel="stylesheet" href="styles/marketing_style.css">
-
-
 </head>
 
 <body>
-
     <!-------------------------------------->
     <!-- The following is HTML for layout -->
     <!-------------------------------------->
+    
     <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-dark top-nav">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">CapWise</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -39,13 +38,10 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#">Support</a>
                     </li>
                 </ul>
             </div>
@@ -113,10 +109,8 @@
     </div>
     <br>
 
-
     <!-- The Modal -->
     <div id="myModal" class="modal">
-
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -132,11 +126,12 @@
             <b class="form-content">To</b>
             <input class="form-content" type="date">
             <br><br>
-            <button id="form-submit-button" type="submit"><img id="submit-button-img" src="./images/icons/check-circle.svg" alt=""></button>
+            <button id="form-submit-button" type="submit"><img id="submit-button-img"
+                    src="./images/icons/check-circle.svg" alt=""></button>
         </div>
-
     </div>
-    <!-- 
+
+    <!-- Input Video Code
     <div style="margin: 30px;">
         <h3>Test Video Input</h3>
         <div class="video-input">
@@ -147,38 +142,36 @@
     </div>
      -->
 
-    <!-- <div style="margin: 30px;">
-        <h3>Test New Promo Form</h3>
-        <div class="mb-3">
-            <label for="formGroupExampleInput1" class="form-label">New Promotion</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Promotion Name">
-        </div>
-        <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Description</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter description">
-            <br>
-        </div>
-        <div>
-            <label for="formGroupExampleInput3" class="form-label">From</label>
-            <input type="date">
-            <br><br>
-        </div>
-        <div>
-            <label for="formGroupExampleInput4" class="form-label">To</label>
-            <input type="date">
-        </div>
-        <br>
-    </div>
-    <section style="margin: 30px;">
-        <h3>Test promo display</h3>
-        <div style="height: 150px; width: 300px; background-color: aquamarine; margin: 30px;">Promo Info</div>
-        <div style="height: 150px; width: 300px; background-color: aquamarine; margin: 30px;">Promo Info</div>
-        <div style="height: 150px; width: 300px; background-color: aquamarine; margin: 30px;">Promo Info</div>
-    </section> -->
     <footer>
-        <nav class="navbar fixed-bottom navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Fixed bottom</a>
+        <nav class="navbar fixed-bottom navbar-light">
+            <div class="container-fluid text-center">
+
+                <div id="count-nav-btn" class="nav-button" onclick="location.href='./counter.html'">
+                    <img id="count-icon" src="./images/icons/counter.svg">
+                    </svg>
+                    <p> COUNT </p>
+                </div>
+
+                <div id="marketing-nav-btn" class="nav-button" onclick="location.href='./marketing.html'">
+                    <img id="marketing-icon" src="./images/icons/tag.svg">
+                    <p> MARKETING </p>
+                </div>
+
+                <div id="alert-nav-btn" class="nav-button" onclick="location.href='#'">
+                    <img id="alert-icon" src="./images/icons/bell.svg">
+                    <p> ALERTS </p>
+                </div>
+
+                <div id="scheduling-nav-btn" class="nav-button" onclick="location.href='./scheduling.html'">
+                    <img id="scheduling-icon" src="./images/icons/calendar.svg">
+                    <p id="scheduling-label"> SCHEDULE </p>
+                </div>
+
+                <div id="settings-nav-btn" class="nav-button" onclick="location.href='#'">
+                    <img id="settings-icon" src="./images/icons/settings.svg">
+                    <p> SETTINGS </p>
+                </div>
+
             </div>
         </nav>
     </footer>
@@ -194,6 +187,7 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script src="./scripts/marketing.js"></script>
+    <script src="/scripts/bottom_nav.js"></script>
 </body>
 
 </html>
