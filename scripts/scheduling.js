@@ -56,13 +56,62 @@ function make_weekday(){
     return new_array;
 }
 
+let is_message_present = false;
+
+function new_message_field(){
+    if(is_message_present == false){
+        is_message_present = true;
+        let new_div = document.createElement("div");
+        let confirm_button = document.createElement("button");
+        let button_image = document.createElement("img");
+        let new_field = document.createElement("textarea");
+        let message_area = document.getElementById("area_for_notes");
+        confirm_button.setAttribute("id", "form-submit-button");
+        new_div.setAttribute("id", "new_form_div");
+        button_image.setAttribute("id", "image_for_confirm_button");
+        button_image.src = "./images/icons/check-circle.svg";
+        new_field.setAttribute("id", "message");
+        confirm_button.appendChild(button_image);
+        new_div.appendChild(confirm_button);
+        new_div.appendChild(new_field);
+        message_area.appendChild(new_div);
+
+        confirm_button.addEventListener('click', function(event){
+            let new_message_to_add = document.createElement("p");
+            new_message_to_add.setAttribute("id", "new_message");
+            new_message_to_add.appendChild(document.createTextNode(new_field.value));
+            message_area.appendChild(new_message_to_add);
+            confirm_button.parentNode.remove();
+            is_message_present = false;
+        });
+    }
+}
+
 date_array = current_date();
 weekdays = make_weekday();
 
-for (let i = 0; i < 7; i++){
-    date_field = document.querySelectorAll("h5");
-    date_field[i].textContent = date_array[i];
+// Get modal
+var modal = document.getElementById("myModal");
 
-    weekday_field = document.querySelectorAll("h3");
-    weekday_field[i].textContent = weekdays[i];
+// Get button that opens the modal
+var btn = document.getElementsByClassName("arrow_button");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+function open_message_popup() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }

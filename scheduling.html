@@ -58,7 +58,7 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3>Today</h3>
-                <button type="button" class = "arrow_button" id="button_1"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
+                <button type="button" class = "arrow_button" onclick="open_message_popup()"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
                 <h2>3</h2>
                 <div class = "person_logo">
                     <span class="iconify" data-icon="akar-icons:person" data-inline="false" data-width="30" data-height="30"></span>
@@ -69,7 +69,7 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3>Tuesday</h3>
-                <button type="button" class = "arrow_button" id="button_1"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
+                <button type="button" class = "arrow_button" onclick="open_message_popup()"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
                 <h2>3</h2>
                 <div class = "person_logo">
                     <span class="iconify" data-icon="akar-icons:person" data-inline="false" data-width="30" data-height="30"></span>
@@ -80,7 +80,7 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3>Wednesday</h3>
-                <button type="button" class = "arrow_button" id="button_1"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
+                <button type="button" class = "arrow_button" onclick="open_message_popup()"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
                 <h2>3</h2>
                 <div class = "person_logo">
                     <span class="iconify" data-icon="akar-icons:person" data-inline="false" data-width="30" data-height="30"></span>
@@ -91,7 +91,7 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3>Thursday</h3>
-                <button type="button" class = "arrow_button" id="button_1"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
+                <button type="button" class = "arrow_button" onclick="open_message_popup()"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
                 <h2>3</h2>
                 <div class = "person_logo">
                     <span class="iconify" data-icon="akar-icons:person" data-inline="false" data-width="30" data-height="30"></span>
@@ -102,7 +102,7 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3>Friday</h3>
-                <button type="button" class = "arrow_button" id="button_1"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
+                <button type="button" class = "arrow_button" onclick="open_message_popup()"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
                 <h2>3</h2>
                 <div class = "person_logo">
                     <span class="iconify" data-icon="akar-icons:person" data-inline="false" data-width="30" data-height="30"></span>
@@ -113,7 +113,7 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3>Saturday</h3>
-                <button type="button" class = "arrow_button" id="button_1"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
+                <button type="button" class = "arrow_button" onclick="open_message_popup()"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
                 <h2>3</h2>
                 <div class = "person_logo">
                     <span class="iconify" data-icon="akar-icons:person" data-inline="false" data-width="30" data-height="30"></span>
@@ -124,7 +124,7 @@
         <div class="card" id="last_card" style="width: 100%;">
             <div class="card-body">
                 <h3>Sunday</h3>
-                <button type="button" class = "arrow_button" id="button_1"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
+                <button type="button" class = "arrow_button" onclick="open_message_popup()"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
                 <h2>3</h2>
                 <div class = "person_logo">
                     <span class="iconify" data-icon="akar-icons:person" data-inline="false" data-width="30" data-height="30"></span>
@@ -167,6 +167,30 @@
             </div>
         </nav>
     </footer>
+
+    <!----------------------------------------------->
+    <!-- Modal stuff    -->
+    <!----------------------------------------------->
+
+    <!-- Button trigger modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="text_for_modal">Schedule</p>
+            <hr>
+            <div id="modal_number_symbols">
+                <button type="button" id="modal_person_subtract"><span class="iconify" data-icon="ion:person-remove-outline" data-inline="false" data-width="30" data-height="30"></span></button>
+                <h1 id="number_of_staff">5</h1>
+                <button type="button" id="modal_person_add" onclick="add_people()"><span class="iconify" data-icon="ion:person-add-outline" data-inline="false" data-width="30" data-height="30"></span></button>
+            </div>
+            <hr>
+            <div id="area_for_notes">
+                <h1 id="notes">Notes:</h1>
+                <button type="button" id="add_button"><span class="iconify" data-icon="akar-icons:circle-plus" data-inline="false" data-width="40" data-height="40"></span></button>
+            </div>
+        </div>
+    </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

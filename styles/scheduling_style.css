@@ -1,21 +1,20 @@
 h3 {
     display: inline;
-    margin: 10px;
+    margin: 0px;
     float:left;
     font-size: 25px;
 }
 
 h5 {
     display: inline;
-    margin: 10px;
+    margin: 0px;
     float:left;
     clear:left;
     font-size: 25px;
 }
 
 .arrow_button {
-    margin: 10px;
-    margin-top: 30px;
+    margin: 0px;
     margin-left: 40px;
     background: #e4fbff;
     border: None;
@@ -35,10 +34,15 @@ div {
     display: inline-block;
 }
 
+.card {
+    background-color: #edeef7;
+    height: 103px;
+}
+
 .person_logo {
     display: inline;
     float: right;
-    margin-top: 41px;
+    margin-top: 20px;
     margin-right: 10px;
 }
 
@@ -46,13 +50,148 @@ h2 {
     display: inline;
     font-size: 40px;
     float: right;
-    margin-top: 30px;
+    margin-top: 10px;
+}
+
+#card_section{
+    width: 100%;
 }
 
 #last_card {
     margin-bottom: 70px;
 }
 
-#card_section{
+/* modal */
+
+#form-submit-button {
+    background-color: white;
+    border: none;
+    float: right;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #e4fbff77; /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #edeef7;
+    margin: 15% auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  #text_for_modal {
+      text-align: center;
+      font-size: 24px;
+  }
+
+  #form-submit-button {
+    border: none;
+    margin: auto;
+    border-radius: 50%;
+    padding-top: 10px;
+    width: 40px;
+    height: 30px;
+    padding-bottom:35px;
+    background-color: #b8b5ff;
+    margin-top:30px;
+    margin-right:15px;
+  }
+
+  #form-submit-button:hover {
+      background-color: #7868e6;
+  }
+
+  .form-content {
+      border-radius: 5px;
+      margin: auto 20px;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #7868e6;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    width:25px;
+    margin:10px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #modal_person_add{
+      float:right;
+      display:inline;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin:10px;
+  }
+
+  #modal_person_subtract{
+    float:left;
+    display:inline;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin:10px;
+  }
+
+  #modal_number_symbols{
+      text-align: center;
+      display:inline;
+  }
+
+  #number_of_staff{
+      display:inline;
+      font-size:50px;
+  }
+
+  #notes{
+      font-size:24px;
+      float:left;
+      margin-left:10px;
+      display:inline;
+  }
+
+  #add_button {
+    margin-right:10px;
+    float:right;
+    width: 40px;
+    height: 40px;
+    background:none;
+    box-shadow:none;
+}
+
+#message {
+    margin: 10%;
+}
+
+#image_for_confirm_button{
+    width:30px;
+}
+
+#new_form_div{
     width: 100%;
+}
+
+#new_message{
+    clear:left;
+    font-size: 20px;
+    margin-left:10px;
 }
