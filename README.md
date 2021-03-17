@@ -1,18 +1,17 @@
-## My Web Application (Title)
+## CapWise
 
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
 
 ## General Info
-This browser based web application to ...
+This browser based web application is targeted to help stores accumulate data on their store's traffic flow. The data collected can be used to make promotional and scheduling decisions easier for store owners.
 	
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
 * JavaScript
 * Bootstrap 
-* ...
 	
 ## Content
 Content of the project folder:
