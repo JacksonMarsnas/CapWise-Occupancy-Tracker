@@ -6,6 +6,10 @@ body {
     background-color: #edeef7;
 }
 
+p {
+    margin: 1em;
+}
+
 section {
     margin: 5em 2em;
 }
