@@ -1,0 +1,50 @@
+html {
+    overflow-y: auto;
+}
+
+body {
+    background-color: #edeef7;
+}
+
+section {
+    margin: 5em 2em;
+}
+
+.hero-image {
+    height: 70vh;
+    background-image: linear-gradient(rgba(43, 25, 61, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-title {
+    color: #FFFFFF;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.display-1 {
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.btn {
+    font-size: 20px;
+    width: 100%;
+    font-weight: bold;
+    background-color: #B8B5FF;
+    border-radius: 30px;
+    border: none;
+    box-shadow: none;
+    color: #2B193D;
+    margin-top: 1em;
+}
+
+.btn:hover {
+    background-color: #9895e2;
+}
