@@ -17,7 +17,7 @@ body {
 }
 
 #bar-block {
-    background-color: rgb(229, 201, 252);
+    background-color: #b8b5ff7a;
     z-index: -50;
 }
 
@@ -34,7 +34,9 @@ body {
 }
 
 h3 {
+    font-size: medium;
     margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 
@@ -132,28 +134,8 @@ form {
 
 select {
     width: 90%;
-    border: 2px solid #B8B5FF;
-    border-radius: 10px;
 }
 
-select:focus {
-    outline: none;
-    border: 2px solid #7868E6;
-    border-radius: 10px;
-}
-
-textarea {
-    width: 90%;
-    height: 25%;
-    border: 2px solid #B8B5FF;
-    border-radius: 10px;
-}
-
-#notify-message:focus {
-    outline: none;
-    border: 2px solid #7868E6;
-    border-radius: 10px;
-}
 
 .send-button {
     background-color: #B8B5FF;

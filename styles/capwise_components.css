@@ -49,3 +49,21 @@ svg {
     cursor: pointer;
 }
 
+/*      forms     */
+ 
+input, 
+select,
+textarea {
+    width: 90%;
+    height: 25%;
+    border: 2px solid #B8B5FF;
+    border-radius: 10px;
+}
+
+input:focus, 
+select:focus,
+textarea:focus {
+    outline: none;
+    border: 2px solid #7868E6;
+    border-radius: 10px;
+}
