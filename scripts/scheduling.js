@@ -115,3 +115,17 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
+
+function add_people(){
+    let number_of_people = document.getElementById('number_of_staff');
+    let new_number_of_people = parseInt(number_of_people.innerHTML) + 1;
+    number_of_people.innerHTML = new_number_of_people;
+}
+
+function subtract_people(){
+    let number_of_people = document.getElementById('number_of_staff');
+    if(parseInt(number_of_people.innerHTML) > 0){
+        let new_number_of_people = parseInt(number_of_people.innerHTML) - 1;
+        number_of_people.innerHTML = new_number_of_people;
+    }
+}
