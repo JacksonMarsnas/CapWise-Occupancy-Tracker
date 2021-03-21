@@ -67,70 +67,13 @@
 
     <!-- Filter buttons -->
     <div class="filter-button-container" id="myBtnContainer">
-        <div><button class="btn active filter-btn" onclick="filterSelection('all')">All</button></div>
+        <div><button class="btn show filter-btn" onclick="filterSelection('all')">All</button></div>
         <div><button id="current-button" class="filter-btn" onclick="filterSelection('current')">Current</button></div>
         <div><button id="future-button" class="filter-btn" onclick="filterSelection('future')">Future</button></div>
         <div><button id="archive-button" class="filter-btn" onclick="filterSelection('archive')">Archive</button></div>
     </div>
 
     <!-- Promo cards -->
-    <!-- <div class="performance">
-        <div class="promo-card current">
-            <aside class="promo-info">
-                <h4>Lucky April</h4>
-                <p>20% off Cheese</p>
-                <p>April 1 - April 19</p>
-                <p>Traffic: +20%</p>
-            </aside>
-            <div class="traffic-symbol">
-                <span class="iconify" data-icon="uil:arrow-growth" data-inline="false"></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="performance">
-        <div class="promo-card future">
-            <aside class="promo-info">
-                <h4>Cyber March</h4>
-                <p>15% off Easter eggs</p>
-                <p>Mar 9 - Mar 15</p>
-                <p>Traffic: +30%</p>
-            </aside>
-            <div class="traffic-symbol">
-                <span class="iconify" data-icon="uil:arrow-growth" data-inline="false"></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="performance">
-        <div class="promo-card future">
-            <aside class="promo-info">
-                <h4>Colorful Friday</h4>
-                <p>15% off gummies</p>
-                <p>Dec 1 - Dec 30</p>
-                <p>Traffic: +10%</p>
-            </aside>
-            <div class="traffic-symbol">
-                <span class="iconify" data-icon="uil:arrow-growth" data-inline="false"></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="performance">
-        <div class="promo-card archive">
-            <aside class="promo-info">
-                <h4>Colorful Friday</h4>
-                <p>15% off gummies</p>
-                <p>Dec 1 - Dec 30</p>
-                <p>Traffic: +10%</p>
-            </aside>
-            <div class="traffic-symbol">
-                <span class="iconify" data-icon="uil:arrow-growth" data-inline="false"></span>
-            </div>
-        </div>
-    </div> -->
-
-
     <div class="performance">
         <div class="promo-card current">
             <aside class="promo-info">
@@ -180,6 +123,7 @@
             </div>
         </div>
     </div>
+
     <!-- Add new promo button -->
     <div>
         <button id="add-button">+</button>
@@ -189,23 +133,23 @@
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <!-- Modal content -->
-        <div class="modal-content">
+        <form class="modal-content" id="add-promo-form">
             <span class="close">&times;</span>
             <h2 id="add-new-header">Add New Promotion</h2>
             <br>
-            <input class="form-content" placeholder="Enter Promotion Name" type="text">
+            <input class="form-content" name="promo-name" id="promo-name" placeholder="Enter Promotion Name" type="text">
             <br><br>
-            <textarea class="form-content" placeholder="Description" name="" id="" cols="30" rows="3"></textarea>
+            <textarea class="form-content" name="promo-description" id="promo-description" placeholder="Description" cols="30" rows="3"></textarea>
             <br><br>
             <b class="form-content">From</b>
-            <input class="form-content" placeholder="From" type="date">
+            <input class="form-content" name="promo-date-start" id="promo-date-start" placeholder="From" type="date">
             <br><br>
             <b class="form-content">To</b>
-            <input class="form-content" type="date">
+            <input class="form-content" name="promo-date-end" id="promo-date-end" type="date">
             <br><br>
             <button id="form-submit-button" type="submit"><img id="submit-button-img"
                     src="./images/icons/check-circle.svg" alt=""></button>
-        </div>
+        </form>
     </div>
 
     <!-- Input Video Code
@@ -258,7 +202,7 @@
     <!----------------------------------------------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>

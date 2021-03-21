@@ -33,13 +33,13 @@ function filterSelection(c) {
     if (c == "all") c = "";
     // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
     for (i = 0; i < x.length; i++) {
-        w3RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
     }
 }
 
 // Show filtered elements
-function w3AddClass(element, name) {
+function AddClass(element, name) {
     var i, arr1, arr2;
     arr1 = element.className.split(" ");
     arr2 = name.split(" ");
@@ -51,7 +51,7 @@ function w3AddClass(element, name) {
 }
 
 // Hide elements that are not selected
-function w3RemoveClass(element, name) {
+function RemoveClass(element, name) {
     var i, arr1, arr2;
     arr1 = element.className.split(" ");
     arr2 = name.split(" ");
@@ -68,8 +68,47 @@ var btnContainer = document.getElementById("myBtnContainer");
 var btns = btnContainer.getElementsByClassName("filter-btn");
 for (var i = 0; i < btns.length; i++) {
     btns[i].addEventListener("click", function () {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
+        var current = document.getElementsByClassName("show");
+        console.log(current);
+        current[0].className = current[0].className.replace(" show", "");
+        this.className += " show";
     });
 }
+
+//Firebase reference collection
+var InputRef = firebase.database().ref("promotions");
+
+//function to get form value
+function getInputVal(id){
+    return document.getElementById(id).value;
+}
+
+//Form Submission
+document.getElementById('add-promo-form').addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    //Get Values
+    var promoName = getInputVal('promo-name')
+    var promoDescription = getInputVal('promo-description')
+    var startDate = getInputVal('promo-date-start')
+    var endDate = getInputVal('promo-date-end')
+    
+    //Save form input
+    saveInput(pname, description, start, end)
+});
+
+
+
+//function to save form inputs to firebase
+function saveInput(pname, description, start, end) {
+    var newInputRef = InputRef.push();
+    newInputRef.set({
+        pname: promoName,
+        description: promoDescription,
+        start: startDate,
+        end: endDate
+    })
+}
+
+// Reference tutorial:
+// https://www.youtube.com/watch?v=PP4Tr0l08NE

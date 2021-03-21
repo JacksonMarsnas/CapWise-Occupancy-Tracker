@@ -89,6 +89,15 @@ function new_message_field(){
 
 date_array = current_date();
 weekdays = make_weekday();
+let day_cards = document.getElementsByClassName("date-field");
+let weekday_cards = document.getElementsByClassName("weekday");
+console.log(day_cards);
+
+for(let i = 0; i < 7; i++){
+    day_cards[i].innerHTML = date_array[i];
+    weekday_cards[i].innerHTML = weekdays[i];
+}
+
 
 // Get modal
 var modal = document.getElementById("myModal");
@@ -113,5 +122,19 @@ span.onclick = function () {
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+}
+
+function add_people(){
+    let number_of_people = document.getElementById('number_of_staff');
+    let new_number_of_people = parseInt(number_of_people.innerHTML) + 1;
+    number_of_people.innerHTML = new_number_of_people;
+}
+
+function subtract_people(){
+    let number_of_people = document.getElementById('number_of_staff');
+    if(parseInt(number_of_people.innerHTML) > 0){
+        let new_number_of_people = parseInt(number_of_people.innerHTML) - 1;
+        number_of_people.innerHTML = new_number_of_people;
     }
 }
