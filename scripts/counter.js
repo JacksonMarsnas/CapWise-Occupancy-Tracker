@@ -45,9 +45,15 @@ function modify_bg() {
 
 function add() {
     let count_node = document.getElementById('current-count')
-    let current_count = parseInt(count_node.textContent)
 
-    count_node.textContent = current_count + 1
+    let new_count = parseInt(count_node.textContent) + 1;
+
+    let curr_total = Number(document.getElementById('total').textContent)
+    document.getElementById('total').innerHTML = curr_total + 1
+
+    count_node.textContent = new_count;
+    sessionStorage.stored_count = new_count;
+    sessionStorage.total = curr_total + 1
     modify_bg()
 }
 
@@ -56,10 +62,24 @@ function add() {
 
 function subtract() {
     let count_node = document.getElementById('current-count')
-    let current_count = count_node.textContent
 
-    count_node.textContent = parseInt(current_count) - 1
+    let new_count = parseInt(count_node.textContent) - 1;
+
+    count_node.textContent = new_count;
+    sessionStorage.stored_count = new_count;
     modify_bg()
+}
+
+
+/* Session Store */
+
+if (sessionStorage.current_count) {
+    document.getElementById('current-count').innerHTML = sessionStorage.stored_count;
+    modify_bg()
+}
+
+if (sessionStorage.total) {
+    document.getElementById('total').innerHTML = sessionStorage.total;
 }
 
 
