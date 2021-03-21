@@ -10,6 +10,14 @@ p {
     margin: 1em;
 }
 
+img {
+    margin: 2em;
+}
+
+.display-6 {
+    text-align: center;
+}
+
 section {
     margin: 5em 2em;
 }
@@ -52,3 +60,54 @@ section {
 .btn:hover {
     background-color: #9895e2;
 }
+
+/* Containters */
+
+.container {
+    margin-top: 10em
+}
+
+/* Features */
+
+.feature-img {
+    width: 15em;
+    height: auto;
+}
+
+.feature-container {
+    width: 30em;
+    height: 30em;
+    margin: 2em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #7868E6;
+    border-radius: 40px
+}
+
+@media screen and (min-width: 575px) {
+    div.feature-container {
+
+        justify-content: flex-start;
+
+    }
+
+    div.center {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+/* Footer */
+footer {
+    width: 100vw;
+    height: 20vh;
+    background-color: #2B193D;
+
+}
+
