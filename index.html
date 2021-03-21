@@ -3,9 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <title>My BCIT Project</title>
+    <title>CapWise</title>
     <meta name="comp1800 boilerplate code" content="CapWise">
     <meta name="author" content="BCIT">
+
+    <!-- Favicon Package -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#7868e6">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Bootstrap for Mobile-first, and JQuery -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,13 +46,13 @@
                         <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Log-in</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Log-in</a>
                     </li>
                 </ul>
             </div>
@@ -60,15 +69,21 @@
 
 
     <section>
-        <div id="Log-in" class="container">
-            <h1 class="display-4">Hello, this is Sally</h1>
+
+        <div id="about" class="container">
+            <h1 class="display-4">Every Customer Counts</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
         </div>
 
-        <div id="about" class="container"></div>
+        <div id="support" class="container">
 
-        <div id="support" class="container"></div>
+        </div>
 
-        <h1 class="display-4">Hello, this is Jackson again</h1>
+
         <h1 class="display-4">Hello, this is April Cheng</h1>
         <section>
 
@@ -118,6 +133,27 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
                 crossorigin="anonymous">
+            </script>
+
+
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+
+            <script>
+                // Your web app's Firebase configuration
+                var firebaseConfig = {
+                    apiKey: "AIzaSyARMMT4bDtdvX-ZhncNU2qF-JHg3WulTvw",
+                    authDomain: "capwise-fac45.firebaseapp.com",
+                    projectId: "capwise-fac45",
+                    storageBucket: "capwise-fac45.appspot.com",
+                    messagingSenderId: "942821314260",
+                    appId: "1:942821314260:web:21b65c3809cf795fcbb541"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
             </script>
 
             <!--------------------------------------------------------------------->
