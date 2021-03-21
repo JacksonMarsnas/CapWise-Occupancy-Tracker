@@ -89,6 +89,15 @@ function new_message_field(){
 
 date_array = current_date();
 weekdays = make_weekday();
+let day_cards = document.getElementsByClassName("date-field");
+let weekday_cards = document.getElementsByClassName("weekday");
+console.log(day_cards);
+
+for(let i = 0; i < 7; i++){
+    day_cards[i].innerHTML = date_array[i];
+    weekday_cards[i].innerHTML = weekdays[i];
+}
+
 
 // Get modal
 var modal = document.getElementById("myModal");
