@@ -7,7 +7,9 @@ body {
     border: 1px solid #7868E6;
 }
 
-.btn-primary:hover{
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
     background-color: #2B193D;
     border: 1px solid #2B193D;
 }

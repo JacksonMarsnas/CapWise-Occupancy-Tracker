@@ -127,6 +127,18 @@ document.getElementById('send-btn').addEventListener("click", function () {
 });
 
 
+/* Store daily count */
+
+document.getElementById('confirm-end-btn').addEventListener("click", function () {
+    writeDailyCount();
+
+    sessionStorage.clear();
+    setTimeout(location.reload.bind(location), 3000)
+
+    toasty('toasty-save')
+});
+
+
 /*==============================================================================*/
 /*                                FIRESTORE                                     */
 /*==============================================================================*/

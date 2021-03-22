@@ -2,7 +2,6 @@
 
 body {
     overflow-y: hidden;
-    position: relative;
 }
 
 .bg {
@@ -184,7 +183,13 @@ select {
 }
 
 .toast {
-    position: absolute;
-    right: 1em;
+    position: relative;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: #2B193D;
+    color: white;
 }
 
+#endshiftModal {
+    margin-left: 2.5em;
+}
