@@ -157,13 +157,14 @@
 
         <div class="modal-content">
 
-            <div class="close"><img class="close" src="./images/icons/x.svg" onclick="close_popup()"></div>
+            <button type="button" class="btn-close close" aria-label="Close" onclick="close_popup()"></button>
 
-            <form>
+
+            <form id="modal-form">
 
                 <h3>Who should be notified?</h3>
 
-                <select size="5">
+                <select size="5" name="recipient" id="recipient" required>
                     <option value="All">All Staff</option>
                     <option value="Sally">Sally</option>
                     <option value="April">April</option>
@@ -174,9 +175,10 @@
 
                 <h3>What's the message?</h3>
 
-                <textarea id="notify-message" name="message" placeholder="Your message here."></textarea>
+                <textarea id="notify-message" name="message" placeholder="Your message here." required></textarea>
 
-                <button class="send-button"><img id="send-icon" src="./images/icons/send.svg"></a>
+                <button id="send-btn" class="send-button" type="button"><img id="send-icon"
+                        src="./images/icons/send.svg">
 
             </form>
 
@@ -184,6 +186,28 @@
 
     </div>
 
+    <!----------------------------------------------->
+    <!--                 TOAST!                    -->
+    <!----------------------------------------------->
+
+    <div class="toast align-items-center" id="toasty-success" role="alert" aria-live="assertive" aria-atomic="true" autohide="false">
+        <div class="d-flex">
+            <div class="toast-body" id="toasty-bod">
+                Message sent successfully.
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+
+
+    <div class="toast align-items-center bottom-0 end-0" id="toasty-failure" role="alert" aria-live="assertive" aria-atomic="true" autohide="false">
+        <div class="d-flex">
+            <div class="toast-body" id="toasty-bod">
+                Error sending message, try again later.
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -192,33 +216,9 @@
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
     </script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyARMMT4bDtdvX-ZhncNU2qF-JHg3WulTvw",
-            authDomain: "capwise-fac45.firebaseapp.com",
-            projectId: "capwise-fac45",
-            storageBucket: "capwise-fac45.appspot.com",
-            messagingSenderId: "942821314260",
-            appId: "1:942821314260:web:21b65c3809cf795fcbb541"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
-
-
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-
-    <script src="./scripts/counter.js"></script>
-    <script src="./scripts/bottom_nav.js"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
@@ -229,6 +229,10 @@
 
     <!-- JS for Firebase API initiation -->
     <script src="./scripts/firebase_api.js"></script>
+
+
+    <script src="./scripts/counter.js"></script>
+    <script src="./scripts/bottom_nav.js"></script>
 </body>
 
 </html>

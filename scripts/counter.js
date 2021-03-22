@@ -5,20 +5,20 @@ function current_date() {
     var mmm = today.getMonth();
     var dd = today.getDate();
     var yyyy = today.getFullYear();
-    
-    if(dd < 10) dd = '0' + dd;
-    if(mmm == 0) mmm = 'JAN';
-    if(mmm == 1) mmm = 'FEB';
-    if(mmm == 2) mmm = 'MAR';
-    if(mmm == 3) mmm = 'APR';
-    if(mmm == 4) mmm = 'MAY';
-    if(mmm == 5) mmm = 'JUN';
-    if(mmm == 6) mmm = 'JUL';
-    if(mmm == 7) mmm = 'AUG';
-    if(mmm == 8) mmm = 'SEP';
-    if(mmm == 9) mmm = 'OCT';
-    if(mmm == 10) mmm = 'NOV';
-    if(mmm == 11) mmm = 'DEC';
+
+    if (dd < 10) dd = '0' + dd;
+    if (mmm == 0) mmm = 'JAN';
+    if (mmm == 1) mmm = 'FEB';
+    if (mmm == 2) mmm = 'MAR';
+    if (mmm == 3) mmm = 'APR';
+    if (mmm == 4) mmm = 'MAY';
+    if (mmm == 5) mmm = 'JUN';
+    if (mmm == 6) mmm = 'JUL';
+    if (mmm == 7) mmm = 'AUG';
+    if (mmm == 8) mmm = 'SEP';
+    if (mmm == 9) mmm = 'OCT';
+    if (mmm == 10) mmm = 'NOV';
+    if (mmm == 11) mmm = 'DEC';
 
     return (mmm + '-' + dd + '-' + yyyy)
 
@@ -96,3 +96,61 @@ function close_popup() {
     let popup = document.getElementById('bg-modal')
     popup.style.display = ('none')
 }
+
+
+/* TOAST ME UPPP */
+
+var option = {
+    animation: true,
+    delay: 2000
+};
+
+function toasty(toast_id) {
+    var toast = document.getElementById(toast_id);
+
+    var toastElement = new bootstrap.Toast(toast, option);
+
+    toastElement.show();
+
+}
+
+
+/* Send or store msg */
+
+document.getElementById('send-btn').addEventListener("click", function () {
+
+    writeMessages()
+
+    close_popup()
+    document.getElementById('modal-form').reset()
+
+});
+
+
+/*==============================================================================*/
+/*                                FIRESTORE                                     */
+/*==============================================================================*/
+
+function writeMessages() {
+    var messagesRef = db.collection("messages")
+
+    messagesRef.add({
+            timestamp: Date(),
+            recipients: document.getElementById('recipient').value,
+            message: document.getElementById('notify-message').value
+        }).then(function () {
+            toasty('toasty-success');
+        })
+        .catch(function (error) {
+            toasty('toasty-failure');
+        })
+};
+
+function writeDailyCount() {
+    var dailyCountRef = db.collection("daily");
+
+    dailyCountRef.add({
+        date: current_date(),
+        end_total: Number(document.getElementById('total').innerHTML)
+    });
+};
