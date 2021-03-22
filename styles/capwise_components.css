@@ -4,10 +4,12 @@ body {
 
 .btn-primary {
     background-color: #7868E6;
+    border: 1px solid #7868E6;
 }
 
 .btn-primary:hover{
-    
+    background-color: #2B193D;
+    border: 1px solid #2B193D;
 }
 
 .top-nav {
