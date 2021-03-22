@@ -151,6 +151,6 @@ function writeDailyCount() {
 
     dailyCountRef.add({
         date: current_date(),
-        end_total: Number(document.getElementById('total').innerHTML)
+        end_total: sessionStorage.total
     });
 };

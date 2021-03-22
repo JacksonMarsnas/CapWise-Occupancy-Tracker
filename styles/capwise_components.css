@@ -2,6 +2,14 @@ body {
     background-color: #EDEEF7;
 }
 
+.btn-primary {
+    background-color: #7868E6;
+}
+
+.btn-primary:hover{
+    
+}
+
 .top-nav {
     background-color: #7868E6;
 }
