@@ -75,8 +75,9 @@ for (var i = 0; i < btns.length; i++) {
     });
 }
 
+// ---------------------------------Firebase Codes-----------------------------------
 //Firebase reference collection
-var InputRef = firebase.database().ref("promotions");
+var InputRef = firebase.database().ref('promotions');
 
 //function to get form value
 function getInputVal(id){
@@ -107,7 +108,7 @@ function saveInput(pname, description, start, end) {
         description: promoDescription,
         start: startDate,
         end: endDate
-    })
+    });
 }
 
 // Reference tutorial:
