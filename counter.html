@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-    <link rel="manifest" href="./favicon/site.webmanifest">
+    <link rel="manifest" href="./favicon/site-manifest.js">
     <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#7868e6">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
@@ -27,7 +27,7 @@
 
     <!-- Optional styles and scripts of your own -->
     <link href="./styles/capwise_components.css" rel="stylesheet">
-    <link href="./styles/counter-styles.css" rel="stylesheet">
+    <link href="./styles/counter.css" rel="stylesheet">
 
 
 </head>
@@ -43,7 +43,7 @@
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark top-nav">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">CapWise</a>
+            <a class="navbar-brand" href="./index.html">CapWise</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="./counter.html">My Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./index.html#features">Features</a>
@@ -79,6 +79,9 @@
     <div class="head-container">
         <h1 class="display-4"> Counter </h1>
         <p id="date-field"></p>
+
+        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#endshiftModal">End
+            Shift</button>
     </div>
 
 
@@ -100,7 +103,11 @@
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
         </svg></button>
 
+    <div id="total-container" class="text-muted text-center">
 
+        <p> Total today: <span id="total">0</span></p>
+
+    </div>
 
 
     <!----------------------------------------------->
@@ -153,13 +160,14 @@
 
         <div class="modal-content">
 
-            <div class="close"><img class="close" src="./images/icons/x.svg" onclick="close_popup()"></div>
+            <button type="button" class="btn-close close" aria-label="Close" onclick="close_popup()"></button>
 
-            <form>
+
+            <form id="modal-form">
 
                 <h3>Who should be notified?</h3>
 
-                <select size="5">
+                <select size="5" name="recipient" id="recipient" required>
                     <option value="All">All Staff</option>
                     <option value="Sally">Sally</option>
                     <option value="April">April</option>
@@ -170,9 +178,10 @@
 
                 <h3>What's the message?</h3>
 
-                <textarea id="notify-message" name="message" placeholder="Your message here."></textarea>
+                <textarea id="notify-message" name="message" placeholder="Your message here." required></textarea>
 
-                <button class="send-button"><img id="send-icon" src="./images/icons/send.svg"></a>
+                <button id="send-btn" class="send-button" type="button"><img id="send-icon"
+                        src="./images/icons/send.svg">
 
             </form>
 
@@ -180,6 +189,61 @@
 
     </div>
 
+    <!-- End Shift Modal -->
+    <div class="modal fade " id="endshiftModal" tabindex="-1" aria-labelledby="endshiftModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="endshiftModalLabel">End the day?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you certain you would you like to end the business day?
+
+                    Ending business day will save and reset the total count today.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="confirm-end-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">End Shift</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------------------------------------->
+    <!--                 TOASTS!                    -->
+    <!----------------------------------------------->
+
+    <div class="toast align-items-center" id="toasty-success" role="alert" aria-live="assertive" aria-atomic="true"
+        autohide="false">
+        <div class="d-flex">
+            <div class="toast-body" id="toasty-bod">
+                Message sent successfully.
+            </div>
+            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+
+
+    <div class="toast align-items-center bottom-0 end-0" id="toasty-failure" role="alert" aria-live="assertive"
+        aria-atomic="true" autohide="false">
+        <div class="d-flex">
+            <div class="toast-body" id="toasty-bod">
+                Error sending message, try again later.
+            </div>
+            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div class="toast align-items-center bottom-0 end-0" id="toasty-save" role="alert" aria-live="assertive"
+    aria-atomic="true" autohide="false">
+    <div class="d-flex">
+        <div class="toast-body" id="toasty-bod">
+            Data successfully saved. Page will refresh shortly...
+        </div>
+        <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
@@ -188,53 +252,21 @@
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
     </script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyARMMT4bDtdvX-ZhncNU2qF-JHg3WulTvw",
-            authDomain: "capwise-fac45.firebaseapp.com",
-            projectId: "capwise-fac45",
-            storageBucket: "capwise-fac45.appspot.com",
-            messagingSenderId: "942821314260",
-            appId: "1:942821314260:web:21b65c3809cf795fcbb541"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
-
-
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
 
-    <script src="./scripts/counter.js"></script>
-    <script src="./scripts/bottom_nav.js"></script>
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
 
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyARMMT4bDtdvX-ZhncNU2qF-JHg3WulTvw",
-            authDomain: "capwise-fac45.firebaseapp.com",
-            projectId: "capwise-fac45",
-            storageBucket: "capwise-fac45.appspot.com",
-            messagingSenderId: "942821314260",
-            appId: "1:942821314260:web:21b65c3809cf795fcbb541"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
+    <!-- JS for Firebase API initiation -->
+    <script src="./scripts/firebase_api.js"></script>
+
+
+    <script src="./scripts/counter.js"></script>
+    <script src="./scripts/bottom_nav.js"></script>
 </body>
 
 </html>

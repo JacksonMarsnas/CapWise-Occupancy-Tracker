@@ -5,20 +5,20 @@ function current_date() {
     var mmm = today.getMonth();
     var dd = today.getDate();
     var yyyy = today.getFullYear();
-    
-    if(dd < 10) dd = '0' + dd;
-    if(mmm == 0) mmm = 'JAN';
-    if(mmm == 1) mmm = 'FEB';
-    if(mmm == 2) mmm = 'MAR';
-    if(mmm == 3) mmm = 'APR';
-    if(mmm == 4) mmm = 'MAY';
-    if(mmm == 5) mmm = 'JUN';
-    if(mmm == 6) mmm = 'JUL';
-    if(mmm == 7) mmm = 'AUG';
-    if(mmm == 8) mmm = 'SEP';
-    if(mmm == 9) mmm = 'OCT';
-    if(mmm == 10) mmm = 'NOV';
-    if(mmm == 11) mmm = 'DEC';
+
+    if (dd < 10) dd = '0' + dd;
+    if (mmm == 0) mmm = 'JAN';
+    if (mmm == 1) mmm = 'FEB';
+    if (mmm == 2) mmm = 'MAR';
+    if (mmm == 3) mmm = 'APR';
+    if (mmm == 4) mmm = 'MAY';
+    if (mmm == 5) mmm = 'JUN';
+    if (mmm == 6) mmm = 'JUL';
+    if (mmm == 7) mmm = 'AUG';
+    if (mmm == 8) mmm = 'SEP';
+    if (mmm == 9) mmm = 'OCT';
+    if (mmm == 10) mmm = 'NOV';
+    if (mmm == 11) mmm = 'DEC';
 
     return (mmm + '-' + dd + '-' + yyyy)
 
@@ -45,9 +45,15 @@ function modify_bg() {
 
 function add() {
     let count_node = document.getElementById('current-count')
-    let current_count = parseInt(count_node.textContent)
 
-    count_node.textContent = current_count + 1
+    let new_count = parseInt(count_node.textContent) + 1;
+
+    let curr_total = Number(document.getElementById('total').textContent)
+    document.getElementById('total').innerHTML = curr_total + 1
+
+    count_node.textContent = new_count;
+    sessionStorage.stored_count = new_count;
+    sessionStorage.total = curr_total + 1
     modify_bg()
 }
 
@@ -56,10 +62,24 @@ function add() {
 
 function subtract() {
     let count_node = document.getElementById('current-count')
-    let current_count = count_node.textContent
 
-    count_node.textContent = parseInt(current_count) - 1
+    let new_count = parseInt(count_node.textContent) - 1;
+
+    count_node.textContent = new_count;
+    sessionStorage.stored_count = new_count;
     modify_bg()
+}
+
+
+/* Session Store */
+
+if (sessionStorage.current_count) {
+    document.getElementById('current-count').innerHTML = sessionStorage.stored_count;
+    modify_bg()
+}
+
+if (sessionStorage.total) {
+    document.getElementById('total').innerHTML = sessionStorage.total;
 }
 
 
@@ -76,3 +96,73 @@ function close_popup() {
     let popup = document.getElementById('bg-modal')
     popup.style.display = ('none')
 }
+
+
+/* TOAST ME UPPP */
+
+var option = {
+    animation: true,
+    delay: 2000
+};
+
+function toasty(toast_id) {
+    var toast = document.getElementById(toast_id);
+
+    var toastElement = new bootstrap.Toast(toast, option);
+
+    toastElement.show();
+
+}
+
+
+/* Send or store msg */
+
+document.getElementById('send-btn').addEventListener("click", function () {
+
+    writeMessages()
+
+    close_popup()
+    document.getElementById('modal-form').reset()
+
+});
+
+
+/* Store daily count */
+
+document.getElementById('confirm-end-btn').addEventListener("click", function () {
+    writeDailyCount();
+
+    sessionStorage.clear();
+    setTimeout(location.reload.bind(location), 3000)
+
+    toasty('toasty-save')
+});
+
+
+/*==============================================================================*/
+/*                                FIRESTORE                                     */
+/*==============================================================================*/
+
+function writeMessages() {
+    var messagesRef = db.collection("messages")
+
+    messagesRef.add({
+            timestamp: Date(),
+            recipients: document.getElementById('recipient').value,
+            message: document.getElementById('notify-message').value
+        }).then(function () {
+            toasty('toasty-success');
+        })
+        .catch(function (error) {
+            toasty('toasty-failure');
+        })
+};
+
+function writeDailyCount() {
+    var dailyCountRef = db.collection("daily");
+
+    dailyCountRef.add({
+        date: current_date(),
+        end_total: sessionStorage.total
+    });
+};

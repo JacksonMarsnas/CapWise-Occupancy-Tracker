@@ -24,7 +24,7 @@ section {
 
 .hero-image {
     height: 70vh;
-    background-image: linear-gradient(rgba(43, 25, 61, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero.jpg');
+    background-image: linear-gradient(rgba(93, 47, 139, 0.5), rgba(255, 255, 255, 0.24)), url('../images/hero.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -70,24 +70,40 @@ section {
 /* Features */
 
 .feature-img {
-    width: 15em;
+    width: 50vw;
     height: auto;
 }
 
 .feature-container {
-    width: 30em;
-    height: 30em;
-    margin: 2em;
     padding: 1em;
     display: flex;
+    margin: 1em auto;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #7868E6;
-    border-radius: 40px
+    align-content: center;
+    border-radius: 40px;
+    box-shadow: -1px 1px 10px #b4b3c5e3;
 }
 
 @media screen and (min-width: 575px) {
+    
+    .feature-img {
+        width: 15em;
+        height: auto;
+    }
+
+    .feature-container {
+        width: 30em;
+        height: 30em;
+        margin: 2em;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #7868E6;
+        border-radius: 40px
+    }
+
     div.feature-container {
 
         justify-content: flex-start;
@@ -106,8 +122,8 @@ section {
 /* Footer */
 footer {
     width: 100vw;
-    height: 20vh;
-    background-color: #2B193D;
+    height: 40vh;
+    background-color: #7868E6;
 
 }
 

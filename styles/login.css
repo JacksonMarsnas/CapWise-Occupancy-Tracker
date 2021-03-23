@@ -1,0 +1,17 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(252, 252, 252, 0.89), rgba(0, 0, 0, 0.151)), url('../images/login_hero_MathieuDaix.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.container {
+    margin: 2em auto;
+    text-align: center;
+}
+
+#logo {
+    width: 200px;
+}
+

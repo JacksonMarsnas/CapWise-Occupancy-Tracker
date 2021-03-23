@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-    <link rel="manifest" href="./favicon/site.webmanifest">
+    <link rel="manifest" href="./favicon/site-manifest.js">
     <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#7868e6">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
@@ -37,7 +37,7 @@
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark top-nav">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">CapWise</a>
+            <a class="navbar-brand" href="./index.html">CapWise</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="./counter.html">My Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./index.html#features">Features</a>
@@ -239,23 +239,11 @@
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
 
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyARMMT4bDtdvX-ZhncNU2qF-JHg3WulTvw",
-            authDomain: "capwise-fac45.firebaseapp.com",
-            projectId: "capwise-fac45",
-            storageBucket: "capwise-fac45.appspot.com",
-            messagingSenderId: "942821314260",
-            appId: "1:942821314260:web:21b65c3809cf795fcbb541"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
+    <!-- JS for Firebase API initiation -->
+    <script src="./scripts/firebase_api.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->

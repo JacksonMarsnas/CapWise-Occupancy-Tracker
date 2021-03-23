@@ -2,7 +2,6 @@
 
 body {
     overflow-y: hidden;
-    position: relative;
 }
 
 .bg {
@@ -25,11 +24,25 @@ body {
 
 /*  Heading  */
 
+.btn-outline-dark {
+    border-radius: 40px;
+    width: 10em;
+    color: #7868E6;
+    border: 1px solid #7868E6;
+    box-shadow: none;
+}
+
+.btn-outline-dark:hover {
+    background-color: #7868E6;
+    border: 1px solid #7868E6;
+}
+
 .head-container {
     display: flex;
     margin-top: 1em;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
@@ -99,7 +112,6 @@ h3 {
     fill: none;
 }
 
-
 /* Modal */
 
 form {
@@ -150,6 +162,10 @@ select {
     margin: 2em;
 }
 
+.send-button:hover {
+    background-color: #9895e2;
+}
+
 #send-icon {
     width: 50px;
     height: 50px;
@@ -159,4 +175,21 @@ select {
     display: block;
     float: right;
     cursor: pointer;
+    box-shadow: none;
+}
+
+.btn-close {
+    box-shadow: none;
+}
+
+.toast {
+    position: relative;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: #2B193D;
+    color: white;
+}
+
+#endshiftModal {
+    margin-left: 2.5em;
 }

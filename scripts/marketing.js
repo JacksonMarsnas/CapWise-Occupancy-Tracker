@@ -76,40 +76,54 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 // ---------------------------------Firebase Codes-----------------------------------
-//Firebase reference collection
-var InputRef = firebase.database().ref('promotions');
+// //Firebase reference collection
+// var InputRef = firebase.database().ref('promotions');
 
-//function to get form value
-function getInputVal(id){
-    return document.getElementById(id).value;
-}
 
-//Form Submission
-document.getElementById('add-promo-form').addEventListener("submit", function(event) {
-    event.preventDefault();
+// //function to get form value
+// function getInputVal(id){
+//     return document.getElementById(id).value;
+// }
 
-    //Get Values
-    var promoName = getInputVal('promo-name')
-    var promoDescription = getInputVal('promo-description')
-    var startDate = getInputVal('promo-date-start')
-    var endDate = getInputVal('promo-date-end')
+// //Form Submission
+// document.getElementById('add-promo-form').addEventListener("submit", function(event) {
+//     event.preventDefault();
+
+//     //Get Values
+//     var promoName = getInputVal('promo-name')
+//     var promoDescription = getInputVal('promo-description')
+//     var startDate = getInputVal('promo-date-start')
+//     var endDate = getInputVal('promo-date-end')
     
-    //Save form input
-    saveInput(pname, description, start, end)
-});
+//     //Save form input
+//     saveInput(pname, description, start, end)
+// });
 
-
-
-//function to save form inputs to firebase
-function saveInput(pname, description, start, end) {
-    var newInputRef = InputRef.push();
-    newInputRef.set({
-        pname: promoName,
-        description: promoDescription,
-        start: startDate,
-        end: endDate
-    });
-}
+// //function to save form inputs to firebase
+// function saveInput(pname, description, start, end) {
+//     var newInputRef = InputRef.push();
+//     newInputRef.set({
+//         pname: promoName,
+//         description: promoDescription,
+//         start: startDate,
+//         end: endDate
+//     });
+// }
 
 // Reference tutorial:
 // https://www.youtube.com/watch?v=PP4Tr0l08NE
+
+// function submitForm() {
+//     var formRef = db.collection("promotions")
+
+//     formRef.add({
+//             timestamp: Date(),
+//             recipients: document.getElementById('recipient').value,
+//             message: document.getElementById('notify-message').value
+//         }).then(function () {
+//             toasty('toasty-success');
+//         })
+//         .catch(function (error) {
+//             toasty('toasty-failure');
+//         })
+// };
