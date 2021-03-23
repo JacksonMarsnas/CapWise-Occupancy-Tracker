@@ -78,37 +78,38 @@ for (var i = 0; i < btns.length; i++) {
 // ---------------------------------Firebase Codes-----------------------------------
 // //Firebase reference collection
 // var InputRef = firebase.database().ref('promotions');
+var InputRef = db.collection('promotions');
 
 
-// //function to get form value
-// function getInputVal(id){
-//     return document.getElementById(id).value;
-// }
+//function to get form value
+function getInputVal(id){
+    return document.getElementById(id).value;
+}
 
-// //Form Submission
-// document.getElementById('add-promo-form').addEventListener("submit", function(event) {
-//     event.preventDefault();
+//Form Submission
+document.getElementById('add-promo-form').addEventListener("submit", function(event) {
+    event.preventDefault();
 
-//     //Get Values
-//     var promoName = getInputVal('promo-name')
-//     var promoDescription = getInputVal('promo-description')
-//     var startDate = getInputVal('promo-date-start')
-//     var endDate = getInputVal('promo-date-end')
+    //Get Values
+    var promoName = getInputVal('promo-name')
+    var promoDescription = getInputVal('promo-description')
+    var startDate = getInputVal('promo-date-start')
+    var endDate = getInputVal('promo-date-end')
     
-//     //Save form input
-//     saveInput(pname, description, start, end)
-// });
+    //Save form input
+    saveInput(pname, description, start, end)
+});
 
-// //function to save form inputs to firebase
-// function saveInput(pname, description, start, end) {
-//     var newInputRef = InputRef.push();
-//     newInputRef.set({
-//         pname: promoName,
-//         description: promoDescription,
-//         start: startDate,
-//         end: endDate
-//     });
-// }
+//function to save form inputs to firebase
+function saveInput(pname, description, start, end) {
+    var newInputRef = InputRef.push();
+    newInputRef.set({
+        pname: promoName,
+        description: promoDescription,
+        start: startDate,
+        end: endDate
+    });
+}
 
 // Reference tutorial:
 // https://www.youtube.com/watch?v=PP4Tr0l08NE
