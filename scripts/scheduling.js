@@ -71,14 +71,14 @@ function new_message_field(){
         button_image.setAttribute("id", "image_for_confirm_button");
         button_image.src = "./images/icons/check-circle.svg";
         new_field.setAttribute("id", "message");
+        new_div.appendChild(new_field);
         confirm_button.appendChild(button_image);
         new_div.appendChild(confirm_button);
-        new_div.appendChild(new_field);
         message_area.appendChild(new_div);
 
         confirm_button.addEventListener('click', function(event){
             let new_message_to_add = document.createElement("p");
-            new_message_to_add.setAttribute("id", "new_message");
+            new_message_to_add.setAttribute("class", "new_message");
             new_message_to_add.appendChild(document.createTextNode(new_field.value));
             message_area.appendChild(new_message_to_add);
             confirm_button.parentNode.remove();
@@ -115,12 +115,24 @@ function open_message_popup() {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
+    let new_message_to_add = document.getElementsByClassName('new_message');
+    let original_message_count = new_message_to_add.length;
+        for(let i = 0; i < original_message_count; i++){
+            console.log(original_message_count);
+            new_message_to_add[0].remove();
+        }
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        let new_message_to_add = document.getElementsByClassName('new_message');
+        let original_message_count = new_message_to_add.length;
+        for(let i = 0; i < original_message_count; i++){
+            console.log(original_message_count);
+            new_message_to_add[0].remove();
+        }
     }
 }
 
@@ -139,16 +151,34 @@ function subtract_people(){
 }
 
 function schedule_test() {
-    var messagesRef = db.collection("test_jackson")
+    var messagesRef = db.collection("schedule_notes");
+    let employee_numbers = db.collection("employee_numbers");
+    let messages_to_submit = document.getElementsByClassName('new_message');
+    let employees_today = document.getElementById('number_of_staff');
 
-    messagesRef.add({
+    employee_numbers.add({
+        timestamp: Date(),
+        employees: employees_today.textContent
+    })
+
+    for(let i = 0; i < messages_to_submit.length; i++){
+        let new_message_for_db = messages_to_submit[i];
+        console.log(employees_today);
+        messagesRef.add({
             timestamp: Date(),
-            message: "Hello"
-        }).then(function () {
+            message: new_message_for_db.textContent
         })
-        .catch(function (error) {
-            toasty('toasty-failure');
-        })
+    }
+    display_messages();
 }
 
-schedule_test();
+function display_messages(){
+    db.collection("schedule_notes")
+    .get()
+    .then(function(snap){
+        snap.forEach(function(doc){
+            var note = doc.data().message;
+            console.log(note);
+        })
+    })
+}
