@@ -91,7 +91,6 @@ let date_array = current_date();
 let weekdays = make_weekday();
 let day_cards = document.getElementsByClassName("date-field");
 let weekday_cards = document.getElementsByClassName("weekday");
-console.log(weekday_cards);
 
 for(let i = 0; i < 7; i++){
     day_cards[i].innerHTML = date_array[i];
@@ -138,3 +137,18 @@ function subtract_people(){
         number_of_people.innerHTML = new_number_of_people;
     }
 }
+
+function schedule_test() {
+    var messagesRef = db.collection("test_jackson")
+
+    messagesRef.add({
+            timestamp: Date(),
+            message: "Hello"
+        }).then(function () {
+        })
+        .catch(function (error) {
+            toasty('toasty-failure');
+        })
+}
+
+schedule_test();

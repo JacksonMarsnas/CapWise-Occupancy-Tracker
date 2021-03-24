@@ -195,3 +195,9 @@ h2 {
     font-size: 20px;
     margin-left:10px;
 }
+
+#modal_save{
+    width: 100px;
+    margin:auto;
+    margin-bottom: 10px;
+}
