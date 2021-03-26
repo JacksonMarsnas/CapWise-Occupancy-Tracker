@@ -73,7 +73,7 @@ function subtract() {
 
 /* Session Store */
 
-if (sessionStorage.current_count) {
+if (sessionStorage.stored_count) {
     document.getElementById('current-count').innerHTML = sessionStorage.stored_count;
     modify_bg()
 }
@@ -114,6 +114,9 @@ function toasty(toast_id) {
 
 }
 
+/*==============================================================================*/
+/*                                FIRESTORE                                     */
+/*==============================================================================*/
 
 /* Send or store msg */
 
@@ -138,10 +141,6 @@ document.getElementById('confirm-end-btn').addEventListener("click", function ()
     toasty('toasty-save')
 });
 
-
-/*==============================================================================*/
-/*                                FIRESTORE                                     */
-/*==============================================================================*/
 
 function writeMessages() {
     var messagesRef = db.collection("messages")
