@@ -16,7 +16,8 @@ body {
 }
 
 #bar-block {
-    background-color: #b8b5ff7a;
+    background: rgb(184, 181, 255);
+    background: linear-gradient(342deg, rgba(184, 181, 255, 1) 40%, rgba(168, 240, 255, 1) 100%);
     z-index: -50;
 }
 
