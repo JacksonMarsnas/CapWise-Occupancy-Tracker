@@ -32,6 +32,10 @@ body {
     text-align: center;
 }
 
+.promo-title {
+  font-size: x-large;
+}
+
 .promo-card {
     width: 350px;
     height: 150px;
