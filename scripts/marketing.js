@@ -82,7 +82,6 @@ function getInputVal(id) {
     return document.getElementById(id).value;
 }
 
-
 //function to listen submit button
 document.getElementById('form-submit-button').addEventListener("click", function (event) {
     event.preventDefault();
@@ -93,12 +92,12 @@ document.getElementById('form-submit-button').addEventListener("click", function
 //push form to firebase
 function submitForm() {
     var formRef = db.collection("promotions")
-    //Get Values
+    //get values
     var promoName = getInputVal('promo-name')
     var promoDescription = getInputVal('promo-description')
     var startDate = getInputVal('promo-date-start')
     var endDate = getInputVal('promo-date-end')
-
+    //add to db
     formRef.add({
         timestamp: Date(),
         promotion: promoName,
@@ -107,6 +106,7 @@ function submitForm() {
         end: endDate
     })
     .then(function(docRef) {
+        //create new widget, faster result
         createWidget(promoName, promoDescription, startDate, endDate);
     });
 };
@@ -119,6 +119,7 @@ function close_popup() {
 
 // ---------------------------------Add widget after form submission-----------------------------------
 
+//Get records from firebase (use for page load)
 function widgetQuery(){
     db.collection("promotions")
     .get()
@@ -133,6 +134,12 @@ function widgetQuery(){
         });
     })
 }
+
+const dateReformat = new Intl.DateTimeFormat('en-US', {
+    year:  'numeric',
+    month: 'long',
+    day:   'numeric',
+});
 
 function createWidget(promoName, promoDescription, promoStart, promoEnd) {
     //create new div
@@ -167,8 +174,8 @@ function createWidget(promoName, promoDescription, promoStart, promoEnd) {
 }
 widgetQuery();
 
+//refresh page
 function refresh(time) {
-    console.log("refresh");
     location.reload();
     // setTimeout(location.reload.bind(location), 3000)
 }
