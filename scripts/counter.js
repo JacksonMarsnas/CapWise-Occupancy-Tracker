@@ -42,7 +42,6 @@ function modify_bg() {
         $('#bg-modifier').animate({
             height: new_height
         }, 400);
-        // document.getElementById('bg-modifier').style.height = (100 - percentage_full) + 'vh'
     }
 }
 
@@ -136,18 +135,6 @@ document.getElementById('send-btn').addEventListener("click", function () {
 });
 
 
-/* Store daily count */
-
-document.getElementById('confirm-end-btn').addEventListener("click", function () {
-    writeDailyCount();
-
-    sessionStorage.clear();
-    setTimeout(location.reload.bind(location), 3000)
-
-    toasty('toasty-save')
-});
-
-
 function writeMessages() {
     var messagesRef = db.collection("messages")
 
@@ -162,6 +149,19 @@ function writeMessages() {
             toasty('toasty-failure');
         })
 };
+
+
+/* Store daily count */
+
+document.getElementById('confirm-end-btn').addEventListener("click", function () {
+    writeDailyCount();
+
+    sessionStorage.clear();
+    setTimeout(location.reload.bind(location), 3500);
+
+    toasty('toasty-save')
+});
+
 
 function writeDailyCount() {
     var dailyCountRef = db.collection("daily");
