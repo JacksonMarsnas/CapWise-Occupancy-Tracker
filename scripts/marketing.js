@@ -105,6 +105,9 @@ function submitForm() {
         description: promoDescription,
         start: startDate,
         end: endDate
+    })
+    .then(function(docRef) {
+        createWidget(promoName, promoDescription, startDate, endDate);
     });
 };
 
@@ -120,42 +123,52 @@ function widgetQuery(){
     db.collection("promotions")
     .get()
     .then(function(snap){
-        snap.forEach(function(doc){
+        snap.forEach(function(doc) {
             //get values from db
             var promoName = doc.data().promotion;
             var promoDescription = doc.data().description;
-            var promoStart = doc.data().start + " to ";
+            var promoStart = doc.data().start;
             var promoEnd = doc.data().end;
-            //create new div
-            newDiv = document.createElement("div");
-            newDiv.setAttribute("class", "promo-card all show");
-            //create new elements for new promotion name
-            promoNameTextNode = document.createTextNode(promoName);
-            promoNamePara = document.createElement("p");
-            promoNamePara.setAttribute("class", "promo-title");
-            promoNamePara.appendChild(promoNameTextNode);
-            //create new elements for new promotion description
-            promoDescriptionTextNode = document.createTextNode(promoDescription);
-            promoDescriptionPara = document.createElement("p");
-            promoDescriptionPara.appendChild(promoDescriptionTextNode);
-            //create new elements for dates
-            promoStartTextNode = document.createTextNode(promoStart);
-            promoStartDateSpan = document.createElement("span");
-            promoStartDateSpan.appendChild(promoStartTextNode);
-            promoEndTestNode = document.createTextNode(promoEnd);
-            promoEndDateSpan = document.createElement("span");
-            promoEndDateSpan.appendChild(promoEndTestNode);
-            //create new elements for traffic...need to include traffic calculation
-
-            //create aside
-            newAside = document.createElement("aside")
-            newAside.setAttribute("class", "promo-info")
-            //append elements into aside
-            newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndTestNode)
-            newDiv.appendChild(newAside)
-            //append aside into new div
-            $('#perf').append(newDiv)
-        })
+            createWidget(promoName, promoDescription, promoStart, promoEnd);
+        });
     })
 }
+
+function createWidget(promoName, promoDescription, promoStart, promoEnd) {
+    //create new div
+    newDiv = document.createElement("div");
+    newDiv.setAttribute("class", "promo-card all show");
+    //create new elements for new promotion name
+    promoNameTextNode = document.createTextNode(promoName);
+    promoNamePara = document.createElement("p");
+    promoNamePara.setAttribute("class", "promo-title");
+    promoNamePara.appendChild(promoNameTextNode);
+    //create new elements for new promotion description
+    promoDescriptionTextNode = document.createTextNode(promoDescription);
+    promoDescriptionPara = document.createElement("p");
+    promoDescriptionPara.appendChild(promoDescriptionTextNode);
+    //create new elements for dates
+    promoStartTextNode = document.createTextNode(promoStart + " to ");
+    promoStartDateSpan = document.createElement("span");
+    promoStartDateSpan.appendChild(promoStartTextNode);
+    promoEndTestNode = document.createTextNode(promoEnd);
+    promoEndDateSpan = document.createElement("span");
+    promoEndDateSpan.appendChild(promoEndTestNode);
+    //create new elements for traffic...need to include traffic calculation
+
+    //create aside
+    newAside = document.createElement("aside")
+    newAside.setAttribute("class", "promo-info")
+    //append elements into aside
+    newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndTestNode)
+    newDiv.appendChild(newAside)
+    //append aside into new div
+    $('#perf').append(newDiv)
+}
 widgetQuery();
+
+function refresh(time) {
+    console.log("refresh");
+    location.reload();
+    // setTimeout(location.reload.bind(location), 3000)
+}
