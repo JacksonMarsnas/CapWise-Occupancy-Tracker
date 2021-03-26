@@ -1,3 +1,6 @@
+change_employee_numbers();
+reset_modal_numbers();
+
 function current_date() {
     new_array = [];
 
@@ -77,6 +80,7 @@ function new_message_field(){
         message_area.appendChild(new_div);
 
         confirm_button.addEventListener('click', function(event){
+            send_notes_to_db();
             let new_message_to_add = document.createElement("p");
             new_message_to_add.setAttribute("class", "new_message");
             new_message_to_add.appendChild(document.createTextNode(new_field.value));
@@ -97,7 +101,6 @@ for(let i = 0; i < 7; i++){
     weekday_cards[i].innerHTML = weekdays[i];
 }
 
-
 // Get modal
 var modal = document.getElementById("myModal");
 
@@ -110,6 +113,19 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 function open_message_popup() {
     modal.style.display = "block";
+    db.collection("schedule_notes")
+    .get()
+    .then(function(snap){
+        snap.forEach(function(doc){
+            var note = doc.data().message;
+            let new_message_to_add = document.createElement("p");
+            let message_area = document.getElementById("area_for_notes");
+            new_message_to_add.setAttribute("class", "new_message");
+            new_message_to_add.appendChild(document.createTextNode(note));
+            message_area.appendChild(new_message_to_add);
+        })
+    })
+    reset_modal_numbers();
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -117,10 +133,10 @@ span.onclick = function () {
     modal.style.display = "none";
     let new_message_to_add = document.getElementsByClassName('new_message');
     let original_message_count = new_message_to_add.length;
-        for(let i = 0; i < original_message_count; i++){
-            console.log(original_message_count);
-            new_message_to_add[0].remove();
-        }
+    for(let i = 0; i < original_message_count; i++){
+        new_message_to_add[0].remove();
+    }
+    change_employee_numbers();
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -133,6 +149,7 @@ window.onclick = function (event) {
             console.log(original_message_count);
             new_message_to_add[0].remove();
         }
+        change_employee_numbers();
     }
 }
 
@@ -140,6 +157,8 @@ function add_people(){
     let number_of_people = document.getElementById('number_of_staff');
     let new_number_of_people = parseInt(number_of_people.innerHTML) + 1;
     number_of_people.innerHTML = new_number_of_people;
+    update_schedule();
+    change_employee_numbers();
 }
 
 function subtract_people(){
@@ -147,38 +166,51 @@ function subtract_people(){
     if(parseInt(number_of_people.innerHTML) > 0){
         let new_number_of_people = parseInt(number_of_people.innerHTML) - 1;
         number_of_people.innerHTML = new_number_of_people;
+        update_schedule();
+        change_employee_numbers();
     }
 }
 
-function schedule_test() {
-    var messagesRef = db.collection("schedule_notes");
-    let employee_numbers = db.collection("employee_numbers");
-    let messages_to_submit = document.getElementsByClassName('new_message');
+function update_schedule() {
     let employees_today = document.getElementById('number_of_staff');
 
-    employee_numbers.add({
+    db.collection("employee_numbers").doc('numbers').set({
         timestamp: Date(),
         employees: employees_today.textContent
     })
-
-    for(let i = 0; i < messages_to_submit.length; i++){
-        let new_message_for_db = messages_to_submit[i];
-        console.log(employees_today);
-        messagesRef.add({
-            timestamp: Date(),
-            message: new_message_for_db.textContent
-        })
-    }
-    display_messages();
+    
 }
 
-function display_messages(){
-    db.collection("schedule_notes")
+function change_employee_numbers(){
+    db.collection("employee_numbers")
     .get()
     .then(function(snap){
         snap.forEach(function(doc){
-            var note = doc.data().message;
-            console.log(note);
+            var employees = doc.data().employees;
+            let new_number = document.querySelectorAll("h2");
+            for(let i = 0; i < new_number.length; i++){
+                new_number[i].innerHTML = employees;
+            }
         })
+    })
+}
+
+function reset_modal_numbers(){
+    db.collection("employee_numbers")
+    .get()
+    .then(function(snap){
+        snap.forEach(function(doc){
+            var note = doc.data().employees;
+            let employee_number = document.getElementById("number_of_staff");
+            employee_number.innerHTML = note;
+        })
+    })
+}
+
+function send_notes_to_db(){
+    let new_note = document.querySelector('textarea');
+    db.collection("schedule_notes").add({
+        timestamp: Date(),
+        message: new_note.value
     })
 }
