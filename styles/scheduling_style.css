@@ -179,7 +179,7 @@ h2 {
 }
 
 #message {
-    margin: 10%;
+    margin: 10px;
 }
 
 #image_for_confirm_button{
@@ -190,7 +190,7 @@ h2 {
     width: 100%;
 }
 
-#new_message{
+.new_message{
     clear:left;
     font-size: 20px;
     margin-left:10px;
@@ -200,4 +200,9 @@ h2 {
     width: 100px;
     margin:auto;
     margin-bottom: 10px;
+}
+
+#form-submit-button{
+    margin: 0px;
+    margin-right:10px;
 }

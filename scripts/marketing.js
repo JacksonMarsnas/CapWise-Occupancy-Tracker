@@ -1,4 +1,4 @@
-//---MODAL FEATURE---//
+// ---------------------------------Modal Feature-----------------------------------
 // Get modal
 var modal = document.getElementById("myModal");
 
@@ -25,7 +25,7 @@ window.onclick = function (event) {
     }
 }
 
-//---FILTER FEATURE---//
+// ---------------------------------Filter Feature-----------------------------------
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
     var x, i;
@@ -78,29 +78,37 @@ for (var i = 0; i < btns.length; i++) {
 // ---------------------------------Firebase Codes-----------------------------------
 
 //function to get form value
-function getInputVal(id){
+function getInputVal(id) {
     return document.getElementById(id).value;
 }
 
 
 //function to listen submit button
-document.getElementById('add-promo-form').addEventListener("click", function () {
-    submitForm()
-    document.getElementById('modal-form').reset()
+document.getElementById('form-submit-button').addEventListener("click", function (event) {
+    event.preventDefault();
+    submitForm();
+    close_popup();
 });
 
 //push form to firebase
 function submitForm() {
     var formRef = db.collection("promotions")
-        //Get Values
+    //Get Values
     var promoName = getInputVal('promo-name')
     var promoDescription = getInputVal('promo-description')
     var startDate = getInputVal('promo-date-start')
     var endDate = getInputVal('promo-date-end')
 
     formRef.add({
-            promotion: promoName,
-            description: promoDescription,
-            start: startDate, 
-            end: endDate
-})};
+        timestamp: Date(),
+        promotion: promoName,
+        description: promoDescription,
+        start: startDate,
+        end: endDate
+    });
+};
+
+function close_popup() {
+    let popup = document.getElementById('myModal')
+    popup.style.display = ('none')
+}
