@@ -108,7 +108,54 @@ function submitForm() {
     });
 };
 
+//function close popup
 function close_popup() {
     let popup = document.getElementById('myModal')
     popup.style.display = ('none')
 }
+
+// ---------------------------------Add widget after form submission-----------------------------------
+
+function widgetQuery(){
+    db.collection("promotions")
+    .get()
+    .then(function(snap){
+        snap.forEach(function(doc){
+            //get values from db
+            var promoName = doc.data().promotion;
+            var promoDescription = doc.data().description;
+            var promoStart = doc.data().start + " to ";
+            var promoEnd = doc.data().end;
+            //create new div
+            newDiv = document.createElement("div");
+            newDiv.setAttribute("class", "promo-card all show");
+            //create new elements for new promotion name
+            promoNameTextNode = document.createTextNode(promoName);
+            promoNamePara = document.createElement("p");
+            promoNamePara.setAttribute("class", "promo-title");
+            promoNamePara.appendChild(promoNameTextNode);
+            //create new elements for new promotion description
+            promoDescriptionTextNode = document.createTextNode(promoDescription);
+            promoDescriptionPara = document.createElement("p");
+            promoDescriptionPara.appendChild(promoDescriptionTextNode);
+            //create new elements for dates
+            promoStartTextNode = document.createTextNode(promoStart);
+            promoStartDateSpan = document.createElement("span");
+            promoStartDateSpan.appendChild(promoStartTextNode);
+            promoEndTestNode = document.createTextNode(promoEnd);
+            promoEndDateSpan = document.createElement("span");
+            promoEndDateSpan.appendChild(promoEndTestNode);
+            //create new elements for traffic...need to include traffic calculation
+
+            //create aside
+            newAside = document.createElement("aside")
+            newAside.setAttribute("class", "promo-info")
+            //append elements into aside
+            newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndTestNode)
+            newDiv.appendChild(newAside)
+            //append aside into new div
+            $('#perf').append(newDiv)
+        })
+    })
+}
+widgetQuery();

@@ -74,7 +74,7 @@
     </div>
 
     <!-- Promo cards -->
-    <div class="performance">
+    <div class="performance" id="perf">
         <div class="promo-card current">
             <aside class="promo-info">
                 <h4>Lucky April</h4>
@@ -89,7 +89,7 @@
 
         <div class="promo-card future">
             <aside class="promo-info">
-                <h4>Cyber March</h4>
+                <p class="promo-title">Cyber March</p>
                 <p>15% off Easter eggs</p>
                 <p>Mar 9 - Mar 15</p>
                 <p>Traffic: +30%</p>
@@ -99,21 +99,9 @@
             </div>
         </div>
 
-        <div class="promo-card future">
-            <aside class="promo-info">
-                <h4>Colorful Friday</h4>
-                <p>15% off gummies</p>
-                <p>Dec 1 - Dec 30</p>
-                <p>Traffic: +10%</p>
-            </aside>
-            <div class="traffic-symbol">
-                <span class="iconify" data-icon="uil:arrow-growth" data-inline="false"></span>
-            </div>
-        </div>
-
         <div class="promo-card archive">
             <aside class="promo-info">
-                <h4>Colorful Friday</h4>
+                <p class="promo-title">Colorful Friday</p>
                 <p>15% off gummies</p>
                 <p>Dec 1 - Dec 30</p>
                 <p>Traffic: +10%</p>
@@ -151,17 +139,6 @@
                     src="./images/icons/check-circle.svg" alt=""></button>
         </form>
     </div>
-
-    <!-- Input Video Code
-    <div style="margin: 30px;">
-        <h3>Test Video Input</h3>
-        <div class="video-input">
-            <label for="formFile" class="form-label">Add crowd video</label>
-            <input class="form-control" type="file" id="formFile">
-        </div>
-        <br>
-    </div>
-     -->
 
     <footer>
         <nav class="navbar fixed-bottom navbar-light">
@@ -206,8 +183,6 @@
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
 
 
@@ -219,6 +194,10 @@
     <!--------------------------------------------------------------------->
     <script src="./scripts/marketing.js"></script>
     <script src="/scripts/bottom_nav.js"></script>
+
+    <!--jQuery-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 
 </body>
 
