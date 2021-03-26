@@ -31,12 +31,18 @@ date_field.textContent = current_date()
 /* modify-bg */
 
 function modify_bg() {
-    var current_count = parseInt(document.getElementById('current-count').textContent)
-    var max_count = parseInt(document.getElementById('max-number').textContent)
+    let current_count = parseInt(document.getElementById('current-count').textContent)
+    let max_count = parseInt(document.getElementById('max-number').textContent)
 
     if (current_count <= max_count && current_count > 0) {
-        var percentage_full = current_count / max_count * 100
-        document.getElementById('bg-modifier').style.height = (100 - percentage_full) + 'vh'
+
+        let percentage_full = current_count / max_count * 100;
+        let new_height = (100 - percentage_full) + 'vh';
+
+        $('#bg-modifier').animate({
+            height: new_height
+        }, 600);
+        // document.getElementById('bg-modifier').style.height = (100 - percentage_full) + 'vh'
     }
 }
 
