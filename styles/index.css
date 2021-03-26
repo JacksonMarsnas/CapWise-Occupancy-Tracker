@@ -59,6 +59,7 @@ section {
 
 .btn:hover {
     background-color: #9895e2;
+    background: linear-gradient(342deg, rgba(184, 181, 255, 1) 40%, rgba(168, 240, 255, 1) 100%);
 }
 
 /* Containters */
@@ -84,8 +85,13 @@ section {
     box-shadow: -1px 1px 10px #b4b3c5e3;
 }
 
+.feature-container:hover {
+    background-color: #9895e2;
+    background: linear-gradient(342deg, rgba(184, 181, 255, 1) 40%, rgba(168, 240, 255, 1) 100%);
+}
+
 @media screen and (min-width: 575px) {
-    
+
     .feature-img {
         width: 15em;
         height: auto;
@@ -126,4 +132,3 @@ footer {
     background-color: #7868E6;
 
 }
-
