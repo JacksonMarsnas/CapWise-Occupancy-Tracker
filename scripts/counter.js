@@ -41,7 +41,7 @@ function modify_bg() {
 
         $('#bg-modifier').animate({
             height: new_height
-        }, 600);
+        }, 400);
         // document.getElementById('bg-modifier').style.height = (100 - percentage_full) + 'vh'
     }
 }
