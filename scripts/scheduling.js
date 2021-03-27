@@ -1,8 +1,8 @@
+let today = new Date();
+let last_day_picked = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
 change_employee_numbers();
 reset_modal_numbers();
 assign_button_number_and_id();
-let today = new Date();
-let last_day_picked = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
 console.log(last_day_picked);
 
 function assign_button_number_and_id(){
@@ -238,14 +238,16 @@ function change_employee_numbers(){
 }
 
 function reset_modal_numbers(){
-    db.collection("employee_numbers")
-    .get()
-    .then(function(snap){
-        snap.forEach(function(doc){
-            var note = doc.data().employees;
-            let employee_number = document.getElementById("number_of_staff");
-            employee_number.innerHTML = note;
-        })
+    let employee_number = document.getElementById("number_of_staff");
+    let docref = db.collection("employee_numbers").doc(last_day_picked)
+    docref.get().then((doc) => {
+        if(doc.exists){
+            employee_number.innerHTML = doc.data().employees;
+        } else {
+            db.collection("employee_numbers").doc(last_day_picked).set({
+                employees: 0
+            })
+        }
     })
 }
 
