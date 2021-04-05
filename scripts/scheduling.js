@@ -1,10 +1,13 @@
+// initialization stuffs
 let today = new Date();
 let last_day_picked = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
+let is_message_present = false;
 change_employee_numbers();
 reset_modal_numbers();
 assign_button_number_and_id();
-console.log(last_day_picked);
+dates_on_base_screen();
 
+// assigns each button and number on the first schedule screen to a date
 function assign_button_number_and_id(){
     let arrow_buttons = document.getElementsByClassName('arrow_button');
     let h2_employee_numbers = document.querySelectorAll('h2');
@@ -18,6 +21,7 @@ function assign_button_number_and_id(){
     }
 }
 
+// puts dates into a 7 member array
 function current_date() {
     new_array = [];
 
@@ -29,13 +33,13 @@ function current_date() {
     return new_array;
 }
 
+// creates dates
 function apply_dates(counter){
     today = new Date();
     new_day = new Date(today);
     new_day.setDate(new_day.getDate() + counter);
     var mmm = new_day.getMonth();
     var dd = new_day.getDate();
-    var www = new_day.getDay();
 
     if(dd < 10) dd = '0' + dd;
     if(mmm == 0) mmm = 'JAN';
@@ -54,6 +58,7 @@ function apply_dates(counter){
     return(mmm + ', ' + dd);
 }
 
+// makes an array of weekdays
 function make_weekday(){
     today = new Date();
     new_array = [];
@@ -76,8 +81,7 @@ function make_weekday(){
     return new_array;
 }
 
-let is_message_present = false;
-
+// opens a new message field in the modal. Also creates a listener for the confirm button to send to DB
 function new_message_field(){
     if(is_message_present == false){
         is_message_present = true;
@@ -108,14 +112,17 @@ function new_message_field(){
     }
 }
 
-let date_array = current_date();
-let weekdays = make_weekday();
-let day_cards = document.getElementsByClassName("date-field");
-let weekday_cards = document.getElementsByClassName("weekday");
+// applies correct dates and weekday names to base screen
+function dates_on_base_screen(){
+    let date_array = current_date();
+    let weekdays = make_weekday();
+    let day_cards = document.getElementsByClassName("date-field");
+    let weekday_cards = document.getElementsByClassName("weekday");
 
-for(let i = 0; i < 7; i++){
-    day_cards[i].innerHTML = date_array[i];
-    weekday_cards[i].innerHTML = weekdays[i];
+    for(let i = 0; i < 7; i++){
+        day_cards[i].innerHTML = date_array[i];
+        weekday_cards[i].innerHTML = weekdays[i];
+    }
 }
 
 // Get modal
@@ -127,14 +134,14 @@ var btn = document.getElementsByClassName("arrow_button");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
+// When the user clicks on the button, open the modal and get data from DB about that day
 function open_message_popup(button_id) {
     modal.style.display = "block";
     last_day_picked = button_id;
     let docref = db.collection("employee_numbers").doc(last_day_picked)
     docref.get().then((doc) => {
         if(doc.exists){
-            console.log(doc.data())
+            console.log("Got doc for " + last_day_picked + " succesfully.")
         } else {
             db.collection("employee_numbers").doc(last_day_picked).set({
                 employees: 0
@@ -142,26 +149,23 @@ function open_message_popup(button_id) {
         }
     })
 
-    docref = db.collection("schedule_notes").doc(last_day_picked)
-    docref.get().then((doc) => {
-        if(doc.exists){
-            console.log(doc.data())
+    db.collection("schedule_notes")
+    .where("timestamp", "==", last_day_picked)
+    .get()
+    .then(function(snap){
+        snap.forEach(function(doc) {
             var note = doc.data().message;
             let new_message_to_add = document.createElement("p");
             let message_area = document.getElementById("area_for_notes");
             new_message_to_add.setAttribute("class", "new_message");
             new_message_to_add.appendChild(document.createTextNode(note));
             message_area.appendChild(new_message_to_add);
-        } else {
-            db.collection("schedule_notes").doc(last_day_picked).set({
-                message: "None"
-            })
-        }
+        });
     })
     reset_modal_numbers();
 }
 
-// When the user clicks on <span> (x), close the modal
+// When the user clicks on <span> (x), close the modal and update any changes they made to DB
 span.onclick = function () {
     modal.style.display = "none";
     let new_message_to_add = document.getElementsByClassName('new_message');
@@ -170,9 +174,10 @@ span.onclick = function () {
         new_message_to_add[0].remove();
     }
     change_employee_numbers();
+    update_schedule();
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// When the user clicks anywhere outside of the modal, close it and update any changes they made to DB
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
@@ -182,30 +187,29 @@ window.onclick = function (event) {
             new_message_to_add[0].remove();
         }
         change_employee_numbers();
+        update_schedule();
     }
 }
 
+// add to the number of employees in the modal
 function add_people(){
     let number_of_people = document.getElementById('number_of_staff');
     let new_number_of_people = parseInt(number_of_people.innerHTML) + 1;
     number_of_people.innerHTML = new_number_of_people;
-    update_schedule();
-    change_employee_numbers();
 }
 
+// subtract the number of employees in the modal
 function subtract_people(){
     let number_of_people = document.getElementById('number_of_staff');
     if(parseInt(number_of_people.innerHTML) > 0){
         let new_number_of_people = parseInt(number_of_people.innerHTML) - 1;
         number_of_people.innerHTML = new_number_of_people;
-        update_schedule();
-        change_employee_numbers();
     }
 }
 
+// changes the number of employees in the DB to the number the user has picked
 function update_schedule() {
     let employees_today = document.getElementById('number_of_staff');
-    let date = new Date();
     db.collection("employee_numbers").doc(last_day_picked).set({
         timestamp: last_day_picked,
         employees: employees_today.textContent
@@ -213,6 +217,7 @@ function update_schedule() {
     
 }
 
+// changes employee numbers on the base schedule screen
 function change_employee_numbers(){
     let new_number = document.querySelectorAll("h2");
     let today = new Date();
@@ -221,7 +226,6 @@ function change_employee_numbers(){
         let new_day = new Date(today);
         new_day.setDate(new_day.getDate() + i);
         new_day = new_day.getFullYear() + "-" + new_day.getMonth() + "-" + new_day.getDate();
-        console.log(new_day);
         let docref = db.collection("employee_numbers").doc(new_day);
         docref.get().then((doc) => {
             if(doc.exists){
@@ -230,13 +234,13 @@ function change_employee_numbers(){
                 db.collection("employee_numbers").doc(new_day).set({
                     employees: 0
                 })
+                change_employee_numbers();
             }
         })
     }
-
-    
 }
 
+// changes the modal number to the correct day
 function reset_modal_numbers(){
     let employee_number = document.getElementById("number_of_staff");
     let docref = db.collection("employee_numbers").doc(last_day_picked)
@@ -251,6 +255,7 @@ function reset_modal_numbers(){
     })
 }
 
+// sends user entered notes to the DB
 function send_notes_to_db(){
     let new_note = document.querySelector('textarea');
     db.collection("schedule_notes").add({
