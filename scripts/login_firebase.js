@@ -1,18 +1,3 @@
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyARMMT4bDtdvX-ZhncNU2qF-JHg3WulTvw",
-            authDomain: "capwise-fac45.firebaseapp.com",
-            projectId: "capwise-fac45",
-            storageBucket: "capwise-fac45.appspot.com",
-            messagingSenderId: "942821314260",
-            appId: "1:942821314260:web:21b65c3809cf795fcbb541"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        // Instantiate Firestore DB
-        const db = firebase.firestore();
-
         // Initialize the FirebaseUI Widget using Firebase.
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
@@ -37,7 +22,7 @@
                                 email: user.email                          //with authenticated user's ID (user.uid)
                             }).then(function () {
                                 console.log("New user added to firestore");
-                                window.location.assign("counter.html");       //re-direct to main.html after signup
+                                window.location.assign("main.html");       //re-direct to main.html after signup
                             })
                             .catch(function (error) {
                                 console.log("Error adding new user: " + error);
