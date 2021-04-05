@@ -11,6 +11,19 @@ body {
     background-color: #EDEEF7;
 }
 
+/* Background colours */
+
+.bg-dark {
+    background-color: #2B193D;
+}
+
+.bg-light {
+    background-color: #9895e2;
+}
+
+.bg-bright {
+    background-color: #7868E6;
+}
 
 /* Buttons */
 .btn-primary {

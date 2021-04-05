@@ -1,6 +1,20 @@
 .welcome-back {
+    width: 80vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    margin: 2em;
+    border-radius: 20px;
+}
+
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    overflow-x: scroll;
 }
