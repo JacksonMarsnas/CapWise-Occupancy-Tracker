@@ -1,20 +1,49 @@
-.welcome-back {
-    width: 80vw;
+section {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+header {
+    width: 80vw;
+    height: 30vh;
+    color: #FFFFFF;
+    margin: 5em auto 2em auto;
+}
+
+#accent-back {
+    position: absolute;
+    width: 100vw;
+    height: 55vh;
+    z-index: -50;
+}
+
 .card {
     width: 300px;
-    height: 300px;
+    height: 200px;
     margin: 2em;
-    border-radius: 20px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .card-deck {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    overflow-x: scroll;
+}
+
+#curve_chart {
+    width: 90vw;
+    height: 300px;
+    border-radius: 10px;
+    padding: 1em;
+    background-color: #FFFFFF;
+}
+
+@media screen and (min-width: 575px) {
+    #curve_chart {
+        width: 660px;
+        height: 350px;
+        margin: 2em auto;
+    }
 }
