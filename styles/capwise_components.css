@@ -11,6 +11,8 @@ body {
     background-color: #EDEEF7;
 }
 
+
+/* Buttons */
 .btn-primary {
     background-color: #7868E6;
     border: 1px solid #7868E6;
@@ -21,14 +23,6 @@ body {
 .btn-primary:focus {
     background-color: #2B193D;
     border: 1px solid #2B193D;
-}
-
-.top-nav {
-    background-color: #7868E6;
-}
-
-.navbar-toggler {
-    box-shadow: none !important;
 }
 
 button {
@@ -54,30 +48,6 @@ button:active {
     border: 1px solid #7868E6;
 }
 
-.head-container {
-    display: flex;
-    margin-top: 1em;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-
-svg {
-    margin-bottom: 5px;
-}
-
-.fixed-bottom {
-    height: 5em;
-    background-color: #B8B5FF;
-    box-shadow: -1px -2px 4px #8181816c;
-}
-
-.container-fluid {
-    height: 100%
-}
-
 .nav-button {
     width: 20%;
     height: 100%;
@@ -94,6 +64,39 @@ svg {
     background-color: #9895e2;
     cursor: pointer;
 }
+
+.top-nav {
+    background-color: #7868E6;
+}
+
+.navbar-toggler {
+    box-shadow: none !important;
+}
+
+
+.head-container {
+    display: flex;
+    margin-top: 1em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+svg {
+    margin-bottom: 5px;
+}
+
+.fixed-bottom {
+    height: 5em;
+    background-color: #B8B5FF;
+    box-shadow: -1px -2px 4px #8181816c;
+}
+
+.container-fluid {
+    height: 100%
+}
+
 
 /*      forms     */
  

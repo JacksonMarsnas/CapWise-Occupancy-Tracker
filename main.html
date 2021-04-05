@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <meta name="comp1800 boilerplate code" content="CapWise">
+    <meta name="JAS Club (Team #42)" content="BCIT">
+
+    <!-- Favicon Package -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site-manifest.js">
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#7868e6">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Bootstrap for Mobile-first, and JQuery -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- Optional styles and scripts of your own -->
+    <link href="./styles/capwise_components.css" rel="stylesheet">
+</head>
+
+<body>
+    <!----------------------------------------------->
+    <!--                HEADER NAV                 -->
+    <!----------------------------------------------->
+
+    <nav class="navbar navbar-expand-lg navbar-dark top-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html">CapWise</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./main.html">My Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html#support">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./login.html">Log-in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!----------------------------------------------->
+    <!--                CONTENTS                   -->
+    <!----------------------------------------------->
+
+    <h1 class="display-1 title">Welcome back CapWise, <span id="user-name-here">Sally</span></h1>
+
+    <!----------------------------------------------->
+    <!--             BOTTOM NAV BAR                -->
+    <!----------------------------------------------->
+
+    <footer>
+        <nav class="navbar fixed-bottom navbar-light">
+            <div class="container-fluid text-center">
+
+                <div id="count-nav-btn" class="nav-button" onclick="location.href='./counter.html'">
+                    <img id="count-icon" src="./images/icons/counter.svg">
+                    </svg>
+                    <p> COUNT </p>
+                </div>
+
+                <div id="marketing-nav-btn" class="nav-button" onclick="location.href='./marketing.html'">
+                    <img id="marketing-icon" src="./images/icons/tag.svg">
+                    <p> MARKETING </p>
+                </div>
+
+                <div id="alert-nav-btn" class="nav-button" onclick="location.href='./alerts.html'">
+                    <img id="alert-icon" src="./images/icons/bell.svg">
+                    <p> ALERTS </p>
+                </div>
+
+                <div id="scheduling-nav-btn" class="nav-button" onclick="location.href='./scheduling.html'">
+                    <img id="scheduling-icon" src="./images/icons/calendar.svg">
+                    <p id="scheduling-label"> SCHEDULE </p>
+                </div>
+
+                <div id="settings-nav-btn" class="nav-button" onclick="location.href='./settings.html'">
+                    <img id="settings-icon" src="./images/icons/settings.svg">
+                    <p> SETTINGS </p>
+                </div>
+
+            </div>
+        </nav>
+    </footer>
+
+
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+
+    <!-- JS for Firebase API initiation -->
+    <script src="./scripts/firebase_api.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script src="/scripts/bottom_nav.js"></script>
+
+    <!--jQuery-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</body>
+
+</html>

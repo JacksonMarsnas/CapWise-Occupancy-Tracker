@@ -20,7 +20,9 @@ body {
     z-index: -50;
 }
 
-br
+br {
+    color: #2B193D;
+}
 
 
 /*  Heading  */
