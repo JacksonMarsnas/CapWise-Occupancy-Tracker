@@ -20,16 +20,28 @@ header {
 
 .card {
     width: 300px;
-    height: 200px;
-    margin: 2em;
+    height: 175px;
+    margin: 1em;
     border-radius: 10px;
+    padding: 0.5em;
     cursor: pointer;
+    flex-direction: row;
+    align-items: center;
 }
 
 .card-deck {
+    margin: 1em;
     display: flex;
     flex-wrap: wrap;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon {
+    width: 125px;
+    border-radius: 50%;
+    padding: 1em;
+    margin: 1em;
 }
 
 #curve_chart {
@@ -46,4 +58,5 @@ header {
         height: 350px;
         margin: 2em auto;
     }
+
 }

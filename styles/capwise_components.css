@@ -2,6 +2,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -23,6 +24,35 @@ body {
 
 .bg-brand-bright {
     background-color: #7868E6;
+}
+
+.bg-gradient-purple {
+    background: #7868E6;
+    background: linear-gradient(43deg, rgba(120, 104, 230, 1) 48%, rgba(70, 139, 255, 1) 100%);
+    color: #FFFFFF;
+}
+
+.bg-gradient-blue {
+    background:rgba(70, 139, 255, 1);
+    background: linear-gradient(43deg, rgba(70, 139, 255, 1) 36%, rgba(120, 104, 230, 1) 94%);
+    color: #FFFFFF;
+}
+
+.bg-gradient-yellow {
+    background: rgba(255, 205, 90);
+    background: linear-gradient(43deg, rgba(255, 241, 116, 1) 0%, rgba(255, 205, 90, 1) 27%, rgba(255, 172, 41, 1) 59%);
+    color: #FFFFFF;
+}
+
+.bg-gradient-green {
+    background: rgb(20, 196, 100);
+    background: linear-gradient(324deg, rgba(20, 196, 100, 1) 27%, rgba(104, 201, 132, 1) 64%, rgba(187, 249, 93, 1) 100%);
+    color: #FFFFFF;
+}
+
+.bg-light-low-opacity {
+    background-color: #ffffff2f;
+
 }
 
 /* Buttons */
@@ -116,8 +146,8 @@ svg {
 
 
 /*      forms     */
- 
-input, 
+
+input,
 select,
 textarea {
     width: 90%;
@@ -126,7 +156,7 @@ textarea {
     border-radius: 10px;
 }
 
-input:focus, 
+input:focus,
 select:focus,
 textarea:focus {
     outline: none;
