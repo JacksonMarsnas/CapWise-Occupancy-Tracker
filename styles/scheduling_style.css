@@ -88,6 +88,7 @@ h2 {
     border: 1px solid #888;
     border-radius: 10px;
     width: 80%; /* Could be more or less, depending on screen size */
+    overflow: auto;
   }
   
   #text_for_modal {
@@ -192,6 +193,8 @@ h2 {
 
 .new_message{
     clear:left;
+    float: left;
+    margin:0px;
     font-size: 20px;
     margin-left:10px;
 }
@@ -205,4 +208,18 @@ h2 {
 #form-submit-button{
     margin: 0px;
     margin-right:10px;
+}
+
+#last_weeks_numbers{
+    font-size:18px;
+    float:left;
+    margin-left:10px;
+    display:inline;
+}
+
+#last_week{
+    font-size:18px;
+    float:left;
+    margin-left:10px;
+    display:inline;
 }
