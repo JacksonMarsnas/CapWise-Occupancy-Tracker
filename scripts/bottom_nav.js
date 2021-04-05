@@ -43,6 +43,18 @@ if (window.location.pathname == "/settings.html") {
     document.querySelector('#settings-nav-btn p').style.filter = 'invert()'
 }
 
+/* for ALERTS */
+/* for SETTINGS */
+
+if (window.location.pathname == "/alerts.html") {
+    var nav_button = document.getElementById('alert-nav-btn')
+    nav_button.style.backgroundColor = '#7868E6'
+
+    document.getElementById('alert-icon').style.filter = 'invert()'
+    document.querySelector('#alert-nav-btn p').style.filter = 'invert()'
+}
+
+
 
 
 /* TEMPLATE */
