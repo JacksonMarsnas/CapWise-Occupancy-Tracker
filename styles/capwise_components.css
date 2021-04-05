@@ -33,6 +33,27 @@ button:active {
     box-shadow: none;
 }
 
+.btn-outline-dark {
+    border-radius: 40px;
+    color: #7868E6;
+    border: 1px solid #7868E6;
+    box-shadow: none;
+}
+
+.btn-outline-dark:hover {
+    background-color: #7868E6;
+    border: 1px solid #7868E6;
+}
+
+.head-container {
+    display: flex;
+    margin-top: 1em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 
 svg {
     margin-bottom: 5px;
