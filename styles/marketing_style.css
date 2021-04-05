@@ -47,6 +47,9 @@ body {
   border-radius: 20px;
   background: linear-gradient(43deg, rgba(120, 104, 230, 1) 48%, rgba(70, 139, 255, 1) 100%);
 
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .promo-info {
@@ -159,9 +162,7 @@ body {
   border: none;
   border-radius: 10px;
   outline: none;
-  padding: auto;
   background-color: white;
-  cursor: pointer;
   width: 80px;
   height: 40px;
 }

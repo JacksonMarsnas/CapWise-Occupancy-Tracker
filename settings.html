@@ -85,6 +85,8 @@
             </tr>
         </table>
 
+        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#endshiftModal">Edit Profile</button>
+
     </div>
 
     <div id="store-info" class="settings-div">
@@ -105,6 +107,32 @@
     </div>
 
 </section>
+
+
+    <!----------------------------------------------->
+    <!--           POP UP / MODAL SECTION          -->
+    <!----------------------------------------------->
+
+    <div class="modal fade " id="endshiftModal" tabindex="-1" aria-labelledby="endshiftModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="endshiftModalLabel">End the day?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you certain you would you like to end the business day?
+
+                    Ending business day will save and reset the total count today.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="confirm-end-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">End
+                        Shift</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!----------------------------------------------->

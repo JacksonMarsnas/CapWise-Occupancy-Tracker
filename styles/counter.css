@@ -4,15 +4,6 @@ body {
     overflow-y: hidden;
 }
 
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .bg {
     position: absolute;
     width: 100vw;
@@ -25,11 +16,11 @@ body {
 }
 
 #bar-block {
-    background: rgb(184, 181, 255);
-    background: linear-gradient(342deg, rgba(184, 181, 255, 1) 40%, rgba(168, 240, 255, 1) 100%);
+    background: linear-gradient(342deg, rgba(120, 104, 230, 1) 40%, rgba(168, 240, 255, 1) 100%);
     z-index: -50;
 }
 
+br
 
 
 /*  Heading  */

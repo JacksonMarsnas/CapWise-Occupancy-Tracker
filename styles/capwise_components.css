@@ -1,3 +1,12 @@
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 body {
     background-color: #EDEEF7;
 }
@@ -24,7 +33,7 @@ body {
 
 button {
     border: none;
-    box-shadow: -3px 3px 10px #dadada;
+    box-shadow: -3px 3px 10px #8d8d9c8c;
     background-color: #E4FBFF;
 }
 
