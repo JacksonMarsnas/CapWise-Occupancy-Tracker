@@ -141,10 +141,27 @@ const dateReformat = new Intl.DateTimeFormat('en-US', {
     day:   'numeric',
 });
 
+//Filter tabs based on dates
+function filterDate(start, end) {
+    let today = new Date().toISOString().slice(0, 10)
+    console.log(today)
+    console.log(`start ${start} end ${end}`)
+    let tag = ""
+    if(start > today && end > today) {
+        tag = "future"
+    } else if (start < today && end < today) {
+        tag = "archive"
+    } else {
+        tag = "current"
+    }
+    console.log(tag)
+    return tag
+}
+
 function createWidget(promoName, promoDescription, promoStart, promoEnd) {
     //create new div
     newDiv = document.createElement("div");
-    newDiv.setAttribute("class", "promo-card all show");
+    newDiv.setAttribute("class", `promo-card show ${filterDate(promoStart, promoEnd)}`);
     //create new elements for new promotion name
     promoNameTextNode = document.createTextNode(promoName);
     promoNamePara = document.createElement("p");
