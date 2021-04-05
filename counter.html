@@ -100,9 +100,10 @@
         <button id="add-button" class="count-button" onclick="add()"></button>
     </div>
 
-    <button id="message-button" onclick="open_message_popup()"><svg id="message-icon" xmlns="http://www.w3.org/2000/svg"
-            width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7868e6" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
+    <button type="button" id="message-button" onclick="open_message_popup()" data-bs-toggle="modal"
+        data-bs-target="#messageModal"><svg id="message-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+            viewBox="0 0 24 24" fill="none" stroke="#7868e6" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
         </svg></button>
 
@@ -157,7 +158,42 @@
     <!----------------------------------------------->
     <!--           POP UP / MODAL SECTION          -->
     <!----------------------------------------------->
-    <div id="bg-modal">
+    <div class="modal fade " id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="endshiftModalLabel">Notify Staff</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="modal-form">
+
+                        <h3>Who should be notified?</h3>
+
+                        <select size="5" name="recipient" id="recipient" required>
+                            <option value="All">All Staff</option>
+                            <option value="Sally">Sally</option>
+                            <option value="April">April</option>
+                            <option value="Jackson">Jackson</option>
+                            <option value="James">James</option>
+                        </select>
+
+
+                        <h3>What's the message?</h3>
+
+                        <textarea id="notify-message" name="message" placeholder="Your message here."
+                            required></textarea>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="send-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div id="bg-modal">
 
 
 
@@ -190,7 +226,7 @@
 
         </div>
 
-    </div>
+    </div> -->
 
     <!-- End Shift Modal -->
     <div class="modal fade " id="endshiftModal" tabindex="-1" aria-labelledby="endshiftModalLabel" aria-hidden="true">
@@ -207,7 +243,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button id="confirm-end-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">End Shift</button>
+                    <button id="confirm-end-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">End
+                        Shift</button>
                 </div>
             </div>
         </div>
@@ -223,7 +260,8 @@
             <div class="toast-body" id="toasty-bod">
                 Message sent successfully.
             </div>
-            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast"
+                aria-label="Close"></button>
         </div>
     </div>
 
@@ -234,19 +272,21 @@
             <div class="toast-body" id="toasty-bod">
                 Error sending message, try again later.
             </div>
-            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast"
+                aria-label="Close"></button>
         </div>
     </div>
 
     <div class="toast align-items-center bottom-0 end-0" id="toasty-save" role="alert" aria-live="assertive"
-    aria-atomic="true" autohide="false">
-    <div class="d-flex">
-        <div class="toast-body" id="toasty-bod">
-            Data successfully saved. Page will refresh shortly...
+        aria-atomic="true" autohide="false">
+        <div class="d-flex">
+            <div class="toast-body" id="toasty-bod">
+                Data successfully saved. Page will refresh shortly...
+            </div>
+            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast"
+                aria-label="Close"></button>
         </div>
-        <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-</div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->

@@ -124,27 +124,6 @@ form {
     justify-content: center;
 }
 
-#bg-modal {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-
-.modal-content {
-    border-radius: 10px;
-    width: 80%;
-    height: 70%;
-    background-color: #EDEEF7;
-    text-align: center;
-    padding: 1em 2em 1em 2em;
-}
-
 select {
     width: 90%;
 }
@@ -183,6 +162,12 @@ select {
     box-shadow: none;
 }
 
+textarea {
+    height: 15vh;
+}
+
+/* Toast */
+
 .toast {
     position: relative;
     margin: 20px auto;
@@ -193,4 +178,8 @@ select {
 
 #endshiftModal {
     margin-left: 2.5em;
+}
+
+#messageModal {
+    margin-left: 3.5em;
 }
