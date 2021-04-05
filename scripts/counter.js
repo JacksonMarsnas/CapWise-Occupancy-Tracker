@@ -41,7 +41,7 @@ function modify_bg() {
 
         $('#bg-modifier').animate({
             height: new_height
-        }, 400);
+        }, 200);
     }
 }
 
@@ -156,8 +156,8 @@ function writeMessages() {
 document.getElementById('confirm-end-btn').addEventListener("click", function () {
     writeDailyCount();
 
-    sessionStorage.clear();
-    setTimeout(location.reload.bind(location), 3500);
+    sessionStorage.clear()
+    setTimeout(location.reload.bind(location), 10000)
 
     toasty('toasty-save')
 });
