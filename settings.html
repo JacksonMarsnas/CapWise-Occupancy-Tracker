@@ -25,6 +25,7 @@
 
     <!-- Optional styles and scripts of your own -->
     <link href="./styles/capwise_components.css" rel="stylesheet">
+    <link href="./styles/settings.css" rel="stylesheet">
 
 </head>
 
@@ -64,7 +65,7 @@
     <!----------------------------------------------->
     <!--                CONTENTS                   -->
     <!----------------------------------------------->
-
+<section>
     <div class="head-container">
         <h1 class="display-4 title"> Settings </h1>
         <p id="date-field"></p>
@@ -73,21 +74,37 @@
     <div id="account" class="settings-div">
         <h2 class="display-6">User Information</h2>
 
-        <p><span class="field-title">EMAIL </span>hello@hotmail.com<span id="user-email"></span></p>
-        <p><span class="field-title">NAME </span>Sally<span id="user-name"></span></p>
+        <table class="table">
+            <tr>
+                <th>EMAIL</th>
+                <td id="store-name-here">sample</td>
+            </tr>
+            <tr>
+                <th>NAME</th>
+                <td id="store-name-here">30</td>
+            </tr>
+        </table>
 
     </div>
 
     <div id="store-info" class="settings-div">
         <h2 class="display-6">Store Information</h2>
 
-        <p><span class="field-title">STORE NAME </span>hello@hotmail.com<span id="user-email"></span></p>
-        <p><span class="field-title">MAX OCCUPANCY </span>Sally<span id="user-name"></span></p>
+        <table class="table">
+            <tr>
+                <th>STORE NAME</th>
+                <td id="store-name-here">sample</td>
+            </tr>
+            <tr>
+                <th>OCCUPANCY</th>
+                <td id="store-name-here">30</td>
+            </tr>
+        </table>
 
         <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#endshiftModal">Change Store Settings</button>
     </div>
 
-
+</section>
 
 
     <!----------------------------------------------->
