@@ -1,6 +1,6 @@
 body {
   background-color: #edeef7;
-  line-height: 1;
+  line-height: 1.8;
 }
 
 #header {
@@ -187,6 +187,3 @@ body {
   }
 }
 
-.traffic {
-  margin-top: 18px;
-}
