@@ -119,6 +119,10 @@ button:active {
     border: 1px solid #7868E6;
 }
 
+.btn-close {
+    box-shadow: none;
+}
+
 .btn-outline-light {
     border-radius: 40px;
 }
@@ -210,4 +214,9 @@ textarea:focus {
     background-color: #EDEEF7;
     text-align: center;
     padding: 1em 2em 1em 2em;
+}
+
+.modal {
+    left: 2.5em;
+    right: auto;
 }

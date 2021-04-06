@@ -1,4 +1,5 @@
-window.onload = writeUserName('#user-name')
+storageUserName()
+writeUserName('#user-name');
 
 document.getElementById('submit-btn').addEventListener("click", function () {
 

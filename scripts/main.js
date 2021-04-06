@@ -1,4 +1,9 @@
-window.onload = writeUserName('#user-name')
+storageUserName();
+storageUserEmail();
+storageStoreName();
+storageMaxOccupancy();
+
+writeUserNameLive('#user-name');
 
 google.charts.load('current', {
     'packages': ['corechart']
@@ -30,7 +35,3 @@ function drawChart() {
 }
 
 
-storageUserName();
-storageUserEmail();
-storageStoreName();
-storageMaxOccupancy();

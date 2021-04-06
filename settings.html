@@ -108,8 +108,11 @@
             </table>
 
             <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
-                data-bs-target="#endshiftModal">Change Store Settings</button>
+                data-bs-target="#StoreEditModal">Change Store Settings</button>
         </div>
+
+        <button id="logout" type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#LogOutModal">Log-Out</button>
 
     </section>
 
@@ -118,22 +121,37 @@
     <!--           POP UP / MODAL SECTION          -->
     <!----------------------------------------------->
 
-    <div class="modal fade " id="endshiftModal" tabindex="-1" aria-labelledby="endshiftModalLabel" aria-hidden="true">
+    <div class="modal fade center" id="LogOutModal" tabindex="-1" aria-labelledby="LogOutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="endshiftModalLabel">End the day?</h5>
+                    <h5 class="modal-title" id="endshiftModalLabel">Confirm Logout</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Are you certain you would you like to end the business day?
-
-                    Ending business day will save and reset the total count today.
+                    Are you sure you would you like to Log Out?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button id="confirm-end-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">End
-                        Shift</button>
+                    <button id="confirm-logout-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade center" id="StoreEditModal" tabindex="-1" aria-labelledby="StoreEditModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="endshiftModalLabel">Change Store Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you would you like to Log Out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="confirm-logout-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Log Out</button>
                 </div>
             </div>
         </div>
