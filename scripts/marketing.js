@@ -209,7 +209,7 @@ function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
     } else if (result < 1) {
         return `Traffic -${parseInt(result) * 100}%`;
     } else {
-        return `Traffic insufficient data`
+        return `No traffic data yet`
     }
 }
 
