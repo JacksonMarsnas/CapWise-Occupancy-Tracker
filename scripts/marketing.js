@@ -202,51 +202,79 @@ function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
     let result = countAve / previousDayCount
     console.log(`sumOfDays ${sumOfDays}, countAve ${countAve}, result ${result}`)
     if (result >= 1) {
-        return `Traffic +${result * 100}%`;
+        return `Traffic +${parseInt(result) * 100}%`;
     } else if (result < 1) {
-        return `Traffic -${result * 100}%`;
+        return `Traffic -${parseInt(result) * 100}%`;
     } else {
-        return `insufficient data`
+        return `Traffic insufficient data`
     }
 }
 
-function createWidget(promoName, promoDescription, promoStart, promoEnd) {
-    //create new div
-    newDiv = document.createElement("div");
-    newDiv.setAttribute("class", `promo-card show ${filterDate(promoStart, promoEnd)}`);
-    //create new elements for new promotion name
-    promoNameTextNode = document.createTextNode(promoName);
-    promoNamePara = document.createElement("p");
-    promoNamePara.setAttribute("class", "promo-title");
-    promoNamePara.appendChild(promoNameTextNode);
-    //create new elements for new promotion description
-    promoDescriptionTextNode = document.createTextNode(promoDescription);
-    promoDescriptionPara = document.createElement("p");
-    promoDescriptionPara.appendChild(promoDescriptionTextNode);
-    //create new elements for dates
-    promoStartTextNode = document.createTextNode(promoStart + " to ");
-    promoStartDateSpan = document.createElement("span");
-    promoStartDateSpan.appendChild(promoStartTextNode);
-    promoEndTestNode = document.createTextNode(promoEnd);
-    promoEndDateSpan = document.createElement("span");
-    promoEndDateSpan.appendChild(promoEndTestNode);
-    //create new elements for traffic...need to include traffic calculation
+function format_date(date) {
+    formatDate = new Date(date);
+    var mmm = formatDate.getMonth();
+    var dd = formatDate.getDate();
+    var yyyy = formatDate.getFullYear();
 
+    if (dd < 10) dd = '0' + dd;
+    if (mmm == 0) mmm = 'JAN';
+    if (mmm == 1) mmm = 'FEB';
+    if (mmm == 2) mmm = 'MAR';
+    if (mmm == 3) mmm = 'APR';
+    if (mmm == 4) mmm = 'MAY';
+    if (mmm == 5) mmm = 'JUN';
+    if (mmm == 6) mmm = 'JUL';
+    if (mmm == 7) mmm = 'AUG';
+    if (mmm == 8) mmm = 'SEP';
+    if (mmm == 9) mmm = 'OCT';
+    if (mmm == 10) mmm = 'NOV';
+    if (mmm == 11) mmm = 'DEC';
+
+    return (mmm + '-' + dd)
+}
+
+function createWidget(promoName, promoDescription, promoStart, promoEnd) {    
     getTrafficData(promoStart, promoEnd)
         .then(function (trafficText) {
+            //create new div
+            let newDiv = document.createElement("div");
+            newDiv.setAttribute("class", `promo-card show ${filterDate(promoStart, promoEnd)}`);
+
+            //create new elements for new promotion name
+            promoNameTextNode = document.createTextNode(promoName);
+            promoNamePara = document.createElement("div");
+            promoNamePara.setAttribute("class", "promo-title");
+            promoNamePara.appendChild(promoNameTextNode);
+
+            //create new elements for new promotion description
+            promoDescriptionTextNode = document.createTextNode(promoDescription);
+            promoDescriptionPara = document.createElement("div");
+            promoDescriptionPara.appendChild(promoDescriptionTextNode);
+
+            //create new elements for dates
+            promoStartTextNode = document.createTextNode(format_date(promoStart) + " to ");
+            promoStartDateSpan = document.createElement("span");
+            promoStartDateSpan.appendChild(promoStartTextNode);
+            promoEndTestNode = document.createTextNode(format_date(promoEnd));
+            promoEndDateSpan = document.createElement("span");
+            promoEndDateSpan.appendChild(promoEndTestNode);
+
+            //create new elements for traffic...need to include traffic calculation
             console.log(`this is trafficText ${trafficText}`)
             console.log(`promoStart ${promoStart} promoEnd ${promoEnd}`)
 
             trafficTextNode = document.createTextNode(trafficText); //call get traffic data
-            trafficLine = document.createElement("p");
+            trafficLine = document.createElement("div");
             trafficLine.appendChild(trafficTextNode);
 
             //create aside
             newAside = document.createElement("aside")
             newAside.setAttribute("class", "promo-info")
+
             //append elements into aside
-            newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndTestNode, trafficLine)
+            newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndDateSpan, trafficLine)
             newDiv.appendChild(newAside)
+
             //append aside into new div
             $('#perf').append(newDiv)
         })
