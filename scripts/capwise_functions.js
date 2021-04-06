@@ -86,3 +86,75 @@ function writeUserEmail(elementID) {
 
 }
 
+function storageStoreName() {
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection('users')
+                .doc(user.uid) // the user's UID
+                .get() //READ !!
+                .then(function (doc) {
+                    // console.log(doc.data().name);
+                    var store = doc.data().store;
+                    sessionStorage.setItem('store', store);
+                })
+            }
+    })
+}
+
+function storageMaxOccupancy() {
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection('users')
+                .doc(user.uid) // the user's UID
+                .get() //READ !!
+                .then(function (doc) {
+                    // console.log(doc.data().name);
+                    var store = doc.data().store; // point to the name, look for name in db collection doc
+
+                    console.log(store)
+                    db.collection('stores').doc(store)
+                        .get()
+                        .then(function (doc) {
+                            var occupancy = doc.data().max_occupancy;
+                            sessionStorage.setItem('occupancy', occupancy)
+                        })
+
+                })
+        }
+    })
+
+}
+
+function storageUserName() {
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection('users')
+                .doc(user.uid) // the user's UID
+                .get() //READ !!
+                .then(function (doc) {
+                    // console.log(doc.data().name);
+                    var name = doc.data().name;
+                    sessionStorage.setItem('name', name);
+                })
+            }
+    })
+}
+
+function storageUserEmail() {
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection('users')
+                .doc(user.uid) // the user's UID
+                .get() //READ !!
+                .then(function (doc) {
+                    // console.log(doc.data().name);
+                    var email = doc.data().email;
+                    sessionStorage.setItem('email', email);
+                })
+            }
+    })
+}
