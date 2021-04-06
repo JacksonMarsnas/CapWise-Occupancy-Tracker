@@ -1,3 +1,5 @@
+window.onload = writeUserName('#user-name')
+
 document.getElementById('submit-btn').addEventListener("click", function () {
 
     writeStore()

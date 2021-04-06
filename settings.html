@@ -27,6 +27,9 @@
     <link href="./styles/capwise_components.css" rel="stylesheet">
     <link href="./styles/settings.css" rel="stylesheet">
 
+    <!-- JQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -65,48 +68,50 @@
     <!----------------------------------------------->
     <!--                CONTENTS                   -->
     <!----------------------------------------------->
-<section>
-    <div class="head-container">
-        <h1 class="display-4 title"> Settings </h1>
-        <p id="date-field"></p>
-    </div>
+    <section>
+        <div class="head-container">
+            <h1 class="display-4 title"> Settings </h1>
+            <p id="date-field"></p>
+        </div>
 
-    <div id="account" class="settings-div">
-        <h2 class="display-6">User Information</h2>
+        <div id="account" class="settings-div">
+            <h2 class="display-6">User Information</h2>
 
-        <table class="table">
-            <tr>
-                <th>EMAIL</th>
-                <td id="store-name-here">sample</td>
-            </tr>
-            <tr>
-                <th>NAME</th>
-                <td id="store-name-here">30</td>
-            </tr>
-        </table>
+            <table class="table">
+                <tr>
+                    <th>EMAIL</th>
+                    <td id="user-email">--</td>
+                </tr>
+                <tr>
+                    <th>NAME</th>
+                    <td id="user-name">--</td>
+                </tr>
+            </table>
 
-        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#endshiftModal">Edit Profile</button>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                data-bs-target="#endshiftModal">Edit Profile</button>
 
-    </div>
+        </div>
 
-    <div id="store-info" class="settings-div">
-        <h2 class="display-6">Store Information</h2>
+        <div id="store-info" class="settings-div">
+            <h2 class="display-6">Store Information</h2>
 
-        <table class="table">
-            <tr>
-                <th>STORE NAME</th>
-                <td id="store-name-here">sample</td>
-            </tr>
-            <tr>
-                <th>OCCUPANCY</th>
-                <td id="store-name-here">30</td>
-            </tr>
-        </table>
+            <table class="table">
+                <tr>
+                    <th>STORE NAME</th>
+                    <td id="store-name">--</td>
+                </tr>
+                <tr>
+                    <th>OCCUPANCY</th>
+                    <td id="occupancy">--</td>
+                </tr>
+            </table>
 
-        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#endshiftModal">Change Store Settings</button>
-    </div>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                data-bs-target="#endshiftModal">Change Store Settings</button>
+        </div>
 
-</section>
+    </section>
 
 
     <!----------------------------------------------->
@@ -185,14 +190,17 @@
     <!--------------------------------------------------------------------->
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
 
 
     <!-- JS for Firebase API initiation -->
     <script src="./scripts/firebase_api.js"></script>
 
-
+    <script src="./scripts/capwise_functions.js"></script>
+    <script src="./scripts/settings.js"></script>
     <script src="./scripts/bottom_nav.js"></script>
 
 </body>

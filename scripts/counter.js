@@ -1,3 +1,6 @@
+/* get total count */
+writeMaxOccupancy('#max-number');
+
 /* get current day */
 
 function current_date() {
@@ -26,7 +29,6 @@ function current_date() {
 
 let date_field = document.getElementById('date-field')
 date_field.textContent = current_date()
-
 
 /* modify-bg */
 

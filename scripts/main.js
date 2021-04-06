@@ -1,3 +1,5 @@
+window.onload = writeUserName('#user-name')    
+    
     google.charts.load('current', {
         'packages': ['corechart']
     });
