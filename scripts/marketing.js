@@ -177,7 +177,6 @@ function getTrafficData(promoStart, promoEnd) {
                     listOfCount.push(parseInt(doc.get("end_total")))
                     numOfDay += 1
                 }
-
                 if (dayBefore.getDate() == dbDate.getDate()) {
                     previousDayCount = parseInt(doc.get("end_total"))
                 }
@@ -193,7 +192,11 @@ function getTrafficData(promoStart, promoEnd) {
     // return trafficStr
 }
 
-
+//             console.log(`this is the return of getTrafficData ${trafficStr}`)
+//             console.log(trafficStr)
+//             return trafficStr
+//         })
+// }
 
 function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
     console.log(listOfCount)
@@ -214,7 +217,6 @@ function format_date(date) {
     formatDate = new Date(date);
     var mmm = formatDate.getMonth();
     var dd = formatDate.getDate();
-    var yyyy = formatDate.getFullYear();
 
     if (dd < 10) dd = '0' + dd;
     if (mmm == 0) mmm = 'JAN';
