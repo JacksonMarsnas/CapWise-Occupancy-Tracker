@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <title>Account Set-Up</title>
     <meta name="comp1800 boilerplate code" content="CapWise">
     <meta name="JAS Club (Team #42)" content="BCIT">
 
@@ -26,21 +26,17 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Google Chart -->
-<script>
-
-</script>
-
     <!-- Optional styles and scripts of your own -->
     <link href="./styles/capwise_components.css" rel="stylesheet">
-    <link href="./styles/main.css" rel="stylesheet">
+    <link href="./styles/SetUp.css" rel="stylesheet">
+
 </head>
 
 <body>
     <!----------------------------------------------->
     <!--                HEADER NAV                 -->
     <!----------------------------------------------->
-
+<!-- 
     <nav class="navbar navbar-expand-lg navbar-dark top-nav">
         <div class="container-fluid">
             <a class="navbar-brand" href="./index.html">CapWise</a>
@@ -65,105 +61,54 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <!----------------------------------------------->
     <!--                CONTENTS                   -->
     <!----------------------------------------------->
 
-    <div id="accent-back" class="bg-brand-bright"></div>
-
-    <header class="head-container">
-        <h1 class="display-1">Welcome back, </h1>
-        <p id="user-name" class="display-1">Guest!</p>
-    </header>
-
     <section>
+        <div class="bg bg-gradient-purple"></div>
 
+        <header class="head-container">
+            <h1 class="display-2">We're happy you're here, </h1>
+            <p id="user-name" class="display-2">New-user!</p>
+        </header>
 
-    <div id="curve_chart"></div>
+        <form>
+            <h1 class="display-6">Let's get you set up</h1>
 
+            <label for="store-name">What's your Store Name?</label>
+            <input id="store-name" class="form-control form-control-lg" type="text" placeholder="Store Name" required>
 
-    <div class="card-deck">
-        <div class="card shadow-sm bg-gradient-purple" onclick="location.href='./counter.html'">
-            <img src="./images/icons/activity.svg" class="card-icon bg-light-low-opacity" alt="activity icon">
-            <div class="card-body">
-                <h5 class="card-title">Count Occupancy</h5>
-                <p class="card-text">Start tracking your store's occupancy.</p>
-            </div>
-        </div>
+            <label for="occupancy">What's your Store's maximum occupancy?</label>
+            <input id="occupancy" class="form-control form-control-lg" type="number" min="0" placeholder="Maximum Occupancy" required>
 
-        <div class="card shadow-sm bg-gradient-yellow" onclick="location.href='./marketing.html'">
-            <img src="./images/icons/search.svg" class="card-icon bg-light-low-opacity" alt="magnifying glass icon">
-            <div class="card-body">
-                <h5 class="card-title">Promotion Insights</h5>
-                <p class="card-text">See how your promotions are doing.</p>
-            </div>
-        </div>
-    </div>
+            <label for="staff">Who works here? <br>(format: Staff_Name=staff@email.com separated by commas for each staff)</label>
+            <textarea class="form-control" id="staff" rows="3" placeholder="John=john@mystore.ca, April=april@mystore.ca"></textarea>
 
+            <button type="button" id="submit-btn" class="btn btn-outline-dark">Submit</button>
+        </form>
 
-    <div class="card-deck">
-        <div class="card shadow-sm bg-gradient-green" onclick="location.href='./scheduling.html'">
-            <img src="./images/icons/book-open.svg" class="card-icon bg-light-low-opacity" alt="activity icon">
-            <div class="card-body">
-                <h5 class="card-title">Scheduling Log</h5>
-                <p class="card-text">Log your staff scheduling decisions.</p>
-            </div>
-        </div>
+    </section>
+    <footer></footer>
 
-        <div class="card shadow-sm bg-gradient-purple" onclick="location.href='./alerts.html'">
-            <img src="./images/icons/mail.svg" class="card-icon bg-light-low-opacity" alt="magnifying glass icon">
-            <div class="card-body">
-                <h5 class="card-title">Check Alerts</h5>
-                <p class="card-text">Catch up on store alerts on occupancy.</p>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<footer></footer>
-
-</section>
+    </section>
 
     <!----------------------------------------------->
-    <!--             BOTTOM NAV BAR                -->
+    <!--                 TOASTS!                    -->
     <!----------------------------------------------->
 
-    <footer>
-        <nav class="navbar fixed-bottom navbar-light">
-            <div class="container-fluid text-center">
-
-                <div id="count-nav-btn" class="nav-button" onclick="location.href='./counter.html'">
-                    <img id="count-icon" src="./images/icons/counter.svg">
-                    </svg>
-                    <p> COUNT </p>
-                </div>
-
-                <div id="marketing-nav-btn" class="nav-button" onclick="location.href='./marketing.html'">
-                    <img id="marketing-icon" src="./images/icons/tag.svg">
-                    <p> MARKETING </p>
-                </div>
-
-                <div id="alert-nav-btn" class="nav-button" onclick="location.href='./alerts.html'">
-                    <img id="alert-icon" src="./images/icons/bell.svg">
-                    <p> ALERTS </p>
-                </div>
-
-                <div id="scheduling-nav-btn" class="nav-button" onclick="location.href='./scheduling.html'">
-                    <img id="scheduling-icon" src="./images/icons/calendar.svg">
-                    <p id="scheduling-label"> SCHEDULE </p>
-                </div>
-
-                <div id="settings-nav-btn" class="nav-button" onclick="location.href='./settings.html'">
-                    <img id="settings-icon" src="./images/icons/settings.svg">
-                    <p> SETTINGS </p>
-                </div>
-
+    <div class="toast align-items-center bottom-0 end-0" id="toasty-failure" role="alert" aria-live="assertive"
+        aria-atomic="true" autohide="false">
+        <div class="d-flex">
+            <div class="toast-body" id="toasty-bod">
+                Error saving data, please fill in all fields of the form.
             </div>
-        </nav>
-    </footer>
+            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
 
 
 
@@ -190,7 +135,8 @@
     <!--------------------------------------------------------------------->
     <script src="./scripts/bottom_nav.js"></script>
     <script src="./scripts/capwise_functions.js"></script>
-    <script src="./scripts/main.js"></script>
+
+    <script src="./scripts/setUp.js"></script>
 
     <!--jQuery-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

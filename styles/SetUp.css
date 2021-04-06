@@ -1,0 +1,31 @@
+body {
+    margin-top: 3em;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+    width: 330px;
+}
+
+label{
+    margin-top: 1em;
+}
+
+#submit-btn {
+    width: 10em;
+    margin: 3em;
+}
+
+#submit-btn:hover {
+    color: inverse();
+    background-color: #7868E6;
+}
