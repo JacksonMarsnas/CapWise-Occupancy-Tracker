@@ -168,16 +168,13 @@ function getTrafficData(promoStart, promoEnd) {
             dayBefore.setDate(dayBefore.getDate() - 1) // minus one day
             let previousDayCount = 0;
 
-
             snap.forEach(function (doc) {
                 let dbDate = new Date(doc.get("date"))
-
 
                 if (pStart <= dbDate && dbDate <= pEnd) {
                     listOfCount.push(parseInt(doc.get("end_total")))
                     numOfDay += 1
                 }
-
                 if (dayBefore.getDate() == dbDate.getDate()) {
                     previousDayCount = parseInt(doc.get("end_total"))
                 }
@@ -190,11 +187,9 @@ function getTrafficData(promoStart, promoEnd) {
             console.log(trafficStr)
             return trafficStr
         })
-    // return trafficStr
 }
 
-
-
+//traffic calculation
 function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
     console.log(listOfCount)
     let sumOfDays = listOfCount.reduce((a, b) => a + b, 0)
@@ -210,43 +205,69 @@ function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
     }
 }
 
+function format_date(date) {
+    formatDate = new Date(date);
+    var mmm = formatDate.getMonth();
+    var dd = formatDate.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mmm == 0) mmm = 'JAN';
+    if (mmm == 1) mmm = 'FEB';
+    if (mmm == 2) mmm = 'MAR';
+    if (mmm == 3) mmm = 'APR';
+    if (mmm == 4) mmm = 'MAY';
+    if (mmm == 5) mmm = 'JUN';
+    if (mmm == 6) mmm = 'JUL';
+    if (mmm == 7) mmm = 'AUG';
+    if (mmm == 8) mmm = 'SEP';
+    if (mmm == 9) mmm = 'OCT';
+    if (mmm == 10) mmm = 'NOV';
+    if (mmm == 11) mmm = 'DEC';
+
+    return (mmm + '-' + dd)
+}
+
 function createWidget(promoName, promoDescription, promoStart, promoEnd) {
     //create new div
     newDiv = document.createElement("div");
     newDiv.setAttribute("class", `promo-card show ${filterDate(promoStart, promoEnd)}`);
+
     //create new elements for new promotion name
     promoNameTextNode = document.createTextNode(promoName);
     promoNamePara = document.createElement("p");
     promoNamePara.setAttribute("class", "promo-title");
+
     promoNamePara.appendChild(promoNameTextNode);
     //create new elements for new promotion description
     promoDescriptionTextNode = document.createTextNode(promoDescription);
     promoDescriptionPara = document.createElement("p");
     promoDescriptionPara.appendChild(promoDescriptionTextNode);
+    
     //create new elements for dates
-    promoStartTextNode = document.createTextNode(promoStart + " to ");
+    promoStartTextNode = document.createTextNode(format_date(promoStart) + " to ");
     promoStartDateSpan = document.createElement("span");
     promoStartDateSpan.appendChild(promoStartTextNode);
-    promoEndTestNode = document.createTextNode(promoEnd);
+    promoEndTestNode = document.createTextNode(format_date(promoEnd));
     promoEndDateSpan = document.createElement("span");
     promoEndDateSpan.appendChild(promoEndTestNode);
-    //create new elements for traffic...need to include traffic calculation
 
     getTrafficData(promoStart, promoEnd)
         .then(function (trafficText) {
-            console.log(`this is trafficText ${trafficText}`)
-            console.log(`promoStart ${promoStart} promoEnd ${promoEnd}`)
-
             trafficTextNode = document.createTextNode(trafficText); //call get traffic data
             trafficLine = document.createElement("p");
             trafficLine.appendChild(trafficTextNode);
+            trafficLine.setAttribute("class", "traffic")
 
             //create aside
             newAside = document.createElement("aside")
             newAside.setAttribute("class", "promo-info")
+
             //append elements into aside
-            newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndTestNode, trafficLine)
+            newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndDateSpan, trafficLine)
+
+            // newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndTestNode, trafficLine)
             newDiv.appendChild(newAside)
+
             //append aside into new div
             $('#perf').append(newDiv)
         })
