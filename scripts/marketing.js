@@ -144,8 +144,6 @@ const dateReformat = new Intl.DateTimeFormat('en-US', {
 //Filter tabs based on dates
 function filterDate(start, end) {
     let today = new Date().toISOString().slice(0, 10)
-    console.log(today)
-    console.log(`start ${start} end ${end}`)
     let tag = ""
     if(start > today && end > today) {
         tag = "future"
@@ -154,8 +152,59 @@ function filterDate(start, end) {
     } else {
         tag = "current"
     }
-    console.log(tag)
     return tag
+}
+
+//get date count data
+function getTrafficData(promoStart, promoEnd) {
+    db.collection("daily")
+    .get()
+    .then(function(snap){
+        let listOfCount = []
+        let numOfDay = 0
+        let pStart = new Date(promoStart)
+        let pEnd = new Date(promoEnd)
+        let dayBefore = new Date(pStart) // clone from pStart
+        dayBefore.setDate(dayBefore.getDate() - 1) // minus one day
+        let previousDayCount = 0;
+
+
+        snap.forEach(function(doc) {
+            let dbDate = new Date(doc.get("date"))
+
+
+            if (pStart <= dbDate && dbDate <= pEnd) {
+                listOfCount.push(parseInt(doc.get("end_total")))
+                numOfDay += 1
+            }
+            
+            if (dayBefore.getDate() == dbDate.getDate()) {
+                previousDayCount = parseInt(doc.get("end_total"))
+            }
+        });
+
+        console.log(`list of count ${listOfCount} ${typeof(listOfCount)}, previousDC ${previousDayCount}, number of days ${numOfDay}`)
+        let trafficStr = trafficCalculation(numOfDay, listOfCount, previousDayCount)
+        console.log(trafficStr)
+
+        return trafficStr
+    })
+}
+
+
+function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
+    console.log(listOfCount)
+    let sumOfDays = listOfCount.reduce((a, b) => a + b, 0)
+    let countAve = sumOfDays / numOfDay
+    let result = countAve / previousDayCount
+    console.log(`sumOfDays ${sumOfDays}, countAve ${countAve}, result ${result}`)
+    if(result >= 1) {
+        return `+ ${result * 100}%`;
+    } else if(result < 1) {
+        return `- ${result * 100}%`;
+    } else {
+        return `insufficient data`
+    }
 }
 
 function createWidget(promoName, promoDescription, promoStart, promoEnd) {
@@ -179,12 +228,19 @@ function createWidget(promoName, promoDescription, promoStart, promoEnd) {
     promoEndDateSpan = document.createElement("span");
     promoEndDateSpan.appendChild(promoEndTestNode);
     //create new elements for traffic...need to include traffic calculation
+    
+    trafficText = getTrafficData(promoStart, promoEnd)
+    console.log(`this is trafficText ${trafficText}`)
+    
+    trafficTextNode = document.createTextNode(trafficText); //call get traffic data
+    trafficLine = document.createElement("p");
+    trafficLine.appendChild(trafficTextNode);
 
     //create aside
     newAside = document.createElement("aside")
     newAside.setAttribute("class", "promo-info")
     //append elements into aside
-    newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndTestNode)
+    newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndTestNode, trafficLine)
     newDiv.appendChild(newAside)
     //append aside into new div
     $('#perf').append(newDiv)
