@@ -105,10 +105,10 @@ function submitForm() {
         start: startDate,
         end: endDate
     })
-    .then(function(docRef) {
-        //create new widget, faster result
-        createWidget(promoName, promoDescription, startDate, endDate);
-    });
+        .then(function (docRef) {
+            //create new widget, faster result
+            createWidget(promoName, promoDescription, startDate, endDate);
+        });
 };
 
 //function close popup
@@ -120,74 +120,166 @@ function close_popup() {
 // ---------------------------------Add widget after form submission-----------------------------------
 
 //Get records from firebase (use for page load)
-function widgetQuery(){
+function widgetQuery() {
     db.collection("promotions")
-    .get()
-    .then(function(snap){
-        snap.forEach(function(doc) {
-            //get values from db
-            var promoName = doc.data().promotion;
-            var promoDescription = doc.data().description;
-            var promoStart = doc.data().start;
-            var promoEnd = doc.data().end;
-            createWidget(promoName, promoDescription, promoStart, promoEnd);
-        });
-    })
+        .get()
+        .then(function (snap) {
+            snap.forEach(function (doc) {
+                //get values from db
+                var promoName = doc.data().promotion;
+                var promoDescription = doc.data().description;
+                var promoStart = doc.data().start;
+                var promoEnd = doc.data().end;
+                createWidget(promoName, promoDescription, promoStart, promoEnd);
+            });
+        })
 }
 
 const dateReformat = new Intl.DateTimeFormat('en-US', {
-    year:  'numeric',
+    year: 'numeric',
     month: 'long',
-    day:   'numeric',
+    day: 'numeric',
 });
 
 //Filter tabs based on dates
 function filterDate(start, end) {
     let today = new Date().toISOString().slice(0, 10)
-    console.log(today)
-    console.log(`start ${start} end ${end}`)
     let tag = ""
-    if(start > today && end > today) {
+    if (start > today && end > today) {
         tag = "future"
     } else if (start < today && end < today) {
         tag = "archive"
     } else {
         tag = "current"
     }
-    console.log(tag)
     return tag
 }
 
-function createWidget(promoName, promoDescription, promoStart, promoEnd) {
-    //create new div
-    newDiv = document.createElement("div");
-    newDiv.setAttribute("class", `promo-card show ${filterDate(promoStart, promoEnd)}`);
-    //create new elements for new promotion name
-    promoNameTextNode = document.createTextNode(promoName);
-    promoNamePara = document.createElement("p");
-    promoNamePara.setAttribute("class", "promo-title");
-    promoNamePara.appendChild(promoNameTextNode);
-    //create new elements for new promotion description
-    promoDescriptionTextNode = document.createTextNode(promoDescription);
-    promoDescriptionPara = document.createElement("p");
-    promoDescriptionPara.appendChild(promoDescriptionTextNode);
-    //create new elements for dates
-    promoStartTextNode = document.createTextNode(promoStart + " to ");
-    promoStartDateSpan = document.createElement("span");
-    promoStartDateSpan.appendChild(promoStartTextNode);
-    promoEndTestNode = document.createTextNode(promoEnd);
-    promoEndDateSpan = document.createElement("span");
-    promoEndDateSpan.appendChild(promoEndTestNode);
-    //create new elements for traffic...need to include traffic calculation
+//get date count data
+function getTrafficData(promoStart, promoEnd) {
+    return db.collection("daily")
+        .get()
+        .then(function (snap) {
+            let listOfCount = []
+            let numOfDay = 0
+            let pStart = new Date(promoStart)
+            let pEnd = new Date(promoEnd)
+            let dayBefore = new Date(pStart) // clone from pStart
+            dayBefore.setDate(dayBefore.getDate() - 1) // minus one day
+            let previousDayCount = 0;
 
-    //create aside
-    newAside = document.createElement("aside")
-    newAside.setAttribute("class", "promo-info")
-    //append elements into aside
-    newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndTestNode)
-    newDiv.appendChild(newAside)
-    //append aside into new div
-    $('#perf').append(newDiv)
+
+            snap.forEach(function (doc) {
+                let dbDate = new Date(doc.get("date"))
+
+
+                if (pStart <= dbDate && dbDate <= pEnd) {
+                    listOfCount.push(parseInt(doc.get("end_total")))
+                    numOfDay += 1
+                }
+                if (dayBefore.getDate() == dbDate.getDate()) {
+                    previousDayCount = parseInt(doc.get("end_total"))
+                }
+            });
+
+            console.log(`list of count ${listOfCount} ${typeof (listOfCount)}, previousDC ${previousDayCount}, number of days ${numOfDay}`)
+            let trafficStr = trafficCalculation(numOfDay, listOfCount, previousDayCount)
+
+            console.log(`this is the return of getTrafficData ${trafficStr}`)
+            console.log(trafficStr)
+            return trafficStr
+        })
+    // return trafficStr
+}
+
+//             console.log(`this is the return of getTrafficData ${trafficStr}`)
+//             console.log(trafficStr)
+//             return trafficStr
+//         })
+// }
+
+function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
+    console.log(listOfCount)
+    let sumOfDays = listOfCount.reduce((a, b) => a + b, 0)
+    let countAve = sumOfDays / numOfDay
+    let result = countAve / previousDayCount
+    console.log(`sumOfDays ${sumOfDays}, countAve ${countAve}, result ${result}`)
+    if (result >= 1) {
+        return `Traffic +${parseInt(result) * 100}%`;
+    } else if (result < 1) {
+        return `Traffic -${parseInt(result) * 100}%`;
+    } else {
+        return `No traffic data yet`
+    }
+}
+
+function format_date(date) {
+    formatDate = new Date(date);
+    var mmm = formatDate.getMonth();
+    var dd = formatDate.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mmm == 0) mmm = 'JAN';
+    if (mmm == 1) mmm = 'FEB';
+    if (mmm == 2) mmm = 'MAR';
+    if (mmm == 3) mmm = 'APR';
+    if (mmm == 4) mmm = 'MAY';
+    if (mmm == 5) mmm = 'JUN';
+    if (mmm == 6) mmm = 'JUL';
+    if (mmm == 7) mmm = 'AUG';
+    if (mmm == 8) mmm = 'SEP';
+    if (mmm == 9) mmm = 'OCT';
+    if (mmm == 10) mmm = 'NOV';
+    if (mmm == 11) mmm = 'DEC';
+
+    return (mmm + '-' + dd)
+}
+
+function createWidget(promoName, promoDescription, promoStart, promoEnd) {    
+    getTrafficData(promoStart, promoEnd)
+        .then(function (trafficText) {
+            //create new div
+            let newDiv = document.createElement("div");
+            newDiv.setAttribute("class", `promo-card show ${filterDate(promoStart, promoEnd)}`);
+
+            //create new elements for new promotion name
+            promoNameTextNode = document.createTextNode(promoName);
+            promoNamePara = document.createElement("div");
+            promoNamePara.setAttribute("class", "promo-title");
+            promoNamePara.appendChild(promoNameTextNode);
+
+            //create new elements for new promotion description
+            promoDescriptionTextNode = document.createTextNode(promoDescription);
+            promoDescriptionPara = document.createElement("div");
+            promoDescriptionPara.appendChild(promoDescriptionTextNode);
+
+            //create new elements for dates
+            promoStartTextNode = document.createTextNode(format_date(promoStart) + " to ");
+            promoStartDateSpan = document.createElement("span");
+            promoStartDateSpan.appendChild(promoStartTextNode);
+            promoEndTestNode = document.createTextNode(format_date(promoEnd));
+            promoEndDateSpan = document.createElement("span");
+            promoEndDateSpan.appendChild(promoEndTestNode);
+
+            //create new elements for traffic...need to include traffic calculation
+            console.log(`this is trafficText ${trafficText}`)
+            console.log(`promoStart ${promoStart} promoEnd ${promoEnd}`)
+
+            trafficTextNode = document.createTextNode(trafficText); //call get traffic data
+            trafficLine = document.createElement("div");
+            trafficLine.appendChild(trafficTextNode);
+
+            //create aside
+            newAside = document.createElement("aside")
+            newAside.setAttribute("class", "promo-info")
+
+            //append elements into aside
+            newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndDateSpan, trafficLine)
+            newDiv.appendChild(newAside)
+
+            //append aside into new div
+            $('#perf').append(newDiv)
+        })
 }
 widgetQuery();
 

@@ -1,5 +1,6 @@
 body {
   background-color: #edeef7;
+  line-height: 1.8;
 }
 
 #header {
@@ -185,3 +186,4 @@ body {
     margin: 2em auto;
   }
 }
+
