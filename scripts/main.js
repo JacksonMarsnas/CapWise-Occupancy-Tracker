@@ -1,6 +1,6 @@
 storageUserName();
 storageUserEmail();
-storageStoreName();
+storageStoreDocId();
 storageMaxOccupancy();
 
 writeUserNameLive('#user-name');

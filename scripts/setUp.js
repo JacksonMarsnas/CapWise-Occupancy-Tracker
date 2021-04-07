@@ -26,23 +26,24 @@ function writeStore() {
         }
 
 
-        db.collection("stores").doc(store_name).set({
+        db.collection("stores").add({
                 name: store_name,
                 max_occupancy: document.getElementById('occupancy').value,
                 staff: staff_data
 
-            }).then(function () {
+            }).then(function (docRef) {
 
                 firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
                         let userRef = db.collection('users').doc(user.uid) // the user's UID
 
                         userRef.update({
-                            store: store_name
+                            store: docRef.id
                         })
 
                     }
                 })
+
             }).then(function () {
                 console.log('Everything saved!');
                 window.location.assign('./main.html');

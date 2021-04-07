@@ -29,7 +29,7 @@ function writeUserNameLive(elementID) {
 };
 
 
-function storageStoreName() {
+function storageStoreDocId() {
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -38,15 +38,35 @@ function storageStoreName() {
                 .get() //READ !!
                 .then(function (doc) {
                     // console.log(doc.data().name);
-                    var store = doc.data().store;
-                    sessionStorage.setItem('store', store);
+                    var storeID = doc.data().store;
+                    sessionStorage.setItem('storeID', storeID);
                 })
             }
     })
 };
 
+function storageStoreName(storeID) {
+    
+    db.collection('stores').doc(docID)
+    .get()
+    .then(function(doc){
+        var store = doc.data().name;
+        sessionStorage.setItem('store_name', store)
+    })
+
+};
+
+
 function writeStoreName(elementID) {
-    $(elementID).text(sessionStorage.getItem('store'));
+
+    let docID = sessionStorage.getItem('storeID')
+
+    db.collection('stores').doc(docID)
+    .get()
+    .then(function(doc){
+        var store = doc.data().name;
+        $(elementID).text(store);
+    })
 };
 
 

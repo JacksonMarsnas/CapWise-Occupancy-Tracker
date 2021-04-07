@@ -105,21 +105,21 @@ function close_popup() {
 }
 
 
-/* TOAST ME UPPP */
+// /* TOAST ME UPPP */
 
-var option = {
-    animation: true,
-    delay: 2000
-};
+// var option = {
+//     animation: true,
+//     delay: 2000
+// };
 
-function toasty(toast_id) {
-    var toast = document.getElementById(toast_id);
+// function toasty(toast_id) {
+//     var toast = document.getElementById(toast_id);
 
-    var toastElement = new bootstrap.Toast(toast, option);
+//     var toastElement = new bootstrap.Toast(toast, option);
 
-    toastElement.show();
+//     toastElement.show();
 
-}
+// }
 
 /*==============================================================================*/
 /*                                FIRESTORE                                     */
@@ -131,7 +131,6 @@ document.getElementById('send-btn').addEventListener("click", function () {
 
     writeMessages()
 
-    close_popup()
     document.getElementById('modal-form').reset()
 
 });
@@ -175,21 +174,21 @@ function writeDailyCount() {
 };
 
 
-function displayStaff() {
+// function displayStaff() {
 
-    db.collection("webcams")
-        .where("fields.geo_local_area", "in", ["Downtown", "Oakridge"])   //new query to look for field in a set/array
-        .get()   //READ asynch
-        .then(function (snapcollection) {
-            snapcollection.forEach(function (doc) {
-                //console.log(doc.data());
-                //console.log(doc.data().fields.name);
-                var id = doc.id;  //document id of that webcam
-                var name = doc.data().fields.name;
-                //$('#webcams-go-here').append($('<p id = ${id}> ${name} </p>'));
-                $("#webcams-go-here").append("<p style='cursor:pointer' id='" + id + "'>" + name + "</p>");
-                addWebcamListener(id);
-            })
-        })
-}
-displayWebcams();
+//     db.collection("webcams")
+//         .where("fields.geo_local_area", "in", ["Downtown", "Oakridge"])   //new query to look for field in a set/array
+//         .get()   //READ asynch
+//         .then(function (snapcollection) {
+//             snapcollection.forEach(function (doc) {
+//                 //console.log(doc.data());
+//                 //console.log(doc.data().fields.name);
+//                 var id = doc.id;  //document id of that webcam
+//                 var name = doc.data().fields.name;
+//                 //$('#webcams-go-here').append($('<p id = ${id}> ${name} </p>'));
+//                 $("#webcams-go-here").append("<p style='cursor:pointer' id='" + id + "'>" + name + "</p>");
+//                 addWebcamListener(id);
+//             })
+//         })
+// }
+// displayWebcams();

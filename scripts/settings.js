@@ -8,22 +8,29 @@ input_storeNameValue();
 input_occupancyValue();
 input_NameValue();
 
-document.getElementById('confirm-logout-btn').addEventListener("click", function(event){
+document.getElementById('confirm-logout-btn').addEventListener("click", function (event) {
     firebase.auth().signOut().then(() => {
         sessionStorage.clear();
         window.location.assign("index.html");
-      }).catch((error) => {
+    }).catch((error) => {
         console.log(error);
-      });
+    });
 });
 
 /* Pre-written Input */
 
 function input_storeNameValue() {
+
     let store_input = document.getElementById('store-name-input');
-    let store_name = sessionStorage.getItem('store')
-    store_input.setAttribute('value', store_name)
-}
+    let docID = sessionStorage.getItem('storeID')
+
+    db.collection('stores').doc(docID)
+        .get()
+        .then(function (doc) {
+            var store = doc.data().name;
+            store_input.setAttribute('value', store)
+        })
+};
 
 function input_occupancyValue() {
     let occupancy_input = document.getElementById('occupancy-input');
@@ -39,54 +46,30 @@ function input_NameValue() {
 
 /* Update data */
 
-let curr_store_name = sessionStorage.getItem('store')
-let new_store_name = document.getElementById('store-name-input').value
-let new_occupancy = document.getElementById('occupancy-input').value
 
-let staff = {}
+document.getElementById('save-store').addEventListener('click', function () {
 
-db.collection('stores').doc(curr_store_name)
-.get()
-.then(function (doc) {
-    var staff_info = doc.data().staff;
-    console.log(staff_info)
-    sessionStorage.setItem('OG_staff', staff_info)
-})
-
-console.log(sessionStorage.getItem('OG_staff'))
-
-document.getElementById('save-store-btn').addEventListener('click', function(event){
-
-    let curr_store_name = sessionStorage.getItem('store')
-    let new_store_name = document.getElementById('store-name-input').value
-    let new_occupancy = document.getElementById('occupancy-input').value
-
-    db.collection('stores').doc(curr_store_name)
-    .get()
-    .then(function (doc) {
-        var staff_info = doc.data().staff;
-        console.log(staff_info)
-        sessionStorage.setItem('OG_staff', staff_info)
-    })
-
-    sessionStorage.setItem('store', new_store_name)
-    sessionStorage.setItem('occupancy', new_occupancy)
-
-    console.log(sessionStorage.getItem('OG_staff'))
-
-    db.collection('stores').doc(new_store_name).set({
-        name: new_store_name,
-        max_occupancy: new_occupancy,
-        staff: sessionStorage.getItem('OG_staff')
-    })
-    .then(function(){
-
-        console.log('success?')
-        // sessionStorage.setItem('store', new_store_name);
-        // sessionStorage.setItem('occupancy', new_occupancy);
-    })
-    .then();
+    updateStore();
 
 });
 
+function updateStore() {
 
+    let store_doc_id = sessionStorage.getItem('storeID')
+    var storeRef = db.collection('stores').doc(store_doc_id)
+
+    let new_occupancy = document.getElementById('occupancy-input').value
+
+    return storeRef.update({
+            name : document.getElementById('store-name-input').value,
+            max_occupancy: new_occupancy
+        })
+        .then(function () {
+            console.log('success?')
+            sessionStorage.setItem('occupancy', new_occupancy);
+            location.reload();
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
+};
