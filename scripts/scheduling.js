@@ -141,7 +141,7 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal and get data from DB about that day
 function open_message_popup(button_id) {
-    modal.style.display = "block";
+    modal.style.display = ("flex");
     last_day_picked = button_id;
     get_last_week_value();
     let docref = db.collection("employee_numbers").doc(last_day_picked)
