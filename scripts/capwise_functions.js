@@ -1,3 +1,8 @@
+var option = {
+    animation: true,
+    delay: 2000
+};
+
 function toasty(toast_id) {
     var toast = document.getElementById(toast_id);
 
@@ -5,7 +10,7 @@ function toasty(toast_id) {
 
     toastElement.show();
 
-}
+};
 
 
 function writeUserNameLive(elementID) {
@@ -118,25 +123,55 @@ function writeUserEmail(elementID) {
     $(elementID).text(sessionStorage.getItem('email'));
 };
 
+/* Writing by Search through DB */
+
+function writeLiveStoreName(elementID) {
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection('users')
+                .doc(user.uid) // the user's UID
+                .get() //READ !!
+                .then(function (doc) {
+                    // console.log(doc.data().name);
+                    var store = doc.data().store; // point to the name, look for name in db collection doc
+                    $(elementID).text(store);
+
+                })
+        }
+    })
+};
+
+function writeLiveMaxOccupancy(elementID) {
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection('users')
+                .doc(user.uid) // the user's UID
+                .get() //READ !!
+                .then(function (doc) {
+                    // console.log(doc.data().name);
+                    var store = doc.data().store; // point to the name, look for name in db collection doc
+
+                    console.log(store)
+                    db.collection('stores').doc(store)
+                        .get()
+                        .then(function (doc) {
+                            var occupancy = doc.data().max_occupancy;
+                            $(elementID).text(occupancy);
+                        })
+
+                })
+        }
+    })
+
+};
+
+
 
 /* PREVIOUS READ FUNCTIONS */
 
-// function writeStoreName(elementID) {
 
-//     firebase.auth().onAuthStateChanged(function (user) {
-//         if (user) {
-//             db.collection('users')
-//                 .doc(user.uid) // the user's UID
-//                 .get() //READ !!
-//                 .then(function (doc) {
-//                     // console.log(doc.data().name);
-//                     var store = doc.data().store; // point to the name, look for name in db collection doc
-//                     $(elementID).text(store);
-
-//                 })
-//         }
-//     })
-// }
 
 // function writeUserEmail(elementID) {
 
@@ -156,28 +191,4 @@ function writeUserEmail(elementID) {
 
 // }
 
-// function writeMaxOccupancy(elementID) {
-
-//     firebase.auth().onAuthStateChanged(function (user) {
-//         if (user) {
-//             db.collection('users')
-//                 .doc(user.uid) // the user's UID
-//                 .get() //READ !!
-//                 .then(function (doc) {
-//                     // console.log(doc.data().name);
-//                     var store = doc.data().store; // point to the name, look for name in db collection doc
-
-//                     console.log(store)
-//                     db.collection('stores').doc(store)
-//                         .get()
-//                         .then(function (doc) {
-//                             var occupancy = doc.data().max_occupancy;
-//                             $(elementID).text(occupancy);
-//                         })
-
-//                 })
-//         }
-//     })
-
-// }
 
