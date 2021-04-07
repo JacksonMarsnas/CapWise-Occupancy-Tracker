@@ -1,31 +1,9 @@
+displayStaff();
+
 /* get total count */
 writeMaxOccupancy('#max-number');
 
 /* get current day */
-
-function current_date() {
-    today = new Date();
-    var mmm = today.getMonth();
-    var dd = today.getDate();
-    var yyyy = today.getFullYear();
-
-    if (dd < 10) dd = '0' + dd;
-    if (mmm == 0) mmm = 'JAN';
-    if (mmm == 1) mmm = 'FEB';
-    if (mmm == 2) mmm = 'MAR';
-    if (mmm == 3) mmm = 'APR';
-    if (mmm == 4) mmm = 'MAY';
-    if (mmm == 5) mmm = 'JUN';
-    if (mmm == 6) mmm = 'JUL';
-    if (mmm == 7) mmm = 'AUG';
-    if (mmm == 8) mmm = 'SEP';
-    if (mmm == 9) mmm = 'OCT';
-    if (mmm == 10) mmm = 'NOV';
-    if (mmm == 11) mmm = 'DEC';
-
-    return (mmm + '-' + dd + '-' + yyyy)
-
-}
 
 let date_field = document.getElementById('date-field')
 date_field.textContent = current_date()
@@ -89,38 +67,6 @@ if (sessionStorage.total) {
     document.getElementById('total').innerHTML = sessionStorage.total;
 }
 
-
-/* open pop up */
-
-function open_message_popup() {
-    let popup = document.getElementById('bg-modal')
-    popup.style.display = ('flex')
-}
-
-/* close pop up */
-
-function close_popup() {
-    let popup = document.getElementById('bg-modal')
-    popup.style.display = ('none')
-}
-
-
-// /* TOAST ME UPPP */
-
-// var option = {
-//     animation: true,
-//     delay: 2000
-// };
-
-// function toasty(toast_id) {
-//     var toast = document.getElementById(toast_id);
-
-//     var toastElement = new bootstrap.Toast(toast, option);
-
-//     toastElement.show();
-
-// }
-
 /*==============================================================================*/
 /*                                FIRESTORE                                     */
 /*==============================================================================*/
@@ -174,21 +120,22 @@ function writeDailyCount() {
 };
 
 
-// function displayStaff() {
+function displayStaff() {
 
-//     db.collection("webcams")
-//         .where("fields.geo_local_area", "in", ["Downtown", "Oakridge"])   //new query to look for field in a set/array
-//         .get()   //READ asynch
-//         .then(function (snapcollection) {
-//             snapcollection.forEach(function (doc) {
-//                 //console.log(doc.data());
-//                 //console.log(doc.data().fields.name);
-//                 var id = doc.id;  //document id of that webcam
-//                 var name = doc.data().fields.name;
-//                 //$('#webcams-go-here').append($('<p id = ${id}> ${name} </p>'));
-//                 $("#webcams-go-here").append("<p style='cursor:pointer' id='" + id + "'>" + name + "</p>");
-//                 addWebcamListener(id);
-//             })
-//         })
-// }
-// displayWebcams();
+    let docID = sessionStorage.getItem('storeID')
+
+    db.collection('stores').doc(docID)
+    .get()
+    .then(function (doc) {
+    
+        var staff = doc.data().staff
+        let staff_names = Object.keys(staff)
+    
+        staff_names.forEach(function(name){
+    
+            $("#recipient").append("<option value='" + name + "'>" + name + "</option>");
+    
+        })
+    
+    });
+};

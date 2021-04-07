@@ -67,9 +67,8 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3 class="weekday">Today</h3>
-                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)"><span class="iconify"
-                        data-icon="ic:round-greater-than" data-inline="true" data-width="50"
-                        data-height="50"></span></span></button>
+                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)" data-bs-toggle="modal"
+                data-bs-target="#myModal"><span class="iconify" data-icon="ic:round-greater-than" data-inline="true" data-width="50" data-height="50"></span></span></button>
                 <h2>3</h2>
                 <div class="person_logo">
                     <span class="iconify" data-icon="akar-icons:person" data-inline="false" data-width="30"
@@ -81,7 +80,8 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3 class="weekday">Tuesday</h3>
-                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)"><span class="iconify"
+                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)" data-bs-toggle="modal"
+                data-bs-target="#myModal"><span class="iconify"
                         data-icon="ic:round-greater-than" data-inline="true" data-width="50"
                         data-height="50"></span></span></button>
                 <h2>3</h2>
@@ -95,7 +95,8 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3 class="weekday">Wednesday</h3>
-                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)"><span class="iconify"
+                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)" data-bs-toggle="modal"
+                data-bs-target="#myModal"><span class="iconify"
                         data-icon="ic:round-greater-than" data-inline="true" data-width="50"
                         data-height="50"></span></span></button>
                 <h2>3</h2>
@@ -109,7 +110,8 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3 class="weekday">Thursday</h3>
-                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)"><span class="iconify"
+                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)" data-bs-toggle="modal"
+                data-bs-target="#myModal"><span class="iconify"
                         data-icon="ic:round-greater-than" data-inline="true" data-width="50"
                         data-height="50"></span></span></button>
                 <h2>3</h2>
@@ -123,7 +125,8 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3 class="weekday">Friday</h3>
-                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)"><span class="iconify"
+                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)" data-bs-toggle="modal"
+                data-bs-target="#myModal"><span class="iconify"
                         data-icon="ic:round-greater-than" data-inline="true" data-width="50"
                         data-height="50"></span></span></button>
                 <h2>3</h2>
@@ -137,7 +140,8 @@
         <div class="card" style="width: 100%;">
             <div class="card-body">
                 <h3 class="weekday">Saturday</h3>
-                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)"><span class="iconify"
+                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)" data-bs-toggle="modal"
+                data-bs-target="#myModal"><span class="iconify"
                         data-icon="ic:round-greater-than" data-inline="true" data-width="50"
                         data-height="50"></span></span></button>
                 <h2>3</h2>
@@ -151,7 +155,8 @@
         <div class="card" id="last_card" style="width: 100%;">
             <div class="card-body">
                 <h3 class="weekday">Sunday</h3>
-                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)"><span class="iconify"
+                <button type="button" class="arrow_button" onclick="open_message_popup(this.id)" data-bs-toggle="modal"
+                data-bs-target="#myModal"><span class="iconify"
                         data-icon="ic:round-greater-than" data-inline="true" data-width="50"
                         data-height="50"></span></span></button>
                 <h2>3</h2>
@@ -201,12 +206,16 @@
     <!----------------------------------------------->
     <!-- Modal stuff    -->
     <!----------------------------------------------->
-
-    <!-- Button trigger modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
+  
+  <!-- Modal -->
+  <div class="modal fade " id="myModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h5 class="modal-title" id="text_for_modal">Schedule</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
             <p id="text_for_modal">Scheduled Employees</p>
             <hr>
             <div id="modal_number_symbols">
@@ -229,8 +238,12 @@
                         data-inline="false" data-width="40" data-height="40" onclick="new_message_field()"></span></button>
                 <div id="box_field"></div>
             </div>
+            </div>
         </div>
     </div>
+</div>
+
+    
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
