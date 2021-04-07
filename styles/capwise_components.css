@@ -1,3 +1,6 @@
+
+/* FADE animation */
+
 @keyframes fadeInAnimation {
     0% {
         opacity: 0;
@@ -8,8 +11,33 @@
     }
 }
 
+.fade-1 {
+    animation: fadeInAnimation ease 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.fade-2 {
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.fade-3 {
+    animation: fadeInAnimation ease 2.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+
+
 body {
     background-color: #EDEEF7;
+}
+
+#user-name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 /* Background colours */
@@ -89,6 +117,19 @@ button:active {
 .btn-outline-dark:hover {
     background-color: #7868E6;
     border: 1px solid #7868E6;
+}
+
+.btn-close {
+    box-shadow: none;
+}
+
+.btn-outline-light {
+    border-radius: 40px;
+}
+
+.btn-outline-light:hover {
+    background: linear-gradient(43deg, rgba(255, 241, 116, 1) 0%, rgba(255, 205, 90, 1) 27%, rgba(255, 172, 41, 1) 59%);
+    color: #2B193D;
 }
 
 .nav-button {
@@ -171,5 +212,16 @@ textarea:focus {
     height: 70%;
     background-color: #EDEEF7;
     text-align: center;
-    padding: 1em 2em 1em 2em;
+    padding: 1em;
+}
+
+.modal {
+    left: 2.5em;
+    right: auto;
+}
+
+.toast {
+    border-radius: 10px;
+    background-color: #2B193D;
+    color: white;
 }

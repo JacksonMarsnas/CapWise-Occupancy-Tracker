@@ -59,9 +59,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./index.html#support">Support</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./login.html">Log-in</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -91,7 +88,7 @@
         <div class="counter-num">
             <p id="current-count" onchange="modify_bg()">0</p>
             <hr>
-            <p id="max-number">20</p>
+            <p id="max-number">--</p>
         </div>
 
         <button id="add-button" class="count-button" onclick="add()"></button>
@@ -264,14 +261,17 @@
     <!--------------------------------------------------------------------->
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
 
 
     <!-- JS for Firebase API initiation -->
     <script src="./scripts/firebase_api.js"></script>
 
 
+    <script src="./scripts/capwise_functions.js"></script>
     <script src="./scripts/counter.js"></script>
     <script src="./scripts/bottom_nav.js"></script>
 </body>

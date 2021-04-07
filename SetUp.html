@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Set-Up</title>
+    <meta name="comp1800 boilerplate code" content="CapWise">
+    <meta name="JAS Club (Team #42)" content="BCIT">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Favicon Package -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site-manifest.js">
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#7868e6">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Bootstrap for Mobile-first, and JQuery -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Optional styles and scripts of your own -->
+    <link href="./styles/capwise_components.css" rel="stylesheet">
+    <link href="./styles/SetUp.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-purple">
+
+    <!----------------------------------------------->
+    <!--                CONTENTS                   -->
+    <!----------------------------------------------->
+
+    <section>
+        <div class="bg bg-gradient-purple"></div>
+
+        <header class="head-container">
+            <h1 class="display-2 fade-1">We're happy you're here, </h1>
+            <p id="user-name" class="display-2 fade-3">New-user!</p>
+        </header>
+
+        <form class="fade-3">
+            <h1 class="display-6">Let's get you set up</h1>
+
+            <label for="store-name">What's your Store Name?*</label>
+            <input id="store-name" class="form-control form-control-lg" type="text" placeholder="Enter store name" required>
+
+            <label for="occupancy">What's the maximum occupancy?*</label>
+            <input id="occupancy" class="form-control form-control-lg" type="number" min="0" placeholder="Enter a number" required>
+
+            <label for="staff">Who works here?* <br></label>
+            <textarea class="form-control" id="staff" rows="3" placeholder="John=john@mystore.ca, April=april@mystore.ca" required></textarea>
+            <div id="staffHelpBlock" class="form-text">
+                Input staff in the following format with their name and emails: Name=staff@email.com separated by commas for each staff member.
+              </div>
+
+            <button type="button" id="submit-btn" class="btn btn-outline-light">Submit</button>
+        </form>
+
+
+    </section>
+    <footer></footer>
+
+    </section>
+
+    <!----------------------------------------------->
+    <!--                 TOASTS!                    -->
+    <!----------------------------------------------->
+
+    <div class="toast align-items-center" id="toasty-failure" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="toasty-bod">
+                Please fill in all fields.
+            </div>
+            <button type="button" class="btn-close me-2 m-auto btn-close-white" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+
+
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+
+
+    <!-- JS for Firebase API initiation -->
+    <script src="./scripts/firebase_api.js"></script>
+
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script src="./scripts/bottom_nav.js"></script>
+    <script src="./scripts/capwise_functions.js"></script>
+
+    <script src="./scripts/setUp.js"></script>
+
+</body>
+
+</html>

@@ -27,6 +27,9 @@
     <link href="./styles/capwise_components.css" rel="stylesheet">
     <link href="./styles/settings.css" rel="stylesheet">
 
+    <!-- JQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -52,9 +55,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./index.html#support">Support</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./login.html">Log-in</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -65,70 +66,124 @@
     <!----------------------------------------------->
     <!--                CONTENTS                   -->
     <!----------------------------------------------->
-<section>
-    <div class="head-container">
-        <h1 class="display-4 title"> Settings </h1>
-        <p id="date-field"></p>
-    </div>
+    <section>
+        <div class="head-container">
+            <h1 class="display-4 title"> Settings </h1>
+            <p id="date-field"></p>
+        </div>
 
-    <div id="account" class="settings-div">
-        <h2 class="display-6">User Information</h2>
+        <div id="account" class="settings-div">
+            <h2 class="display-6">User Information</h2>
 
-        <table class="table">
-            <tr>
-                <th>EMAIL</th>
-                <td id="store-name-here">sample</td>
-            </tr>
-            <tr>
-                <th>NAME</th>
-                <td id="store-name-here">30</td>
-            </tr>
-        </table>
+            <table class="table">
+                <tr>
+                    <th>EMAIL</th>
+                    <td id="user-email">--</td>
+                </tr>
+                <tr>
+                    <th>NAME</th>
+                    <td id="user-name">--</td>
+                </tr>
+            </table>
 
-        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#endshiftModal">Edit Profile</button>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                data-bs-target="#ProfileEditModal">Edit Profile</button>
 
-    </div>
+        </div>
 
-    <div id="store-info" class="settings-div">
-        <h2 class="display-6">Store Information</h2>
+        <div id="store-info" class="settings-div">
+            <h2 class="display-6">Store Information</h2>
 
-        <table class="table">
-            <tr>
-                <th>STORE NAME</th>
-                <td id="store-name-here">sample</td>
-            </tr>
-            <tr>
-                <th>OCCUPANCY</th>
-                <td id="store-name-here">30</td>
-            </tr>
-        </table>
+            <table class="table">
+                <tr>
+                    <th>STORE NAME</th>
+                    <td id="store-name">--</td>
+                </tr>
+                <tr>
+                    <th>OCCUPANCY</th>
+                    <td id="occupancy">--</td>
+                </tr>
+            </table>
 
-        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#endshiftModal">Change Store Settings</button>
-    </div>
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                data-bs-target="#StoreEditModal">Change Store Settings</button>
+        </div>
 
-</section>
+        <button id="logout" type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#LogOutModal">Log-Out</button>
+
+    </section>
 
 
     <!----------------------------------------------->
     <!--           POP UP / MODAL SECTION          -->
     <!----------------------------------------------->
 
-    <div class="modal fade " id="endshiftModal" tabindex="-1" aria-labelledby="endshiftModalLabel" aria-hidden="true">
+    <div class="modal fade center" id="ProfileEditModal" tabindex="-1" aria-labelledby="ProfileEditModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="endshiftModalLabel">End the day?</h5>
+                    <h5 class="modal-title" id="endshiftModalLabel">Edit Profile Settings</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Are you certain you would you like to end the business day?
 
-                    Ending business day will save and reset the total count today.
+                    <label for="new-name-input">Name</label>
+                    <input id="new-name-input" class="form-control" type="text" placeholder="Store Name"
+                        aria-label="default input example">
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button id="confirm-end-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">End
-                        Shift</button>
+                    <button id="save-profile" type="button" class="btn btn-primary"
+                        data-bs-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade center" id="LogOutModal" tabindex="-1" aria-labelledby="LogOutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="endshiftModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you would you like to Log Out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="confirm-logout-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Log
+                        Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade center" id="StoreEditModal" tabindex="-1" aria-labelledby="StoreEditModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="endshiftModalLabel">Change Store Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <label for="store-name-input">Store Name</label>
+                    <input id="store-name-input" class="form-control" type="text" placeholder="Store Name"
+                        aria-label="default input example">
+
+                    <label for="occupancy-input">Maximum Occupancy</label>
+                    <input id="occupancy-input" class="form-control" type="number" min=0 placeholder="Max. Occupancy"
+                        aria-label="default input example">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="save-store" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
@@ -185,14 +240,17 @@
     <!--------------------------------------------------------------------->
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
 
 
     <!-- JS for Firebase API initiation -->
     <script src="./scripts/firebase_api.js"></script>
 
-
+    <script src="./scripts/capwise_functions.js"></script>
+    <script src="./scripts/settings.js"></script>
     <script src="./scripts/bottom_nav.js"></script>
 
 </body>

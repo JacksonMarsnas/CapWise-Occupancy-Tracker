@@ -1,3 +1,10 @@
+
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
 .display-6 {
     font-size: 25px;
 }
@@ -11,9 +18,13 @@ th {
     width: 150px;
 }
 
+input {
+    margin-bottom: 1em;
+}
+
 .settings-div {
     padding: 1em;
-    margin: 2em;
+    margin: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,9 +33,45 @@ th {
     border-radius: 20px;
 }
 
+#logout {
+    margin: 2em;
+    height: 2.5em;
+    border-radius: 40px;
+    color: #FFFFFF;
+    background-color: #7868E6;
+    border: none;
+    box-shadow: none;
+    font-size: 18px;
+}
+
+#logout:hover {
+    background-color: #9895e2;
+    background: linear-gradient(43deg, rgba(120, 104, 230, 1) 48%, rgba(70, 139, 255, 1) 100%);
+}
+
+#logout:active {
+    background-color: #2B193D;
+}
+
+.toast {
+    position: absolute;
+    z-index: 10;
+    bottom: 10em;
+    left: 1em;
+}
+
 @media screen and (min-width: 575px) {
     .settings-div {
         width: 600px;
         margin: 2em auto;
     }
+
+    #logout {
+        width: 600px;
+    }
+
+    section {
+        align-items: center;
+    }
+    
 }
