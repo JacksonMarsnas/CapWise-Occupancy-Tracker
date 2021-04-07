@@ -65,7 +65,7 @@ function updateStore() {
             max_occupancy: new_occupancy
         })
         .then(function () {
-            console.log('success?')
+            console.log('changes saved.')
             sessionStorage.setItem('occupancy', new_occupancy);
             location.reload();
         })
@@ -92,9 +92,9 @@ function updateProfile() {
                     name: new_username
                 })
                 .then(function () {
-                    console.log('success!')
+                    console.log('changes saved.')
                     sessionStorage.setItem('name', new_username);
-                    location.reload();
+                    setTimeout(location.reload(), 1000);
                 })
                 .catch(function (err) {
                     console.log(err)

@@ -53,6 +53,13 @@ input {
     background-color: #2B193D;
 }
 
+.toast {
+    position: absolute;
+    z-index: 10;
+    bottom: 10em;
+    left: 1em;
+}
+
 @media screen and (min-width: 575px) {
     .settings-div {
         width: 600px;
