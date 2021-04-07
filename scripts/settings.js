@@ -1,5 +1,5 @@
 writeUserEmail('#user-email');
-writeUserName('#user-name');
+writeUserNameLive('#user-name');
 
 writeMaxOccupancy('#occupancy');
 writeStoreName('#store-name');
@@ -72,4 +72,34 @@ function updateStore() {
         .catch(function (err) {
             console.log(err)
         })
+};
+
+document.getElementById('save-profile').addEventListener('click', function () {
+
+    updateProfile();
+
+});
+
+function updateProfile() {
+
+    let new_username = document.getElementById('new-name-input').value
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection('users')
+                .doc(user.uid) // the user's UID
+                .update({
+                    name: new_username
+                })
+                .then(function () {
+                    console.log('success!')
+                    sessionStorage.setItem('name', new_username);
+                    location.reload();
+                })
+                .catch(function (err) {
+                    console.log(err)
+                })
+            }
+    })
+
 };
