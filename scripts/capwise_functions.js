@@ -1,3 +1,5 @@
+/* TOAST FUNCTIONS */
+
 var option = {
     animation: true,
     delay: 2000
@@ -12,6 +14,35 @@ function toasty(toast_id) {
 
 };
 
+
+/* CURRENT DATE */
+
+function current_date() {
+    today = new Date();
+    var mmm = today.getMonth();
+    var dd = today.getDate();
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mmm == 0) mmm = 'JAN';
+    if (mmm == 1) mmm = 'FEB';
+    if (mmm == 2) mmm = 'MAR';
+    if (mmm == 3) mmm = 'APR';
+    if (mmm == 4) mmm = 'MAY';
+    if (mmm == 5) mmm = 'JUN';
+    if (mmm == 6) mmm = 'JUL';
+    if (mmm == 7) mmm = 'AUG';
+    if (mmm == 8) mmm = 'SEP';
+    if (mmm == 9) mmm = 'OCT';
+    if (mmm == 10) mmm = 'NOV';
+    if (mmm == 11) mmm = 'DEC';
+
+    return (mmm + '-' + dd + '-' + yyyy)
+
+}
+
+
+/* SESSION STORAGE */
 
 
 function storageStoreDocId() {
@@ -41,20 +72,6 @@ function storageStoreName(storeID) {
 
 };
 
-
-function writeStoreName(elementID) {
-
-    let docID = sessionStorage.getItem('storeID')
-
-    db.collection('stores').doc(docID)
-    .get()
-    .then(function(doc){
-        var store = doc.data().name;
-        $(elementID).text(store);
-    })
-};
-
-
 function storageMaxOccupancy() {
 
     firebase.auth().onAuthStateChanged(function (user) {
@@ -79,12 +96,6 @@ function storageMaxOccupancy() {
 
 };
 
-function writeMaxOccupancy(elementID) {
-    $(elementID).text(sessionStorage.getItem('occupancy'))
-};
-
-
-
 
 function storageUserName() {
 
@@ -102,12 +113,6 @@ function storageUserName() {
     })
 };
 
-function writeUserName(elementID) {
-    $(elementID).text(sessionStorage.getItem('name'))
-};
-
-
-
 function storageUserEmail() {
 
     firebase.auth().onAuthStateChanged(function (user) {
@@ -124,11 +129,41 @@ function storageUserEmail() {
     })
 };
 
+
+/* WRITE BY SESSION STORAGE (FAST, BUT REQUIRES THAT SESSION STORAGE IS UPDATED) */
+
+
+function writeMaxOccupancy(elementID) {
+    $(elementID).text(sessionStorage.getItem('occupancy'))
+};
+
+
+function writeStoreName(elementID) {
+
+    let docID = sessionStorage.getItem('storeID')
+
+    db.collection('stores').doc(docID)
+    .get()
+    .then(function(doc){
+        var store = doc.data().name;
+        $(elementID).text(store);
+    })
+};
+
+
+function writeUserName(elementID) {
+    $(elementID).text(sessionStorage.getItem('name'))
+};
+
+
 function writeUserEmail(elementID) {
     $(elementID).text(sessionStorage.getItem('email'));
 };
 
-/* Writing by Search through DB */
+
+
+/* WRITE BY DB SEARCH OF LOGGED IN USER (SLOW, BUT ACCURATE!) */
+
 
 function writeUserNameLive(elementID) {
     firebase.auth().onAuthStateChanged(function (user) {
