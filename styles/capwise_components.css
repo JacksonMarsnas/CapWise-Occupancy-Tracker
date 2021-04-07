@@ -212,7 +212,7 @@ textarea:focus {
     height: 70%;
     background-color: #EDEEF7;
     text-align: center;
-    padding: 1em 2em 1em 2em;
+    padding: 1em;
 }
 
 .modal {
