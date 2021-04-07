@@ -1,3 +1,5 @@
+
+
 section {
     display: flex;
     flex-direction: column;
@@ -14,6 +16,10 @@ table {
 
 th {
     width: 150px;
+}
+
+input {
+    margin-bottom: 1em;
 }
 
 .settings-div {

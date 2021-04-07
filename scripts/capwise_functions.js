@@ -56,7 +56,6 @@ function storageMaxOccupancy() {
                     // console.log(doc.data().name);
                     var store = doc.data().store; // point to the name, look for name in db collection doc
 
-                    console.log(store)
                     db.collection('stores').doc(store)
                         .get()
                         .then(function (doc) {
@@ -66,7 +65,7 @@ function storageMaxOccupancy() {
 
                 })
         }
-    })
+    });
 
 };
 

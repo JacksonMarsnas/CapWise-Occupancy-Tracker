@@ -129,7 +129,6 @@ button:active {
 
 .btn-outline-light:hover {
     background: linear-gradient(43deg, rgba(255, 241, 116, 1) 0%, rgba(255, 205, 90, 1) 27%, rgba(255, 172, 41, 1) 59%);
-    border: 1px solid #2B193D;
     color: #2B193D;
 }
 
@@ -219,4 +218,10 @@ textarea:focus {
 .modal {
     left: 2.5em;
     right: auto;
+}
+
+.toast {
+    border-radius: 10px;
+    background-color: #2B193D;
+    color: white;
 }
