@@ -172,7 +172,8 @@ function open_message_popup(button_id) {
 }
 
 // When the user clicks on <span> (x), close the modal and update any changes they made to DB
-span.onclick = function () {
+function close_modal() {
+    console.log("aaa")
     modal.style.display = "none";
     let new_message_to_add = document.getElementsByClassName('new_message');
     let original_message_count = new_message_to_add.length;
