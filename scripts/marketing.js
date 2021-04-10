@@ -30,23 +30,30 @@ window.onclick = function (event) {
 // ---------------------------------Filter Feature-----------------------------------
 
 
-//Show all widgets 
-filterSelection("all")
-function filterSelection(c) {
+/**
+ * Show all widget
+ * Parameter item: a string that represents a class name
+ * Return: None
+ */
+function filterSelection(item) {
     var x, i;
-    x = document.getElementsByClassName("promo-card");
-    if (c == "all") c = "";
+    x = document.getElementsByClassName("promo-card"); 
+    if (item == "all") item = "";
     // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
     for (i = 0; i < x.length; i++) {
         RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
+        if (x[i].className.indexOf(item) > -1) AddClass(x[i], "show");
     };
 };
+filterSelection("all")
 
 
-// Add class to widget class
-// Parameter element: index of desired class location
-// Paramater name: name of the newly added class
+/** 
+* Add class to widget class
+* Parameter element: index of desired class location
+* Paramater name: name of the newly added class
+* Return: None
+*/
 function AddClass(element, name) {
     var i, arr1, arr2;
     arr1 = element.className.split(" ");
@@ -59,9 +66,12 @@ function AddClass(element, name) {
 };
 
 
-// Remove class from widget
-// Paramater element: index of the class that needs to be removed
-// Paramter element: name of class to remove
+/**
+* Remove class from widget
+* Paramater element: index of the class that needs to be removed
+* Paramter element: name of class to remove
+* Return: None
+*/
 function RemoveClass(element, name) {
     var i, arr1, arr2;
     arr1 = element.className.split(" ");
@@ -106,7 +116,10 @@ document.getElementById('form-submit-button').addEventListener("click", function
 });
 
 
-// Push add new promotion form to firebase
+/**
+ * Push add new promotion form to firebase
+ * No parameters or return
+ */
 function submitForm() {
     //get collection
     var formRef = db.collection("promotions");
@@ -130,7 +143,10 @@ function submitForm() {
 };
 
 
-// Close form after submission
+/**
+ * Close form after submission
+ * No parameters or return
+ */
 function close_popup() {
     let popup = document.getElementById('myModal');
     popup.style.display = ('none');
@@ -140,9 +156,12 @@ function close_popup() {
 // ---------------------------------Add widget after form submission-----------------------------------
 
 
-// Get records from firebase (used for page load)
+/**
+ * Get records from firebse (used for page load)
+ * No parameters or return
+ */
 function widgetQuery() {
-    db.collection("promotions") //reads from collection
+    db.collection("promotions") //reads from collection "promotion"
         .get()
         .then(function (snap) {
             snap.forEach(function (doc) {
@@ -157,10 +176,12 @@ function widgetQuery() {
 };
 
 
-// Filter widget tabs based on date
-// Parameter start: promotion start date
-// Parameter end: promotion end date
-// Return: a string of either "future", "current" or "archive"
+/**
+* Filter widget tabs based on date
+* Parameter start: promotion start date
+* Parameter end: promotion end date
+* Return: a string of either "future", "current" or "archive"
+*/
 function filterDate(start, end) {
     let today = new Date().toISOString().slice(0, 10);
     let tag = "";
@@ -175,10 +196,12 @@ function filterDate(start, end) {
 };
 
 
-// Get daily count data
-// Parameter promoStart: promotion start date
-// Parameter promoEnd: promotion end date
-// Return: a string that states the traffic performance
+/**
+* Get daily count data
+* Parameter promoStart: promotion start date
+* Parameter promoEnd: promotion end date
+* Return: a string that states the traffic performance
+*/
 function getTrafficData(promoStart, promoEnd) {
     return db.collection("daily") //read colelction "daily"
         .get()
@@ -194,11 +217,11 @@ function getTrafficData(promoStart, promoEnd) {
             snap.forEach(function (doc) {
                 let dbDate = new Date(doc.get("date"));
 
-                if (pStart <= dbDate && dbDate <= pEnd) {
+                if (pStart <= dbDate && dbDate <= pEnd) { //if dates are within promotion start or end, push to list
                     listOfCount.push(parseInt(doc.get("end_total")))
                     numOfDay += 1
                 };
-                if (dayBefore.getDate() == dbDate.getDate()) {
+                if (dayBefore.getDate() == dbDate.getDate()) { //get count number for the date before promotion start
                     previousDayCount = parseInt(doc.get("end_total"))
                 };
             });
@@ -209,11 +232,13 @@ function getTrafficData(promoStart, promoEnd) {
 };
 
 
-// Calculate traffic performance
-// Parameter numOfDay: an integer that represents the number of days of the promotion
-// Parameter listOfCount: a list with elements that represent the daily count number
-// Parameter previousDayCount: an integer that represents the count for the day before promotion start date
-// Return: a string that states the traffic performance
+/**
+ * Calculate traffic performance
+ * Parameter numOfDay: an integer that represents the number of days of the promotion
+ * Parameter listOfCount: a list with elements that represent the daily count number
+ * Parameter previousDayCount: an integer that represents the count for the day before promotion start date
+ * Return: a string that states the traffic performance
+ */
 function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
     let sumOfDays = listOfCount.reduce((a, b) => a + b, 0);
     let countAve = sumOfDays / numOfDay;
@@ -229,9 +254,11 @@ function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
 }
 
 
-// Format date output
-// Parameter date: a date in ISO format
-// Return: date format in MONTH - DAY
+/** 
+ * Format date output
+ * Parameter date: a date in ISO format
+ * Return: date format in MONTH - DAY
+*/
 function format_date(date) {
     formatDate = new Date(date);
     var mmm = formatDate.getMonth();
@@ -255,11 +282,13 @@ function format_date(date) {
 }
 
 
-// Create widget
-// Parameter promoName: a string of the promotion name
-// Parameter promoDescription: a string of the promotion description
-// Parameter promoStart: a date of the promotion start
-// Parameter promoEnd: a date of the promotion end
+/**
+ * Create widget
+ * Parameter promoName: a string of the promotion name
+ * Parameter promoDescription: a string of the promotion description
+ * Parameter promoStart: a date of the promotion start
+ * Parameter promoEnd: a date of the promotion end
+*/
 function createWidget(promoName, promoDescription, promoStart, promoEnd) {
     getTrafficData(promoStart, promoEnd)
         .then(function (trafficText) {
@@ -308,8 +337,10 @@ function createWidget(promoName, promoDescription, promoStart, promoEnd) {
 widgetQuery();
 
 
-// Refresh page
-// Parameter time: interval between each refresh
+/*
+* Refresh page
+* Parameter time: interval between each refresh
+*/
 function refresh(time) {
     location.reload();
 };
