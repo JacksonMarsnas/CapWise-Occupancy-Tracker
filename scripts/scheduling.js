@@ -13,7 +13,10 @@ reset_modal_numbers();
 assign_button_number_and_id();
 dates_on_base_screen();
 
-// assigns each button and number on the first schedule screen to a date
+/**
+ * assigns each button and number on the first schedule screen to a date
+ * no input or return values
+ */
 function assign_button_number_and_id() {
     let arrow_buttons = document.getElementsByClassName('arrow_button');                            // gets all arrow buttons
     let h2_employee_numbers = document.querySelectorAll('h2');                                      // gets all numbers to the left of arrow buttons
@@ -27,7 +30,10 @@ function assign_button_number_and_id() {
     }
 }
 
-// puts dates into a 7 member array representing the coming week
+/**
+ * puts dates into a 7 member array representing the coming week
+ * @returns an array of dates representing the next week
+ */
 function current_date() {
     new_array = [];
     let loop_counter = 0;
@@ -38,7 +44,12 @@ function current_date() {
     return new_array;
 }
 
-// creates dates
+/**
+ * creates a date adjusted by 'counter', starting from the current day.
+ * for example, if 'counter' is 1, it would return tomorrow's date
+ * @param {int} counter - a counter to adjust the date by
+ * @returns a string representing a date
+ */
 function apply_dates(counter) {
     today = new Date();
     new_day = new Date(today);
@@ -65,7 +76,10 @@ function apply_dates(counter) {
     return (mmm + ', ' + dd);
 }
 
-// makes an array of weekdays
+/**
+ * makes an array of weekdays starting from today going for one week
+ * @returns array of strings representing the days of the week
+ */
 function make_weekday() {
     today = new Date();
     new_array = [];
@@ -90,7 +104,10 @@ function make_weekday() {
     return new_array;
 }
 
-// opens a new message field in the modal. Also creates a listener for the confirm button to send to DB
+/**
+ * opens a new message field in the modal. Also creates a listener for the confirm button to send to DB
+ * no params or return values
+ */
 function new_message_field() {
     if (is_message_present == false) {                                  // if the message field is not open, it executes the following code
         is_message_present = true;                                      // message field is now open, so they can't open another one
@@ -123,7 +140,10 @@ function new_message_field() {
     }
 }
 
-// applies correct dates and weekday names to base screen
+/**
+ * applies correct dates and weekday names to base screen
+ * no params or return values
+ */
 function dates_on_base_screen() {
     let date_array = current_date();                                    // makes an array of strings representing dates in the coming week
     let weekdays = make_weekday();                                      // makes an array of strings representing weekdays in the coming week
@@ -145,7 +165,10 @@ var btn = document.getElementsByClassName("arrow_button");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0]; // don't need?
 
-// When the user clicks a button, open the modal and get data from DB about that day
+/**
+ * open the modal and get data from DB about that day
+ * @param {string} button_id - a string of the id of the button they last pressed, which represents a date
+ */
 function open_message_popup(button_id) {
     modal.style.display = ("flex");                                             // brings modal to the front
     last_day_picked = button_id;                                                // the last day they picked is the id of the button they just pressed, since each button id is a date
@@ -177,7 +200,10 @@ function open_message_popup(button_id) {
     reset_modal_numbers();                                                          // resets the numbers on the modal every time it is opened
 }
 
-// When the user clicks on X button, close the modal and update any changes they made to DB
+/**
+ * close the modal and update any changes they made to DB
+ * no params or return values
+ */
 function close_modal() {
     modal.style.display = "none";                                               // hide the modal
     let new_message_to_add = document.getElementsByClassName('new_message');    // gets all notes
@@ -189,7 +215,6 @@ function close_modal() {
     update_schedule();                                                          // sends employee numbers to the database
 }
 
-// When the user clicks anywhere outside of the modal, close it and update any changes they made to DB
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";                                               // hide the modal
@@ -203,14 +228,20 @@ window.onclick = function (event) {
     }
 }
 
-// add to the number of employees in the modal
+/**
+ * add to the number of employees in the modal
+ * no params or return values
+ */
 function add_people() {
     let number_of_people = document.getElementById('number_of_staff');      // gets the element showing the number of people in the modal
     let new_number_of_people = parseInt(number_of_people.innerHTML) + 1;    // adds 1 to the number of people
     number_of_people.innerHTML = new_number_of_people;                      // writes new number of people
 }
 
-// subtract the number of employees in the modal
+/**
+ * subtract the number of employees in the modal
+ * no params or return values
+ */
 function subtract_people() {
     let number_of_people = document.getElementById('number_of_staff');          // gets element showing the number of people
     if (parseInt(number_of_people.innerHTML) > 0) {                             // can't go negative
@@ -219,7 +250,10 @@ function subtract_people() {
     }
 }
 
-// changes the number of employees in the DB to the number the user has picked
+/**
+ * changes the number of employees in the DB to the number the user has picked
+ * no params or return values
+ */
 function update_schedule() {
     let employees_today = document.getElementById('number_of_staff');   // gets element showing the number of people in the modal
     db.collection("employee_numbers").doc(last_day_picked).set({        // set the number of employees for the last day picked in the database to this number
@@ -229,7 +263,10 @@ function update_schedule() {
 
 }
 
-// changes employee numbers on the base schedule screen
+/**
+ * changes employee numbers on the base schedule screen
+ * no params or return values
+ */
 function change_employee_numbers() {
     let new_number = document.querySelectorAll("h2");                                           // gets all numbers of employees on the base screen
     let today = new Date();
@@ -252,7 +289,10 @@ function change_employee_numbers() {
     }
 }
 
-// changes the modal number to the correct day
+/**
+ * changes the modal number to the correct day
+ * no params or return values
+ */
 function reset_modal_numbers() {
     let employee_number = document.getElementById("number_of_staff");       // number of staff on the modal
     let docref = db.collection("employee_numbers").doc(last_day_picked)     // reference to the number of staff for the last day picked in the database
@@ -267,7 +307,10 @@ function reset_modal_numbers() {
     })
 }
 
-// sends user entered notes to the DB
+/**
+ * sends user entered notes to the DB
+ * no params or return values
+ */
 function send_notes_to_db() {
     let new_note = document.querySelector('textarea');  // reference to the textarea in the modal form
     db.collection("schedule_notes").add({               // saves the timestamp and the contents of the textarea
@@ -276,7 +319,10 @@ function send_notes_to_db() {
     })
 }
 
-// gets the employee numbers from the previous week
+/**
+ * gets the employee numbers from the previous week
+ * no params or return values
+ */
 function get_last_week_value() {
     let today = new Date();                                                                 // creates a new Date object
     let new_day = new Date(today);
