@@ -1,38 +1,37 @@
 // ---------------------------------Modal Feature-----------------------------------
-// Get modal
-// var modal = document.getElementById("myModal");
-var modal = document.getElementById("myModal"); //for new modal
+// Select modal for marketing's add promotion page
+var modal = document.getElementById("myModal");
 
-
-// Get button that opens the modal
+// Select button that opens the add promotion modal
 var btn = document.getElementById("add-button");
 
-// Get the <span> element that closes the modal
+// Get the <span> element that closes the add promotion modal
 var span = document.getElementsByClassName("close")[0];
-// var span = document.getElementById("btn-close"); //for new modal
 
-
-// When the user clicks on the button, open the modal
+// Open add promotion modal when user clicks on button
 btn.onclick = function () {
     modal.style.display = "block";
-}
+};
 
-// When the user clicks on <span> (x), close the modal
+// Close modal when user clicks on the close button
 span.onclick = function () {
     modal.style.display = "none";
-    document.forms['modal-form'].reset() //for new modal
-}
+    document.forms['modal-form'].reset();
+};
 
-// When the user clicks anywhere outside of the modal, close it
+// Close modale when user clicks anywhere outside of the modal
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
-        document.forms['modal-form'].reset() //for new moal
-    }
-}
+        document.forms['modal-form'].reset();
+    };
+};
 
 // ---------------------------------Filter Feature-----------------------------------
-filterSelection("all") // Execute the function and show all columns
+
+
+//Show all widgets 
+filterSelection("all")
 function filterSelection(c) {
     var x, i;
     x = document.getElementsByClassName("promo-card");
@@ -41,10 +40,13 @@ function filterSelection(c) {
     for (i = 0; i < x.length; i++) {
         RemoveClass(x[i], "show");
         if (x[i].className.indexOf(c) > -1) AddClass(x[i], "show");
-    }
-}
+    };
+};
 
-// Show filtered elements
+
+// Add class to widget class
+// Parameter element: index of desired class location
+// Paramater name: name of the newly added class
 function AddClass(element, name) {
     var i, arr1, arr2;
     arr1 = element.className.split(" ");
@@ -52,11 +54,14 @@ function AddClass(element, name) {
     for (i = 0; i < arr2.length; i++) {
         if (arr1.indexOf(arr2[i]) == -1) {
             element.className += " " + arr2[i];
-        }
-    }
-}
+        };
+    };
+};
 
-// Hide elements that are not selected
+
+// Remove class from widget
+// Paramater element: index of the class that needs to be removed
+// Paramter element: name of class to remove
 function RemoveClass(element, name) {
     var i, arr1, arr2;
     arr1 = element.className.split(" ");
@@ -64,12 +69,13 @@ function RemoveClass(element, name) {
     for (i = 0; i < arr2.length; i++) {
         while (arr1.indexOf(arr2[i]) > -1) {
             arr1.splice(arr1.indexOf(arr2[i]), 1);
-        }
-    }
+        };
+    };
     element.className = arr1.join(" ");
-}
+};
 
-// Add active class to the current button (highlight it)
+
+// Add show to the current button (highlight it)
 var btnContainer = document.getElementById("myBtnContainer");
 var btns = btnContainer.getElementsByClassName("filter-btn");
 for (var i = 0; i < btns.length; i++) {
@@ -79,30 +85,36 @@ for (var i = 0; i < btns.length; i++) {
         current[0].className = current[0].className.replace(" show", "");
         this.className += " show";
     });
-}
+};
+
 
 // ---------------------------------Firebase Codes-----------------------------------
 
-//function to get form value
+
+// Get form value
+// Parameter id: id of the html element
 function getInputVal(id) {
     return document.getElementById(id).value;
-}
+};
 
-//function to listen submit button
+
+// Listen to the submit button
 document.getElementById('form-submit-button').addEventListener("click", function (event) {
     event.preventDefault();
     submitForm();
     close_popup();
 });
 
-//push form to firebase
+
+// Push add new promotion form to firebase
 function submitForm() {
-    var formRef = db.collection("promotions")
+    //get collection
+    var formRef = db.collection("promotions");
     //get values
-    var promoName = getInputVal('promo-name')
-    var promoDescription = getInputVal('promo-description')
-    var startDate = getInputVal('promo-date-start')
-    var endDate = getInputVal('promo-date-end')
+    var promoName = getInputVal('promo-name');
+    var promoDescription = getInputVal('promo-description');
+    var startDate = getInputVal('promo-date-start');
+    var endDate = getInputVal('promo-date-end');
     //add to db
     formRef.add({
         timestamp: Date(),
@@ -112,22 +124,25 @@ function submitForm() {
         end: endDate
     })
         .then(function (docRef) {
-            //create new widget, faster result
+            //create new widget, this gives faster result
             createWidget(promoName, promoDescription, startDate, endDate);
         });
 };
 
-//function close popup
+
+// Close form after submission
 function close_popup() {
-    let popup = document.getElementById('myModal')
-    popup.style.display = ('none')
-}
+    let popup = document.getElementById('myModal');
+    popup.style.display = ('none');
+};
+
 
 // ---------------------------------Add widget after form submission-----------------------------------
 
-//Get records from firebase (use for page load)
+
+// Get records from firebase (used for page load)
 function widgetQuery() {
-    db.collection("promotions")
+    db.collection("promotions") //reads from collection
         .get()
         .then(function (snap) {
             snap.forEach(function (doc) {
@@ -139,18 +154,16 @@ function widgetQuery() {
                 createWidget(promoName, promoDescription, promoStart, promoEnd);
             });
         })
-}
+};
 
-const dateReformat = new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-});
 
-//Filter tabs based on dates
+// Filter widget tabs based on date
+// Parameter start: promotion start date
+// Parameter end: promotion end date
+// Return: a string of either "future", "current" or "archive"
 function filterDate(start, end) {
-    let today = new Date().toISOString().slice(0, 10)
-    let tag = ""
+    let today = new Date().toISOString().slice(0, 10);
+    let tag = "";
     if (start > today && end > today) {
         tag = "future"
     } else if (start < today && end < today) {
@@ -159,56 +172,52 @@ function filterDate(start, end) {
         tag = "current"
     }
     return tag
-}
+};
 
-//get date count data
+
+// Get daily count data
+// Parameter promoStart: promotion start date
+// Parameter promoEnd: promotion end date
+// Return: a string that states the traffic performance
 function getTrafficData(promoStart, promoEnd) {
-    return db.collection("daily")
+    return db.collection("daily") //read colelction "daily"
         .get()
         .then(function (snap) {
-            let listOfCount = []
-            let numOfDay = 0
-            let pStart = new Date(promoStart)
-            let pEnd = new Date(promoEnd)
-            let dayBefore = new Date(pStart) // clone from pStart
-            dayBefore.setDate(dayBefore.getDate() - 1) // minus one day
+            let listOfCount = [];
+            let numOfDay = 0;
+            let pStart = new Date(promoStart);
+            let pEnd = new Date(promoEnd);
+            let dayBefore = new Date(pStart); // clone from pStart
+            dayBefore.setDate(dayBefore.getDate() - 1); // minus one day
             let previousDayCount = 0;
 
-
             snap.forEach(function (doc) {
-                let dbDate = new Date(doc.get("date"))
-
+                let dbDate = new Date(doc.get("date"));
 
                 if (pStart <= dbDate && dbDate <= pEnd) {
                     listOfCount.push(parseInt(doc.get("end_total")))
                     numOfDay += 1
-                }
+                };
                 if (dayBefore.getDate() == dbDate.getDate()) {
                     previousDayCount = parseInt(doc.get("end_total"))
-                }
+                };
             });
-
             console.log(`list of count ${listOfCount} ${typeof (listOfCount)}, previousDC ${previousDayCount}, number of days ${numOfDay}`)
-            let trafficStr = trafficCalculation(numOfDay, listOfCount, previousDayCount)
-
-            console.log(`this is the return of getTrafficData ${trafficStr}`)
-            console.log(trafficStr)
+            let trafficStr = trafficCalculation(numOfDay, listOfCount, previousDayCount);
             return trafficStr
         })
-    // return trafficStr
-}
+};
 
-//             console.log(`this is the return of getTrafficData ${trafficStr}`)
-//             console.log(trafficStr)
-//             return trafficStr
-//         })
-// }
 
+// Calculate traffic performance
+// Parameter numOfDay: an integer that represents the number of days of the promotion
+// Parameter listOfCount: a list with elements that represent the daily count number
+// Parameter previousDayCount: an integer that represents the count for the day before promotion start date
+// Return: a string that states the traffic performance
 function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
-    console.log(listOfCount)
-    let sumOfDays = listOfCount.reduce((a, b) => a + b, 0)
-    let countAve = sumOfDays / numOfDay
-    let result = countAve / previousDayCount
+    let sumOfDays = listOfCount.reduce((a, b) => a + b, 0);
+    let countAve = sumOfDays / numOfDay;
+    let result = countAve / previousDayCount;
     console.log(`sumOfDays ${sumOfDays}, countAve ${countAve}, result ${result}`)
     if (result >= 1) {
         return `Traffic +${parseInt(result) * 100}%`;
@@ -219,6 +228,10 @@ function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
     }
 }
 
+
+// Format date output
+// Parameter date: a date in ISO format
+// Return: date format in MONTH - DAY
 function format_date(date) {
     formatDate = new Date(date);
     var mmm = formatDate.getMonth();
@@ -241,25 +254,31 @@ function format_date(date) {
     return (mmm + '-' + dd)
 }
 
-function createWidget(promoName, promoDescription, promoStart, promoEnd) {    
+
+// Create widget
+// Parameter promoName: a string of the promotion name
+// Parameter promoDescription: a string of the promotion description
+// Parameter promoStart: a date of the promotion start
+// Parameter promoEnd: a date of the promotion end
+function createWidget(promoName, promoDescription, promoStart, promoEnd) {
     getTrafficData(promoStart, promoEnd)
         .then(function (trafficText) {
             //create new div
             let newDiv = document.createElement("div");
             newDiv.setAttribute("class", `promo-card show ${filterDate(promoStart, promoEnd)}`);
 
-            //create new elements for new promotion name
+            //create new element for new promotion name
             promoNameTextNode = document.createTextNode(promoName);
             promoNamePara = document.createElement("div");
             promoNamePara.setAttribute("class", "promo-title");
             promoNamePara.appendChild(promoNameTextNode);
 
-            //create new elements for new promotion description
+            //create new element for new promotion description
             promoDescriptionTextNode = document.createTextNode(promoDescription);
             promoDescriptionPara = document.createElement("div");
             promoDescriptionPara.appendChild(promoDescriptionTextNode);
 
-            //create new elements for dates
+            //create new element for dates
             promoStartTextNode = document.createTextNode(format_date(promoStart) + " to ");
             promoStartDateSpan = document.createElement("span");
             promoStartDateSpan.appendChild(promoStartTextNode);
@@ -267,10 +286,9 @@ function createWidget(promoName, promoDescription, promoStart, promoEnd) {
             promoEndDateSpan = document.createElement("span");
             promoEndDateSpan.appendChild(promoEndTestNode);
 
-            //create new elements for traffic...need to include traffic calculation
+            //create new element for traffic
             console.log(`this is trafficText ${trafficText}`)
             console.log(`promoStart ${promoStart} promoEnd ${promoEnd}`)
-
             trafficTextNode = document.createTextNode(trafficText); //call get traffic data
             trafficLine = document.createElement("div");
             trafficLine.appendChild(trafficTextNode);
@@ -286,11 +304,12 @@ function createWidget(promoName, promoDescription, promoStart, promoEnd) {
             //append aside into new div
             $('#perf').append(newDiv)
         })
-}
+};
 widgetQuery();
 
-//refresh page
+
+// Refresh page
+// Parameter time: interval between each refresh
 function refresh(time) {
     location.reload();
-    // setTimeout(location.reload.bind(location), 3000)
-}
+};
