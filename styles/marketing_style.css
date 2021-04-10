@@ -8,19 +8,6 @@ body {
   margin: auto;
 }
 
-/* .filter-button {
-    color: black;
-    background-color: #e4fbff;
-    border: 1px solid #b8b5ff;
-    border-radius: 10px;    
-    width: 80px;
-    height: 35px;
-}
-
-.filter-button:hover {
-    background-color: lavender;
-} */
-
 .filter-button-container {
   display: flex;
   justify-content: center;
@@ -47,7 +34,6 @@ body {
   box-shadow: -2px 2px 5px #8d8d9c8c;
   border-radius: 20px;
   background: linear-gradient(43deg, rgba(120, 104, 230, 1) 48%, rgba(70, 139, 255, 1) 100%);
-
   animation: fadeInAnimation ease 1.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -86,33 +72,23 @@ body {
 
 .modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Sit on top */
   left: 0;
   top: 0;
   width: 100%;
-  /* Full width */
   height: 100%;
-  /* Full height */
   overflow: auto;
-  /* Enable scroll if needed */
   background-color: #262e2e81;
-  /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
 .modal-content {
   background-color: #edeef7;
   margin: 15% auto;
-  /* 15% from the top and centered */
   padding: 30px;
   border: 1px solid #888;
   border-radius: 10px;
   width: 80%;
-  /* Could be more or less, depending on screen size */
 }
 
 #add-new-header {
@@ -138,7 +114,6 @@ body {
   margin: auto 20px;
 }
 
-/* The Close Button */
 .close {
   color: white;
   float: right;
@@ -152,12 +127,10 @@ body {
   cursor: pointer;
 }
 
-/* For Filtering */
 .show {
   display: block;
 }
 
-/* Style the buttons */
 .filter-btn {
   border: none;
   border-radius: 10px;
@@ -167,12 +140,10 @@ body {
   height: 40px;
 }
 
-/* Add a grey background color on mouse-over */
 .filter-btn:hover {
   background-color: #ddd;
 }
 
-/* Add a dark background color to the active button */
 .filter-btn.show {
   background-color: #7868e6;
   color: white;
@@ -185,4 +156,3 @@ body {
     margin: 2em auto;
   }
 }
-
