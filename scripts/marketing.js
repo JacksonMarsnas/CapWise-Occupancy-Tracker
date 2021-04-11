@@ -153,18 +153,6 @@ function close_popup() {
     modal.style.display = "none";
 };
 
-// function close_popup() {
-//     let popup = document.getElementById('addPromoModal');
-//     popup.style.display = ('none');
-// };
-
-// Close modale when user clicks anywhere outside of the modal
-// window.onclick = function (event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//         document.forms['modal-form'].reset();
-//     };
-// };
 
 // ---------------------------------Add widget after form submission-----------------------------------
 
