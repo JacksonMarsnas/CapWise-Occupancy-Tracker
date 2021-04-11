@@ -102,11 +102,6 @@ function writeMessages() {
 
 document.getElementById('confirm-end-btn').addEventListener("click", function () {
     writeDailyCount();
-
-    sessionStorage.clear()
-    setTimeout(location.reload.bind(location), 10000)
-
-    toasty('toasty-save')
 });
 
 
@@ -116,6 +111,11 @@ function writeDailyCount() {
     dailyCountRef.add({
         date: current_date(),
         end_total: sessionStorage.total
+    })
+    .then(function(){
+        toasty('toasty-save');
+        sessionStorage.setItem('stored_count', 0);
+        setTimeout("location.href = './counter.html'",500);
     });
 };
 

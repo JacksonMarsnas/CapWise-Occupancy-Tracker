@@ -158,9 +158,13 @@ textarea {
 /* Toast */
 
 .toast {
-    position: relative;
+    position: absolute;
     margin: 20px auto;
     border-radius: 10px;
     background-color: #2B193D;
     color: white;
+}
+
+#toasty-save {
+    z-index: 10;
 }

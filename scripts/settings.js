@@ -8,10 +8,12 @@ input_storeNameValue();
 input_occupancyValue();
 input_NameValue();
 
+/* LOG-OUT USER */
+
 document.getElementById('confirm-logout-btn').addEventListener("click", function (event) {
     firebase.auth().signOut().then(() => {
-        sessionStorage.clear();
-        window.location.assign("index.html");
+        sessionStorage.clear();         // Clear sessionStorage for next user log-in in session.
+        window.location.assign("index.html");  // Return to application index page.
     }).catch((error) => {
         console.log(error);
     });

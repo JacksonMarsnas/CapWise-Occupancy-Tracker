@@ -7,7 +7,8 @@ body {
 }
 
 p {
-    margin: 1em;
+    margin: 2em;
+    font-size: 18px;
 }
 
 img {
@@ -19,7 +20,7 @@ img {
 }
 
 section {
-    margin: 5em 2em;
+    margin: 4em 2em;
 }
 
 .hero-image {
@@ -76,7 +77,8 @@ section {
 }
 
 .feature-container {
-    padding: 1em;
+    background-color: #FFFFFF;
+    padding: 0.5em;
     display: flex;
     margin: 1em auto;
     flex-direction: column;
@@ -101,12 +103,11 @@ section {
         width: 30em;
         height: 30em;
         margin: 2em;
-        padding: 1em;
+        padding: 0.5em;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border: 1px solid #7868E6;
         border-radius: 40px
     }
 
