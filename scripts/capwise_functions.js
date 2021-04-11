@@ -41,6 +41,22 @@ function current_date() {
 
 }
 
+function current_time() {
+    var hh = today.getHours()
+    var mm = today.getMinutes()
+
+    if (mm < 10) {
+        mm = "0" + mm
+    }
+
+    if (hh >= 12) {
+        hh = hh % 12
+        return (hh + ":" + mm + "pm")
+    } else {
+        return (hh + ":" + mm + "am")
+    }
+}
+
 
 /* SESSION STORAGE */
 

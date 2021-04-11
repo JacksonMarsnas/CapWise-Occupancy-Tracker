@@ -83,11 +83,15 @@ document.getElementById('send-btn').addEventListener("click", function () {
 
 
 function writeMessages() {
-    var messagesRef = db.collection("messages")
+    let storeID = sessionStorage.getItem('storeID')
+    let current_user = sessionStorage.getItem('name')
+    var messagesRef = db.collection('stores').doc(storeID).collection("messages")
 
     messagesRef.add({
-            timestamp: Date(),
+            date: today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate(),
+            time: current_time(),
             recipients: document.getElementById('recipient').value,
+            sender: current_user,
             message: document.getElementById('notify-message').value
         }).then(function () {
             toasty('toasty-success');
