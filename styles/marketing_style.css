@@ -37,7 +37,7 @@ h3 {
   color: #FFFFFF;
   border-radius: 5px;
   display: none;
-  /* box-shadow: -2px 2px 5px #8d8d9c8c; */
+  box-shadow: -2px 2px 5px #8d8d9c8c;
   border-radius: 20px;
   background: linear-gradient(43deg, rgba(120, 104, 230, 1) 48%, rgba(70, 139, 255, 1) 100%);
   animation: fadeInAnimation ease 1.5s;
