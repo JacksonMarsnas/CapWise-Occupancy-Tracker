@@ -78,6 +78,9 @@
     <!-- Add new promo button -->
     <div>
         <button id="add-button">+</button>
+
+        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addPromoModal">End
+            Shift</button>
     </div>
     <br>
 
@@ -91,23 +94,62 @@
                 </div>
                 <div class="modal-body">
                     <form id="modal-form">
-                        <br>
+                        <h3>Promotion Name</h3>
                         <input class="form-content" name="promo-name" id="promo-name" placeholder="Enter Promotion Name"
                             type="text">
-                        <br><br>
+
+                        <h3>Promotion Details</h3>
                         <textarea class="form-content" name="promo-description" id="promo-description"
                             placeholder="Description" cols="30" rows="3"></textarea>
-                        <br><br>
-                        <b class="form-content">From</b>
+
+                        <h3>From</h3>
                         <input class="form-content" name="promo-date-start" id="promo-date-start" placeholder="From"
                             type="date">
-                        <br><br>
-                        <b class="form-content">To</b>
+
+                        <h3>To</h3>
                         <input class="form-content" name="promo-date-end" id="promo-date-end" type="date">
-                        <br><br>
+
+                    </form>
+                    <div class="modal-footer">
                         <button id="form-submit-button" type="submit"><img id="submit-button-img"
                                 src="./images/icons/check-circle.svg" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Sally's Add Promo Modal-->
+    <div class="modal fade " id="addPromoModal" tabindex="-1" aria-labelledby="addPromoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPromoModalLabel">Add a New Promotion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="modal-form">
+
+                        <h3>Promotion Name</h3>
+                        <input class="form-content" name="promo-name" id="promo-name" placeholder="Enter Promotion Name"
+                            type="text">
+
+                        <h3>Promotion Details</h3>
+                        <textarea class="form-content" name="promo-description" id="promo-description"
+                            placeholder="Description" cols="30" rows="3"></textarea>
+
+                        <h3>From</h3>
+                        <input class="form-content" name="promo-date-start" id="promo-date-start" placeholder="From"
+                            type="date">
+
+                        <h3>To</h3>
+                        <input class="form-content" name="promo-date-end" id="promo-date-end" type="date">
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button id="send-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
                 </div>
             </div>
         </div>
@@ -155,7 +197,7 @@
     <!----------------------------------------------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-        </script>
+    </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
