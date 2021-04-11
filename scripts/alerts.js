@@ -1,3 +1,5 @@
+write_date('date-field');
+
 function create_close_btn(docID) {
 
     let storeID = sessionStorage.getItem('storeID');
@@ -26,7 +28,7 @@ function create_close_btn(docID) {
 function write_card(alert_msg, recipient, sender, time, docID) {
 
     let alert_card = document.createElement('div');
-    alert_card.setAttribute("class", "card border-light mb-3");
+    alert_card.setAttribute("class", "card border-light mb-3 fade-1");
 
 
     // Create body of the card
