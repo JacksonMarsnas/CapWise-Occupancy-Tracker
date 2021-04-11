@@ -27,7 +27,6 @@ body {
 .promo-card {
   padding: 1em;
   margin: 2em;
-  /* height: 160px; */
   color: #FFFFFF;
   border-radius: 5px;
   display: none;
@@ -40,7 +39,6 @@ body {
 }
 
 .promo-info {
-  /* float: left; */
   margin-left: 20px;
 }
 
@@ -136,8 +134,8 @@ body {
   border-radius: 10px;
   outline: none;
   background-color: white;
-  width: 80px;
-  height: 40px;
+  width: 70px;
+  height: 35px;
 }
 
 .filter-btn:hover {
