@@ -1,54 +1,68 @@
+// Write today's date.
 write_date('date-field');
 
+// Find and display the messages for today on the page.
+find_msgs_today();
+
+
+/**Create the close button for an alert, including an event listener to delete the closed document
+ * 
+ * @param {*} docID - a string, the document ID of the current document being read to make the alert
+ * @returns - an element, the close button for an alert that will delete the alert from page and from firestore
+ */
 function create_close_btn(docID) {
 
-    let storeID = sessionStorage.getItem('storeID');
+    let storeID = sessionStorage.getItem('storeID');    // get the store ID of the current user
 
-    let close_btn = document.createElement('button');
-    close_btn.setAttribute('type', 'button');
+    let close_btn = document.createElement('button');   // create the close button element
+    close_btn.setAttribute('type', 'button');           
     close_btn.setAttribute('class', 'btn-close');
 
-    close_btn.addEventListener('click', function () {
+    close_btn.addEventListener('click', function () {   // add an event listener to the close button on click
 
-        db.collection('stores').doc(storeID).collection('messages').doc(docID)
-            .delete()
+        db.collection('stores').doc(storeID).collection('messages').doc(docID) // search for the specific message's document using docID
+            .delete()                                                          // delete the document
             .then(function(){
-                console.log('Delete from db successful.')
-                close_btn.parentNode.parentNode.remove();
+                console.log('Delete from db successful.')                      
+                close_btn.parentNode.parentNode.remove();                      // if successful, delete the alert div from the page
             }).catch(function(err){
                 console.log('Delete unsuccessful', err)
             })
-
-
     })
 
     return close_btn
 }
 
-function write_card(alert_msg, recipient, sender, time, docID) {
 
-    let alert_card = document.createElement('div');
-    alert_card.setAttribute("class", "card border-light mb-3 fade-1");
+/**Create the message card for a given message.
+ * 
+ * @param {*} alert_msg - a string, the message content itself
+ * @param {*} recipient - a string, the recipient of the message
+ * @param {*} sender - a string, the sender who submitted the message
+ * @param {*} time - a string, the time at which the message was submitted
+ * @param {*} docID - a string, the document ID of the current message as found in Firestore
+ * @returns - an element, the complete message card
+ */
+function create_msg_card(alert_msg, recipient, sender, time, docID) {
 
+    // Create the message card div
+    let msg_card = document.createElement('div');
+    msg_card.setAttribute("class", "card border-light mb-3 fade-1");
 
     // Create body of the card
     let card_body = document.createElement('div');
     card_body.setAttribute('class', 'card-body');
 
-    // Create card title
-    let card_title = document.createElement('h5');
+    let card_title = document.createElement('h5');       // Create card title
     card_title.textContent = "To: " + recipient;
 
-    // Create close button
-    let close_btn = create_close_btn(docID);
+    let close_btn = create_close_btn(docID);             // Create close button
 
-    // Create content of card with message
-    let alert_message = document.createElement('p');
+    let alert_message = document.createElement('p');     // Create content of card with message
     alert_message.setAttribute('class', 'card-text');
     alert_message.textContent = alert_msg;
 
-
-    card_body.appendChild(card_title);
+    card_body.appendChild(card_title);                  // Append card title, close button, and message content into card body
     card_body.appendChild(close_btn);
     card_body.appendChild(alert_message);
 
@@ -56,18 +70,22 @@ function write_card(alert_msg, recipient, sender, time, docID) {
     let footer = document.createElement('div');
     footer.setAttribute('class', 'card-footer');
 
-    let footer_text = document.createElement('small');
+    let footer_text = document.createElement('small');  // Create the small footer text
     footer_text.textContent = "Sent from " + sender + " at " + time
-    footer.appendChild(footer_text)
+
+    footer.appendChild(footer_text)                     // Append the small footer text to the footer
+
 
     // Append the card-body and card-footer to the card div
-    alert_card.appendChild(card_body);
-    alert_card.appendChild(footer);
+    msg_card.appendChild(card_body);
+    msg_card.appendChild(footer);
 
-    return alert_card
+    return msg_card
 }
 
-
+/**Publish the messages for today
+ * 
+ */
 function find_msgs_today() {
     let today = new Date()
     let date_today = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
@@ -83,11 +101,10 @@ function find_msgs_today() {
                 var sender = doc.data().sender;
                 var time = doc.data().time;
 
-                let alert_card = write_card(alert_msg, recipient, sender, time, doc.id);
+                let alert_card = create_msg_card(alert_msg, recipient, sender, time, doc.id);
 
                 $('#alerts-sec').append(alert_card);
             })
         })
 }
 
-find_msgs_today();
