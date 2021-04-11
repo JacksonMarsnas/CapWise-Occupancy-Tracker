@@ -245,9 +245,9 @@ function trafficCalculation(numOfDay, listOfCount, previousDayCount) {
     let result = countAve / previousDayCount;
     console.log(`sumOfDays ${sumOfDays}, countAve ${countAve}, result ${result}`)
     if (result >= 1) {
-        return `Traffic +${parseInt(result) * 100}%`;
+        return `Traffic +${result.toFixed(2) * 100}%`;
     } else if (result < 1) {
-        return `Traffic -${parseInt(result) * 100}%`;
+        return `Traffic -${result.toFixed(2) * 100}%`;
     } else {
         return `No traffic data yet`
     }
