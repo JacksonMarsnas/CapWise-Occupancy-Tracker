@@ -212,3 +212,8 @@ h2 {
     margin-left:10px;
     display:inline;
 }
+
+button:active {
+    background-color: #7EA09C;
+    box-shadow: none;
+}
