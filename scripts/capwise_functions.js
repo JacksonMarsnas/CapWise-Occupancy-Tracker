@@ -41,6 +41,11 @@ function current_date() {
 
 }
 
+function write_date(elementID){
+    let element = document.getElementById(elementID)
+    element.textContent = current_date()
+}
+
 function current_time() {
     var hh = today.getHours()
     var mm = today.getMinutes()

@@ -5,8 +5,7 @@ writeMaxOccupancy('#max-number');
 
 /* get current day */
 
-let date_field = document.getElementById('date-field')
-date_field.textContent = current_date()
+write_date('date-field');
 
 /* modify-bg */
 
