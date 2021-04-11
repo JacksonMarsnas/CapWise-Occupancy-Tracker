@@ -1,16 +1,29 @@
-function create_close_btn () {
+function create_close_btn(docID) {
+
+    let storeID = sessionStorage.getItem('storeID');
+
     let close_btn = document.createElement('button');
     close_btn.setAttribute('type', 'button');
     close_btn.setAttribute('class', 'btn-close');
 
-    close_btn.addEventListener('click', function(){
-        close_btn.parentNode.parentNode.remove();
+    close_btn.addEventListener('click', function () {
+
+        db.collection('stores').doc(storeID).collection('messages').doc(docID)
+            .delete()
+            .then(function(){
+                console.log('Delete from db successful.')
+                close_btn.parentNode.parentNode.remove();
+            }).catch(function(err){
+                console.log('Delete unsuccessful', err)
+            })
+
+
     })
 
     return close_btn
 }
 
-function write_card(alert_msg, recipient, sender, time) {
+function write_card(alert_msg, recipient, sender, time, docID) {
 
     let alert_card = document.createElement('div');
     alert_card.setAttribute("class", "card border-light mb-3");
@@ -25,7 +38,7 @@ function write_card(alert_msg, recipient, sender, time) {
     card_title.textContent = "To: " + recipient;
 
     // Create close button
-    let close_btn = create_close_btn();
+    let close_btn = create_close_btn(docID);
 
     // Create content of card with message
     let alert_message = document.createElement('p');
@@ -69,7 +82,7 @@ function find_msgs_today() {
                 var sender = doc.data().sender;
                 var time = doc.data().time;
 
-                let alert_card = write_card(alert_msg, recipient, sender, time);
+                let alert_card = write_card(alert_msg, recipient, sender, time, doc.id);
 
                 $('#alerts-sec').append(alert_card);
             })
