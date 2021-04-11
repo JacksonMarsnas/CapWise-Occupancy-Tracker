@@ -35,11 +35,7 @@ window.onclick = function (event) {
     };
 };
 
-document.getElementById('form-submit-button').addEventListener("click", function () {
 
-    document.getElementById('addPromoModal').reset()
-
-});
 
 // ---------------------------------Filter Feature-----------------------------------
 
@@ -162,13 +158,8 @@ function submitForm() {
  * No parameters or return
  */
 function close_popup() {
-<<<<<<< HEAD
-    let popup = document.getElementById('addPromoModal');
-    modal.style.display = "none";
-=======
     let popup = document.getElementById('myModal');
-    popup.style.display = ('none');
->>>>>>> parent of 35177d1... modify promo modal
+    modal.style.display = "none";
 };
 
 // function close_popup() {
