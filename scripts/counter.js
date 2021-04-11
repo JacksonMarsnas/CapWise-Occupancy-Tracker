@@ -115,6 +115,7 @@ function writeDailyCount() {
     .then(function(){
         toasty('toasty-save');
         sessionStorage.setItem('stored_count', 0);
+        sessionStorage.setItem('total', 0);
         setTimeout("location.href = './counter.html'",500);
     });
 };
