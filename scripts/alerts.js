@@ -57,7 +57,6 @@ function write_card(alert_msg, recipient, sender, time, docID) {
     footer.setAttribute('class', 'card-footer');
 
     let footer_text = document.createElement('small');
-    footer_text.setAttribute('class', 'text-muted');
     footer_text.textContent = "Sent from " + sender + " at " + time
     footer.appendChild(footer_text)
 

@@ -30,8 +30,14 @@ section {
 
 .card {
     width: 90vw;
-    border-radius: 20px;
+
     box-shadow: -1px 1px 10px #9292a363;
+}
+
+.card-footer {
+    color: white;
+    background: linear-gradient(43deg, rgba(70, 139, 255, 1) 36%, rgba(120, 104, 230, 1) 94%);
+
 }
 
 
