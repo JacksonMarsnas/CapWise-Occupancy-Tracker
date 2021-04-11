@@ -77,15 +77,17 @@
 
     <!-- Add new promo button -->
     <div>
-        <button id="add-button">+</button>
+        <!-- <button id="add-button">+</button> -->
+        <button id="add-button" lass="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addPromoModal">+</button>
 
-        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addPromoModal">End
-            Shift</button>
+
+        <!-- <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addPromoModal">End
+            Shift</button> -->
     </div>
     <br>
 
     <!-- The Add Promo Modal -->
-    <div class="modal" id="myModal" tabindex="-1">
+    <!-- <div class="modal" id="myModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -117,16 +119,17 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
-    <!--Sally's Add Promo Modal-->
+    <!-- Sally's Add Promo Modal-->
     <div class="modal fade " id="addPromoModal" tabindex="-1" aria-labelledby="addPromoModalLabel" aria-hidden="true">
+
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addPromoModalLabel">Add a New Promotion</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="modal-form">
@@ -148,7 +151,11 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="form-submit-button" type="submit"></button>
+                    <!-- <button id="form-submit-button" type="submit"><img id="submit-button-img"
+                            src="./images/icons/check-circle.svg" alt=""></button> -->
+                    <button id="form-submit-button" type="submit"><img id="submit-button-img" alt=""></button>
+                <!-- <div class="modal-footer">
+                    <button id="form-submit-button" type="submit"></button> -->
                 </div>
             </div>
         </div>

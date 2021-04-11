@@ -1,6 +1,6 @@
 // ---------------------------------Modal Feature-----------------------------------
 // Select modal for marketing's add promotion page
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("addPromoModal");
 
 // Select button that opens the add promotion modal
 var btn = document.getElementById("add-button");
@@ -148,7 +148,7 @@ function submitForm() {
  * No parameters or return
  */
 function close_popup() {
-    let popup = document.getElementById('myModal');
+    let popup = document.getElementById('addPromoModal');
     popup.style.display = ('none');
 };
 
