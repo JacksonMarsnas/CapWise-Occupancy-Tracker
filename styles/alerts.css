@@ -1,0 +1,46 @@
+h5 {
+    display: inline;
+}
+
+.card-text {
+    margin: 1em;
+}
+
+.btn-close {
+    float: right;
+}
+
+section {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alerts-div {
+    padding: 1em;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFF;
+    box-shadow: -1px 1px 10px #9292a363;
+    border-radius: 20px;
+}
+
+.card {
+    width: 90vw;
+    border-radius: 20px;
+    box-shadow: -1px 1px 10px #9292a363;
+}
+
+
+
+
+@media screen and (min-width: 575px) {
+    .card {
+        width: 600px;
+        margin: 2em auto;
+    }
+    
+}
