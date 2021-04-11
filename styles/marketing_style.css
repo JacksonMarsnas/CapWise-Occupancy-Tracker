@@ -84,7 +84,7 @@ input {
   position: fixed;
   left: 0;
   top: 0;
-  overflow: auto;
+  height: 100vh;
 }
 
 .modal-content {
@@ -110,10 +110,13 @@ input {
   margin: auto;
   border-radius: 50%;
   padding-top: 10px;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-color: #b8b5ff;
+  background-image: url(../images/icons/check-circle.svg);
+  background-size: cover;
 }
+
 
 #form-submit-button:hover {
   background-color: #7868e6;
