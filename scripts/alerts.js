@@ -21,7 +21,7 @@ function create_close_btn(docID) {
     close_btn.addEventListener('click', function () {   // add an event listener to the close button on click
 
         db.collection('stores').doc(storeID).collection('messages').doc(docID) // search for the specific message's document using docID
-            .delete()                                                          // delete the document
+            .delete()                                                          // DELETE the document from Firestore
             .then(function(){
                 console.log('Delete from db successful.')                      
                 close_btn.parentNode.parentNode.remove();                      // if successful, delete the alert div from the page
@@ -83,27 +83,27 @@ function create_msg_card(alert_msg, recipient, sender, time, docID) {
     return msg_card
 }
 
-/**Publish the messages for today
- * 
+/**Publish the messages for todaythat are found in Firestore for a given user's store.
+ * No return.
  */
 function find_msgs_today() {
-    let today = new Date()
-    let date_today = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
-    let storeID = sessionStorage.getItem('storeID');
+    let today = new Date()                                                                 // Define today to store today's Date
+    let date_today = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate(); // From today, get the date (yyyy-mm-dd)
+    let storeID = sessionStorage.getItem('storeID');                                       // Retrieve the user's storeID from sessionStorage
 
-    db.collection('stores').doc(storeID).collection('messages')
-        .where('date', '==', date_today)
-        .get()
+    db.collection('stores').doc(storeID).collection('messages')    // In the stores collection, search the user's store and messsages for the store
+        .where('date', '==', date_today)        // QUERY the messages collection for messages that have the same date as today
+        .get()                                  // Get all the message documents that fit the query
         .then(function (snap) {
-            snap.forEach(function (doc) {
-                var alert_msg = doc.data().message;
-                var recipient = doc.data().recipients;
-                var sender = doc.data().sender;
-                var time = doc.data().time;
+            snap.forEach(function (doc) {       // For each document found,
+                var alert_msg = doc.data().message;     // Assign the message value to alert_msg
+                var recipient = doc.data().recipients;  // Assign the recipients value to recipient
+                var sender = doc.data().sender;         // Assign the sender value to sender
+                var time = doc.data().time;             // Assign the time value to time (the time at which the message was sent)
 
-                let alert_card = create_msg_card(alert_msg, recipient, sender, time, doc.id);
+                let alert_card = create_msg_card(alert_msg, recipient, sender, time, doc.id); // Create a message card with the given information
 
-                $('#alerts-sec').append(alert_card);
+                $('#alerts-sec').append(alert_card);    // Add the created message card to the page 
             })
         })
 }
