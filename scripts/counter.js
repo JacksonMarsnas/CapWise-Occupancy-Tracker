@@ -1,6 +1,6 @@
 // ---------------------- ON WINDOW LOAD, RUN MAIN() ----------------------------
 
-window.onload = main // execute main on window load
+window.onload = main; // execute main on window load
 
 function main() {
 
@@ -19,13 +19,13 @@ function main() {
 
     if (sessionStorage.stored_count) {
         document.getElementById('current-count').innerHTML = sessionStorage.stored_count;
-        modify_bg()
+        modify_bg();
     }
 
     if (sessionStorage.total) {
         document.getElementById('total').innerHTML = sessionStorage.total;
     }
-}
+};
 
 // ------------------------  ADDING AND SUBTRACTING THE CURRENT OCCUPANCY ----------------------------
 
@@ -36,18 +36,18 @@ function main() {
  */
 function add() {
 
-    let count_node = document.getElementById('current-count') // point to the current count element
+    let count_node = document.getElementById('current-count'); // point to the current count element
 
     let new_count = parseInt(count_node.textContent) + 1; // increment the current count number by one
 
-    let curr_total = Number(document.getElementById('total').textContent) // point to the total today element
-    document.getElementById('total').innerHTML = curr_total + 1 // increment the total today number by one
+    let curr_total = Number(document.getElementById('total').textContent); // point to the total today element
+    document.getElementById('total').innerHTML = curr_total + 1; // increment the total today number by one
 
     count_node.textContent = new_count; // change the current count element to reflect the new number
     sessionStorage.stored_count = new_count; // store the new count in current stored count in sessionStorage                 
-    sessionStorage.total = curr_total + 1 // store the new current total count overall in sessionStorage
-    modify_bg() // modify the background according to the new numbers
-}
+    sessionStorage.total = curr_total + 1; // store the new current total count overall in sessionStorage
+    modify_bg(); // modify the background according to the new numbers
+};
 
 
 
@@ -56,14 +56,14 @@ function add() {
  * The total today count does not change by subtracting.
  */
 function subtract() {
-    let count_node = document.getElementById('current-count') // point to the current count element
+    let count_node = document.getElementById('current-count'); // point to the current count element
 
     let new_count = parseInt(count_node.textContent) - 1; // decrement the current count number by one
 
     count_node.textContent = new_count; // store the new count in current stored count in sessionStorage        
     sessionStorage.stored_count = new_count; // store the new current total count overall in sessionStorage
     modify_bg() // modify the background according to the new numbers
-}
+};
 
 /**
  * Modify the background bar according to the current count.
@@ -72,8 +72,8 @@ function modify_bg() {
 
     // retrieve the current and maximum occupancy count from the page
 
-    let current_count = parseInt(document.getElementById('current-count').textContent)
-    let max_count = parseInt(document.getElementById('max-number').textContent)
+    let current_count = parseInt(document.getElementById('current-count').textContent);
+    let max_count = parseInt(document.getElementById('max-number').textContent);
 
     if (current_count <= max_count && current_count > 0) { // execute the following code if the current count is less than the absolute maximum and is greater than 0
 
@@ -83,8 +83,8 @@ function modify_bg() {
         $('#bg-modifier').animate({
             height: new_height // animate and slide to the new height in 200ms
         }, 200);
-    }
-}
+    };
+};
 
 
 
@@ -98,9 +98,9 @@ function modify_bg() {
  */
 document.getElementById('send-btn').addEventListener("click", function () {
 
-    writeMessages()                                 // write the message to Firestore
+    writeMessages();                                 // write the message to Firestore
 
-    document.getElementById('modal-form').reset()   // reset the form inputs
+    document.getElementById('modal-form').reset();   // reset the form inputs
 
 });
 
@@ -110,11 +110,11 @@ document.getElementById('send-btn').addEventListener("click", function () {
 function writeMessages() {
 
     // Retrive the user's store ID and name from sessionStorage (should be stored after landing on main.html)
-    let storeID = sessionStorage.getItem('storeID')
-    let current_user = sessionStorage.getItem('name')
+    let storeID = sessionStorage.getItem('storeID');
+    let current_user = sessionStorage.getItem('name');
 
     // Define the reference to the message collection in the user's store
-    var messagesRef = db.collection('stores').doc(storeID).collection("messages")
+    var messagesRef = db.collection('stores').doc(storeID).collection("messages");
 
     messagesRef.add({                                                                           // WRITE to the database
             date: today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate(),         // today's date
@@ -162,16 +162,16 @@ function writeDailyCount() {
  */
 function displayStaff() {
 
-    let docID = sessionStorage.getItem('storeID')       // retrieve the user's store ID from the sessionStorage
+    let docID = sessionStorage.getItem('storeID');       // retrieve the user's store ID from the sessionStorage
 
-    db.collection('stores').doc(docID)                  // refer to the user's store document
-        .get()                                          // READ
+    db.collection('stores').doc(docID)                   // refer to the user's store document
+        .get()                                           // READ
         .then(function (doc) {
 
-            var staff = doc.data().staff                // point to the staff key of the store document
-            let staff_names = Object.keys(staff)        // get the keys of the staff data structure (the names of all the staff)
+            var staff = doc.data().staff;                // point to the staff key of the store document
+            let staff_names = Object.keys(staff);        // get the keys of the staff data structure (the names of all the staff)
 
-            staff_names.forEach(function (name) {       // for each staff name
+            staff_names.forEach(function (name) {        // for each staff name
 
                 $("#recipient").append("<option value='" + name + "'>" + name + "</option>");   // append as an option in the recipients input field
 

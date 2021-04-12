@@ -1,7 +1,7 @@
 // ---------------------- ON WINDOW LOAD, RUN MAIN() ----------------------------
 
 
-window.onload = main
+window.onload = main;
 
 function main() {
 
@@ -22,7 +22,7 @@ function main() {
     });
     google.charts.setOnLoadCallback(drawChart);
 
-}
+};
 
 
 /**
