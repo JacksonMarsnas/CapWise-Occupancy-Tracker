@@ -9,11 +9,15 @@ function main() {
 
     // Find and display the messages for today on the page.
     find_msgs_today();
-    
+
+    // Run display empty after 500ms.
     setTimeout(display_empty, 500);
 
 }
 
+/**Check and display the 'empty alerts page' div if there are no alerts on the page.
+ * 
+ */
 function display_empty() {
     let empty_msg = document.getElementById('empty');
 
