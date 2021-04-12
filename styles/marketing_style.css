@@ -156,3 +156,7 @@ body {
     margin: 2em auto;
   }
 }
+
+.btn-close {
+  float: right
+}

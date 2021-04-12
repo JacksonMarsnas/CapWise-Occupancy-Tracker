@@ -171,7 +171,7 @@ function widgetQuery() {
                 var promoDescription = doc.data().description;
                 var promoStart = doc.data().start;
                 var promoEnd = doc.data().end;
-                createWidget(promoName, promoDescription, promoStart, promoEnd);
+                createWidget(promoName, promoDescription, promoStart, promoEnd, doc.id);
             });
         })
 };
@@ -284,18 +284,48 @@ function format_date(date) {
 
 
 /**
+ * Create close button
+ * Parameter docID: Firebase document ID
+ * Return: button element
+ */
+function make_close_btn(docID) {
+    //create close button
+    let close_btn = document.createElement('button');   
+    close_btn.setAttribute('type', 'button');           
+    close_btn.setAttribute('class', 'btn-close');
+
+    //listen to click
+    close_btn.addEventListener('click', function () {   
+
+        db.collection('promotions').doc(docID) // search for collection "promotions" and a specific document id
+            .delete()                                              
+            .then(function(){
+                console.log('Delete from db successful.')                      
+                close_btn.parentNode.parentNode.remove();           
+            }).catch(function(err){
+                console.log('Delete unsuccessful', err)
+            })
+    })
+    return close_btn
+};
+
+
+/**
  * Create widget
  * Parameter promoName: a string of the promotion name
  * Parameter promoDescription: a string of the promotion description
  * Parameter promoStart: a date of the promotion start
  * Parameter promoEnd: a date of the promotion end
 */
-function createWidget(promoName, promoDescription, promoStart, promoEnd) {
+function createWidget(promoName, promoDescription, promoStart, promoEnd, docID) {
     getTrafficData(promoStart, promoEnd)
         .then(function (trafficText) {
             //create new div
             let newDiv = document.createElement("div");
             newDiv.setAttribute("class", `promo-card show ${filterDate(promoStart, promoEnd)}`);
+
+            //refer to close button
+            let close_btn = make_close_btn(docID);             
 
             //create new element for new promotion name
             promoNameTextNode = document.createTextNode(promoName);
@@ -328,8 +358,11 @@ function createWidget(promoName, promoDescription, promoStart, promoEnd) {
             newAside.setAttribute("class", "promo-info")
 
             //append elements into aside
-            newAside.append(promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndDateSpan, trafficLine)
+            newAside.append(close_btn, promoNamePara, promoDescriptionPara, promoStartDateSpan, promoEndDateSpan, trafficLine)
             newDiv.appendChild(newAside)
+
+            //append delete button into new div
+            
 
             //append aside into new div
             $('#perf').append(newDiv)
