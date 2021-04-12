@@ -11,6 +11,14 @@ p {
     font-size: 18px;
 }
 
+a {
+    color:rgba(184, 181, 255, 1);
+}
+
+h3 {
+    color: #7868E6;
+}
+
 img {
     margin: 2em;
 }
@@ -92,6 +100,72 @@ section {
     background: linear-gradient(342deg, rgba(184, 181, 255, 1) 40%, rgba(168, 240, 255, 1) 100%);
 }
 
+#prelim-pitch {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+
+/* People */
+
+.bio-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.people-img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    text-align: center;
+    margin: 1em;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+    background-color: #7868E6;
+    padding: 5em;
+}
+
+.footer-container {
+    width: 300px;
+    margin: 2em;
+    color: #FFFFFF;
+}
+
+footer a {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: rgba(184, 181, 255, 1);
+    font-weight: bold;
+}
+
+/* Media icons */
+
+#git {
+    background-image: url('../images/icons/github.svg');
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+}
+
 @media screen and (min-width: 575px) {
 
     .feature-img {
@@ -124,29 +198,16 @@ section {
         justify-content: center;
     }
 
+
+    .bio-container {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    footer {
+        flex-direction: row;
+    }
+
+
 }
 
-/* People */
-
-.bio-container {
-    display: flex;
-    justify-content: center;
-}
-
-.people-img {
-    border-radius: 50%;
-    width: 300px;
-    height: 300px;
-}
-
-/* Footer */
-footer {
-    width: 100vw;
-    height: auto;
-    background-color: #7868E6;
-    padding: 1em;
-}
-
-#support {
-    color: #FFFFFF;
-}
