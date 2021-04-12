@@ -2,275 +2,152 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>CapWise</title>
-    <meta name="comp1800 boilerplate code" content="CapWise">
-    <meta name="author" content="BCIT">
+  <meta charset="utf-8">
+  <title>CapWise</title>
+  <meta name="comp1800 boilerplate code" content="CapWise">
+  <meta name="author" content="BCIT">
 
-    <!-- Favicon Package -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-    <link rel="manifest" href="./favicon/site-manifest.js">
-    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#7868e6">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+  <!-- Favicon Package -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+  <link rel="manifest" href="./favicon/site-manifest.js">
+  <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#7868e6">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
 
-    <!-- Bootstrap for Mobile-first, and JQuery -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <!-- Bootstrap for Mobile-first, and JQuery -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <!-- Optional styles and scripts of your own -->
-    <link href="./styles/capwise_components.css" rel="stylesheet">
-    <link href="./styles/index.css" rel="stylesheet">
+  <!-- Optional styles and scripts of your own -->
+  <link href="./styles/capwise_components.css" rel="stylesheet">
+  <link href="./styles/index.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-------------------------------------->
-    <!-- The following is HTML for layout -->
-    <!-------------------------------------->
-    <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark top-nav">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html">CapWise</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./login.html">Log-in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html#features">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html#support">Support</a>
-                    </li>
+  <!-------------------------------------->
+  <!-- The following is HTML for layout -->
+  <!-------------------------------------->
+  <!-- Header Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark top-nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">CapWise</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./login.html">Log-in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html#support">Support</a>
+          </li>
 
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-    <!-- Hero -->
-
-    <div class="hero-image">
-        <div class="hero-title">
-            <h1 class="display-1">CapWise</h1>
-            <p class="lead">People Counting and Analysis</p>
-            <form action="./login.html">
-                <button class="btn" type="submit">Log-in/Sign-up</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Content begins here -->
-
-    <section>
-
-        <div id="about" class="container">
-            <h1 class="display-4">Every Customer Counts</h1>
-            <p>
-                CapWise is an open-source, mobile-friendly application to collect and make good use of occupancy data. Our design team
-                has created this application with the goal of keeping analytics simple and easy to use for business-ownders of all sizes.
-                
-                Click log-in to get started today and sign up!
-
-
-            </p>
-        </div>
-
-        <div id="features" class="container">
-            <h1 class="display-4">Features</h1>
-
-            <div class="center">
-
-                <div class="feature-container">
-                    <img class="feature-img" src="./images/people.png">
-                    <h1 class="display-6">Track Store Traffic</h1>
-
-                </div>
-
-                <div class="feature-container">
-                    <img class="feature-img" src="./images/marketing.png">
-                    <h1 class="display-6"> Monitor Promotion Performance</h1>
-                </div>
-
-                <div class="feature-container">
-                    <img class="feature-img" src="./images/schedule.png">
-                    <h1 class="display-6">Data-led Scheduling</h1>
-                </div>
-
-                <div class="feature-container">
-                    <img class="feature-img" src="./images/devices.png">
-                    <h1 class="display-6">Mobile-first Design</h1>
-                </div>
-            </div>
-        </div>
-
-        <div id="support" class="container">
-            <h1 class="display-4">Questions? Feedback?</h1>
-            <p>Thank you for visiting CapWise! We are always looking for ways to improve our application, if you have any questions or feedback, please contact us at
-                <strong><a href="mailto:questions@CapWise.com">questions@CapWise.com</a></strong>.
-            </p>
-        </div>
-
-        <div id="support" class="container">
-            <h1 class="display-4">The People Behind CapWise</h1>
-            <p>Thank you for visiting CapWise! We are always looking for ways to improve our application, if you have any questions or feedback, please contact us at
-                questions@CapWise.com.
-            </p>
-        </div>
-
-    </section>
-
-<!-- Footer -->
-<footer class="page-footer font-small unique-color-dark">
-
-    <div style="background-color: #6351ce;">
-      <div class="container">
-  
-        <!-- Grid row-->
-        <div class="row py-4 d-flex align-items-center">
-  
-          <!-- Grid column -->
-          <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-            <h6 class="mb-0">Get connected with us on social networks!</h6>
-          </div>
-          <!-- Grid column -->
-  
-          <!-- Grid column -->
-          <div class="col-md-6 col-lg-7 text-center text-md-right">
-  
-            <!-- Facebook -->
-            <a class="fb-ic">
-              <i class="fab fa-facebook-f white-text mr-4"> </i>
-            </a>
-            <!-- Twitter -->
-            <a class="tw-ic">
-              <i class="fab fa-twitter white-text mr-4"> </i>
-            </a>
-            <!-- Google +-->
-            <a class="gplus-ic">
-              <i class="fab fa-google-plus-g white-text mr-4"> </i>
-            </a>
-            <!--Linkedin -->
-            <a class="li-ic">
-              <i class="fab fa-linkedin-in white-text mr-4"> </i>
-            </a>
-            <!--Instagram-->
-            <a class="ins-ic">
-              <i class="fab fa-instagram white-text"> </i>
-            </a>
-  
-          </div>
-          <!-- Grid column -->
-  
-        </div>
-        <!-- Grid row-->
-  
+        </ul>
       </div>
     </div>
-  
-    <!-- Footer Links -->
-    <div class="container text-center text-md-left mt-5">
-  
-      <!-- Grid row -->
-      <div class="row mt-3">
-  
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-  
-          <!-- Content -->
-          <h6 class="text-uppercase font-weight-bold">Company name</h6>
-          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-            consectetur
-            adipisicing elit.</p>
-  
+  </nav>
+
+
+  <!-- Hero -->
+
+  <div class="hero-image">
+    <div class="hero-title">
+      <h1 class="display-1">CapWise</h1>
+      <p class="lead">People Counting and Analysis</p>
+      <form action="./login.html">
+        <button class="btn" type="submit">Log-in/Sign-up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Content begins here -->
+
+  <section>
+
+    <div id="about" class="container">
+      <h1 class="display-4">Every Customer Counts</h1>
+      <p>
+        CapWise is an open-source, mobile-friendly application to collect and make good use of occupancy data. Our
+        design team
+        has created this application with the goal of keeping analytics simple and easy to use for business-ownders of
+        all sizes.
+
+        Click log-in to get started today and sign up!
+
+
+      </p>
+    </div>
+
+    <div id="features" class="container">
+      <h1 class="display-4">Features</h1>
+
+      <div class="center">
+
+        <div class="feature-container">
+          <img class="feature-img" src="./images/people.png">
+          <h1 class="display-6">Track Store Traffic</h1>
+
         </div>
-        <!-- Grid column -->
-  
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-  
-          <!-- Links -->
-          <h6 class="text-uppercase font-weight-bold">Products</h6>
-          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>
-            <a href="#!">MDBootstrap</a>
-          </p>
-          <p>
-            <a href="#!">MDWordPress</a>
-          </p>
-          <p>
-            <a href="#!">BrandFlow</a>
-          </p>
-          <p>
-            <a href="#!">Bootstrap Angular</a>
-          </p>
-  
+
+        <div class="feature-container">
+          <img class="feature-img" src="./images/marketing.png">
+          <h1 class="display-6"> Monitor Promotion Performance</h1>
         </div>
-        <!-- Grid column -->
-  
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-  
-          <!-- Links -->
-          <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>
-            <a href="#!">Your Account</a>
-          </p>
-          <p>
-            <a href="#!">Become an Affiliate</a>
-          </p>
-          <p>
-            <a href="#!">Shipping Rates</a>
-          </p>
-          <p>
-            <a href="#!">Help</a>
-          </p>
-  
+
+        <div class="feature-container">
+          <img class="feature-img" src="./images/schedule.png">
+          <h1 class="display-6">Data-led Scheduling</h1>
         </div>
-        <!-- Grid column -->
-  
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-  
-          <!-- Links -->
-          <h6 class="text-uppercase font-weight-bold">Contact</h6>
-          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>
-            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-          <p>
-            <i class="fas fa-envelope mr-3"></i> info@example.com</p>
-          <p>
-            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-          <p>
-            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-  
+
+        <div class="feature-container">
+          <img class="feature-img" src="./images/devices.png">
+          <h1 class="display-6">Mobile-first Design</h1>
         </div>
-        <!-- Grid column -->
-  
       </div>
-      <!-- Grid row -->
-  
     </div>
-    <!-- Footer Links -->
-  
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+
+
+
+    <div id="People" class="container">
+      <h1 class="display-4">The People Behind CapWise</h1>
+      <div class="bio-container">
+        <div class="bio">
+          <img class="people-img" src="./images/burb.jpg">
+
+        </div>
+
+        <div class="bio">
+          <img class="people-img" src="./images/april.jpg">
+
+        </div>
+
+        <div class="bio">
+          <img src="./images/sally.jpg" class="people-img">
+        </div>
+      </div>
     </div>
-    <!-- Copyright -->
-  
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div id="support" class="container">
+      <h1 class="display-4">Questions? Feedback?</h1>
+      <p>Thank you for visiting CapWise! We are always looking for ways to improve our application, if you have any
+        questions or feedback, please contact us at
+        <strong><a href="mailto:questions@CapWise.com">questions@CapWise.com</a></strong>.
+      </p>
+    </div>
   </footer>
   <!-- Footer -->
 
@@ -278,22 +155,22 @@
 
 
 
-    <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related    -->
-    <!----------------------------------------------->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-    </script>
+  <!----------------------------------------------->
+  <!-- JS: Boostrap, Firebase, API related    -->
+  <!----------------------------------------------->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
 
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <script src="./scripts/firebase_api.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+  <script src="./scripts/firebase_api.js"></script>
 
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your own JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
-    <script src="./scripts/bottom_nav.js"></script>
+  <!--------------------------------------------------------------------->
+  <!-- JS files: Your own JavaScript functions included here    -->
+  <!--------------------------------------------------------------------->
+  <script src="./scripts/bottom_nav.js"></script>
 
 </body>
 

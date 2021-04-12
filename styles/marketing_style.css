@@ -58,8 +58,8 @@ body {
 #add-button {
   position: fixed;
   z-index: 1;
-  bottom: 7em;
-  right: 3em;
+  bottom: 6em;
+  right: 2em;
   width: 60px;
   height: 60px;
 
@@ -67,7 +67,7 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 50px;
-  
+
   border: 1px solid #7868e6;
   color: #7868e6;
 }
@@ -128,6 +128,10 @@ form {
   background-color: #7868e6;
 }
 
+input {
+  height: 40px;
+}
+
 .close {
   color: white;
   float: right;
@@ -173,6 +177,10 @@ form {
     width: 500px;
   }
 
+  #add-button {
+    bottom: 7em;
+    right: 3em;
+  }
 }
 
 .btn-close {

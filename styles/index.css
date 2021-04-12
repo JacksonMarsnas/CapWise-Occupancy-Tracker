@@ -126,10 +126,27 @@ section {
 
 }
 
+/* People */
+
+.bio-container {
+    display: flex;
+    justify-content: center;
+}
+
+.people-img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+
 /* Footer */
 footer {
     width: 100vw;
-    height: 40vh;
+    height: auto;
     background-color: #7868E6;
+    padding: 1em;
+}
 
+#support {
+    color: #FFFFFF;
 }
