@@ -1,15 +1,36 @@
-storageUserName();
-storageUserEmail();
-storageStoreDocId();
-storageMaxOccupancy();
+// ---------------------- ON WINDOW LOAD, RUN MAIN() ----------------------------
 
-writeUserNameLive('#user-name');
 
-google.charts.load('current', {
-    'packages': ['corechart']
-});
-google.charts.setOnLoadCallback(drawChart);
+window.onload = main
 
+function main() {
+
+    /* Store the user's name, email, store document ID, and maximum occupancy of the store
+        to sessionStorage for quick access throughout the session. Functions from capwise_functions.js
+    */
+    storageUserName();
+    storageUserEmail();
+    storageStoreDocId();
+    storageMaxOccupancy();
+
+    // Welcome the user to the main page
+    writeUserNameLive('#user-name');
+
+    // Draw the Google Chart of occupancy data in the past week
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+}
+
+
+/**
+ * Draw the Google chart. For the reason that our application does not have enough fake,
+ * collected data over time, the data is hardcoded as an example. :)
+ * 
+ * Code taken from Google's drawChart documentation.
+ */
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
         ['Day', 'Count'],
@@ -33,5 +54,3 @@ function drawChart() {
 
     chart.draw(data, options);
 }
-
-

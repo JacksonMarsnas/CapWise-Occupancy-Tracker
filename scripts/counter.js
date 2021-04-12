@@ -1,4 +1,4 @@
-/* get total count */
+// ---------------------- ON WINDOW LOAD, RUN MAIN() ----------------------------
 
 window.onload = main // execute main on window load
 
