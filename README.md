@@ -5,7 +5,7 @@
 * [Contents](#content)
 
 ## General Info
-This browser based web application is targeted to help stores accumulate data on their store's traffic flow. The data collected can be used to make promotional and scheduling decisions easier for store owners.
+CapWise is introducing a crowd occupancy counter for retail spaces that will make use of counted data. Aside from counting crowd flow, CapWise offers special scheduling and marketing features to make use of in-store counting data. 
 	
 ## Technologies
 Technologies used for this project:
@@ -19,7 +19,15 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
+├── alerts.html               # alerts HTML file, the message and alert center
+├── counter.html               # counter application HTML file, the occupancy counting page
+├── index.html                # landing HTML file, this is what users see when you come to url
+├── login.html               # login HTML file, the log-in page
+├── main.html               # main HTML file, the landing page after log-in or user set-up
+├── marketing.html               # marketing HTML file, the marketing / promotion performance page
+├── scheduling.html               # scheduling HTML file, the scheduling page
+├── settings.html               # settings HTML file, the settings page to change user and store settings
+├── SetUp.html               # set up HTML file, the set up page for new users to set up store information
 └── README.md
 
 It has the following subfolders and files:
@@ -37,11 +45,9 @@ Firebase hosting files:
 
 ```
 
-Tips for file naming files and folders:
-* use lowercase with no spaces
-* use dashes (not underscore) for word separation
-
 
 ## Resources
-- log in page from unsplash: Mathieu Daix
-- crosswalk photo: Ryoji Iwata
+- Login.html mountain image: Mathieu Daix
+- Index.html crosswalk image: Ryoji Iwata
+- Index.html graphics by Sketchify from Canva
+- Logo homemade by Sally P!
