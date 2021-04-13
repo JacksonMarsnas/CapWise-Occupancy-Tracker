@@ -20,16 +20,16 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── alerts.html               # alerts HTML file, the message and alert center
-├── counter.html               # counter application HTML file, the occupancy counting page
-├── index.html                # landing HTML file, this is what users see when you come to url
+├── alerts.html              # alerts HTML file, the message and alert center
+├── counter.html             # counter application HTML file, the occupancy counting page
+├── index.html               # landing HTML file, this is what users see when you come to url
 ├── login.html               # login HTML file, the log-in page
-├── main.html               # main HTML file, the landing page after log-in or user set-up
-├── marketing.html               # marketing HTML file, the marketing / promotion performance page
-├── scheduling.html               # scheduling HTML file, the scheduling page
-├── settings.html               # settings HTML file, the settings page to change user and store settings
+├── main.html                # main HTML file, the landing page after log-in or user set-up
+├── marketing.html           # marketing HTML file, the marketing / promotion performance page
+├── scheduling.html          # scheduling HTML file, the scheduling page
+├── settings.html            # settings HTML file, the settings page to change user and store settings
 ├── SetUp.html               # set up HTML file, the set up page for new users to set up store information
-└── README.md
+└── README.md                # woah, you're reading this now!
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
@@ -65,28 +65,28 @@ It has the following subfolders and files:
         /jackson_cat.jpg
         /sally_cat.gif
 ├── scripts                         # Folder for scripts
-        /alerts.js                  # JS for alerts page
-        /bottom_nav.js              # JS for bottom nav
-        /capwise_functions.js       # General functions
-        /counter.js                 # JS for counter page
-        /firebase_api.js            # firebase API stuff
-        /login_firebase.js          # JS for login
-        /main.js                    # JS for main page
-        /marketing.js               # JS for marketing page
-        /scheduling.js              # JS for scheduling page
-        /settings.js                # JS for settings page
-        /setUp.js                   # JS from setup page
+        /alerts.js                  # JS for alerts.html
+        /bottom_nav.js              # JS for bottom nav, shared across pages
+        /capwise_functions.js       # General functions, shared across pages
+        /counter.js                 # JS for counter.html
+        /firebase_api.js            # firebase API stuff, shared across pages
+        /login_firebase.js          # JS for login.html
+        /main.js                    # JS for main.html
+        /marketing.js               # JS for marketing.html
+        /scheduling.js              # JS for scheduling.html
+        /settings.js                # JS for settings.html
+        /setUp.js                   # JS from setup.html
 ├── styles                          # Folder for styles
-        /alerts.css
-        /capwise_compnents.css
-        /counter.css
-        /index.css
-        /login.css
-        /main.css
-        /marketing_style.css
-        /scheduling_style.css
-        /settings.css
-        /SetUp.css
+        /alerts.css                 # style for alerts.html
+        /capwise_compnents.css      # General styling, shared across pages
+        /counter.css                # style for counter.html
+        /index.css                  # style for index.html
+        /login.css                  # style for login.html
+        /main.css                   # style for main.html
+        /marketing_style.css        # style for marketing.html
+        /scheduling_style.css       # style for scheduling.html
+        /settings.css               # style for settings.html
+        /SetUp.css                  # style for setUp.html
 
 Firebase hosting files: 
 ├── .firebaserc...
@@ -99,4 +99,6 @@ Firebase hosting files:
 - Login.html mountain image: Mathieu Daix
 - Index.html crosswalk image: Ryoji Iwata
 - Index.html graphics by Sketchify from Canva
-- Logo homemade by Sally P!
+- Index.html Grumpy Cat photo by Amanda Edwards
+- Index.html Busy Coding Cat gif by AaronsAnimals
+- Logo homemade!
