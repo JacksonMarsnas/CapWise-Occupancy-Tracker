@@ -41,17 +41,12 @@ It has the following subfolders and files:
             /book-open.svg
             /calendar.svg
             /check-circle.svg
-            /clipboard.svg
             /counter.svg
-            /edit.svg
-            /film.svg
-            /github.svg
             /mail.svg
             /message-square.svg
             /minus.svg
             /plus.svg
             /search.svg
-            /send.svg
             /settings.svg
             /smile.svg
             /tag.svg
@@ -66,6 +61,9 @@ It has the following subfolders and files:
         /people.png
         /sally.jpg
         /schedule.png
+        /april_cat.png
+        /jackson_cat.jpg
+        /sally_cat.gif
 ├── scripts                         # Folder for scripts
         /alerts.js                  # JS for alerts page
         /bottom_nav.js              # JS for bottom nav
