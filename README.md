@@ -34,11 +34,61 @@ Content of the project folder:
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-    /blah.jpg                # 
-├── scripts                  # Folder for scripts
-    /blah.js                 # 
-├── styles                   # Folder for styles
-    /blah.css                # 
+        /icons
+            /activity.svg
+            /alert-triangle.svg
+            /bell.svg
+            /book-open.svg
+            /calendar.svg
+            /check-circle.svg
+            /clipboard.svg
+            /counter.svg
+            /edit.svg
+            /film.svg
+            /github.svg
+            /mail.svg
+            /message-square.svg
+            /minus.svg
+            /plus.svg
+            /search.svg
+            /send.svg
+            /settings.svg
+            /smile.svg
+            /tag.svg
+            /x.svg
+        /april.jpg
+        /jackson.jpg
+        /CapWise_purple.png
+        /devices.png
+        /hero.jpg
+        /login_hero_MathieuDaix.jpg
+        /marketing.png
+        /people.png
+        /sally.jpg
+        /schedule.png
+├── scripts                         # Folder for scripts
+        /alerts.js                  # JS for alerts page
+        /bottom_nav.js              # JS for bottom nav
+        /capwise_functions.js       # General functions
+        /counter.js                 # JS for counter page
+        /firebase_api.js            # firebase API stuff
+        /login_firebase.js          # JS for login
+        /main.js                    # JS for main page
+        /marketing.js               # JS for marketing page
+        /scheduling.js              # JS for scheduling page
+        /settings.js                # JS for settings page
+        /setUp.js                   # JS from setup page
+├── styles                          # Folder for styles
+        /alerts.css
+        /capwise_compnents.css
+        /counter.css
+        /index.css
+        /login.css
+        /main.css
+        /marketing_style.css
+        /scheduling_style.css
+        /settings.css
+        /SetUp.css
 
 Firebase hosting files: 
 ├── .firebaserc...
