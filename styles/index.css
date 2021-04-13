@@ -16,6 +16,7 @@ a {
 }
 
 h3 {
+    margin-top: 1em;
     color: #7868E6;
 }
 
@@ -119,15 +120,57 @@ section {
     border-radius: 50%;
     width: 300px;
     height: 300px;
+    z-index: -50px;
 }
+
+
+.cat-img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+
 
 .bio {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 300px;
+    height: 500px;
     text-align: center;
     margin: 1em;
+}
+
+.bio-img {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-size: contain;
+}
+
+#april {
+    background-image: url('../images/april_cat.png');
+}
+
+#april:hover {
+    background-image: url('../images/april.jpg')
+}
+
+#sally {
+    background-image: url('../images/sally_cat.gif')
+}
+
+#sally:hover {
+    background-image: url('../images/sally.jpg');
+}
+
+#jackson {
+    background-image: url('../images/jackson_cat.jpg');
+}
+
+#jackson:hover {
+    background-image: url('#');
 }
 
 /* Footer */
