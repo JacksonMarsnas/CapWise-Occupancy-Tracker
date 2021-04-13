@@ -11,7 +11,8 @@ CapWise is introducing a crowd occupancy counter for retail spaces that will mak
 Technologies used for this project:
 * HTML, CSS
 * JavaScript
-* Bootstrap 
+* Bootstrap
+* Firebase and Firestore 
 	
 ## Content
 Content of the project folder:
