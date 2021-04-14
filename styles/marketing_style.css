@@ -158,7 +158,8 @@ input {
   height: 35px;
 }
 
-.filter-btn:hover {
+.filter-btn:hover,
+.filter-btn:active {
   background-color: #ddd;
 }
 
