@@ -51,6 +51,7 @@ It has the following subfolders and files:
             /smile.svg
             /tag.svg
             /x.svg
+            /chevron-right.svg
         /april.jpg
         /jackson.jpg
         /CapWise_purple.png
