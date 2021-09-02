@@ -51,6 +51,7 @@ It has the following subfolders and files:
             /smile.svg
             /tag.svg
             /x.svg
+            /chevron-right.svg
         /april.jpg
         /jackson.jpg
         /CapWise_purple.png
@@ -89,7 +90,14 @@ It has the following subfolders and files:
         /SetUp.css                  # style for setUp.html
 
 Firebase hosting files: 
-├── .firebaserc...
+├── .firebase
+	/hosting..cache
+├── .firebaserc
+├── 404.html
+├── firebase.json
+├── firestore.indexes.json
+├── firestore.rules
+├── storage.rules
 
 
 ```
@@ -101,4 +109,5 @@ Firebase hosting files:
 - Index.html graphics by Sketchify from Canva
 - Index.html Grumpy Cat photo by Amanda Edwards
 - Index.html Busy Coding Cat gif by AaronsAnimals
+- In-app icons from Feather v4.28.0 (Open Source https://feathericons.com/)
 - Logo homemade!

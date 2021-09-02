@@ -14,15 +14,19 @@ h5 {
 }
 
 .arrow_button {
+    width: 60px;
+    height:60px;
     margin: 0px;
     margin-left: 40px;
     background: #e4fbff;
-    border: None;
+    border: 1px solid #7868e6;
     display: inline;
     width: 60px;
     float: right;
     box-shadow: none;
     border-radius: 50%;
+    background-image: url('../images/icons/chevron-right.svg');
+    background-size: contain;
 }
 
 button:active {

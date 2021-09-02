@@ -10,8 +10,8 @@ function main() {
     // Find and display the messages for today on the page.
     find_msgs_today();
 
-    // Run display empty after 500ms.
-    setTimeout(display_empty, 500);
+    // Run display empty after 1000ms.
+    setTimeout(display_empty, 1000);
 
 }
 
